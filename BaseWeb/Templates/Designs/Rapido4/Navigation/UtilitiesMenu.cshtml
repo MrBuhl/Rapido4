@@ -1,0 +1,95 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb
+@using System.Web
+@using Dynamicweb.Content.Items
+
+@RenderNodes(Model.Nodes)
+
+@helper RenderNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        var hasChildren = node.Nodes.Count() > 0;
+        string icon = "fal fa-link";
+        if (Services.Pages.GetPage(node.PageId) != null) {
+            icon = Services.Pages.GetPage(node.PageId).PropertyItem["Icon"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["Icon"].ToString() : "";
+        }
+
+        <li class="nav-item @(node.IsActive ? "active" : "") @(hasChildren ? "dropdown" : "")">
+            @if (hasChildren) { 
+                <a class="nav-link" data-toggle="dropdown" href="#" title="@node.Name" role="button" aria-expanded="false" id="DropdownToggle@(node.PageId)">
+                    @RenderNavigationItem(node.Name, icon) 
+                </a>
+                <ul class="dropdown-menu" aria-labelledby="DropdownToggle@(node.PageId)">
+                    @RenderSubNodes(node.Nodes)
+                </ul>
+            } else { 
+                if (node.IsClickable)
+                {
+                    <a class="nav-link" href="@node.Link" title="@node.Name">
+                        @RenderNavigationItem(node.Name, icon) 
+                    </a>
+                } else { 
+                    <span class="nav-link" title="@node.Name">
+                        @RenderNavigationItem(node.Name, icon) 
+                    </span>
+                }
+            }
+        </li>
+    }
+}
+
+@helper RenderNavigationItem(string name, string icon) { 
+    string iconSize = Model.Parameters["IconSize"] != null ? Model.Parameters["IconSize"].ToString() + "rem" : "1rem";
+    string textSize = Model.Parameters["TextSize"] != null ? Model.Parameters["TextSize"].ToString() + "rem" : "1rem";
+    string casing = Model.Parameters["Casing"] != null  ? Model.Parameters["Casing"].ToString()  : "inherit";
+    string textPosition = Model.Parameters["TextPosition"] != null  ? Model.Parameters["TextPosition"].ToString() : "bottom";
+    bool hideTexts = Model.Parameters["HideTexts"] != null  ? Convert.ToBoolean(Model.Parameters["HideTexts"].ToString()) : false;
+    bool hideIcons = Model.Parameters["HideIcons"] != null  ? Convert.ToBoolean(Model.Parameters["HideIcons"].ToString()) : false;
+
+    if (hideTexts) {
+        <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+    } else if (hideIcons) {
+        <div style="font-size: @textSize; text-transform: @casing">@name</div>
+    } else {
+        if (textPosition == "bottom") {
+            <div class="d-flex flex-column align-items-center">
+                <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+                <div class="mt-2" style="font-size: @textSize; text-transform: @casing">@name</div>
+            </div>
+        }
+        if (textPosition == "left") {
+            <div class="d-flex flex-row align-items-center">
+                <div class="mr-2" style="font-size: @textSize; text-transform: @casing">@name</div>
+                <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+            </div>
+        }
+        if (textPosition == "right") {
+            <div class="d-flex flex-row align-items-center">
+                <i class="@icon mr-2" style="font-size: @iconSize" title="@name"></i> 
+                <div style="font-size: @textSize; text-transform: @casing">@name</div>
+            </div>
+        }
+    }
+}
+
+@helper RenderSubNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        var hasChildren = node.Nodes.Count() > 0;
+        string icon = "";
+        if (Services.Pages.GetPage(node.PageId) != null) {
+            icon = Services.Pages.GetPage(node.PageId).PropertyItem["Icon"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["Icon"].ToString() : "";
+        }
+
+        <li>
+            @if (node.IsClickable)
+            {
+                <a class="dropdown-item @(node.IsActive ? "active" : "")" href="@node.Link" title="@node.Name">@if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-3"></i>}@node.Name</a>
+            } else {
+                <span class="dropdown-item" title="@node.Name">@if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-2"></i>}@node.Name</span>
+            }
+        </li>
+    }
+}

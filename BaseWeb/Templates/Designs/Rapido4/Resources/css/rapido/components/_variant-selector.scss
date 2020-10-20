@@ -1,0 +1,57 @@
+//Variant selector
+
+.variant-option-image {
+    display: inline-block;
+    border-radius: 100px;
+    border-width: $border-width;
+    border-color: transparent;
+    border-style: solid;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-base;
+    margin-right: $spacer / 2;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: $box-shadow;
+        border-width: $border-width;
+        border-color: $gray-600;
+        border-style: solid;
+    }
+}
+
+.variant-option-text {
+    display: inline-block;
+    padding: $input-btn-padding-y $input-btn-padding-x;
+    border-width: $border-width;
+    border-radius: $border-radius;
+    border-color: $border-color;
+    border-style: solid;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-base;
+    margin-right: $spacer / 2;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: $box-shadow;
+        border-color: $gray-600;
+    }
+}
+
+.variant-option-color {
+    display: inline-block;
+    width: 48px;
+    height: 48px;
+    border-width: $border-width;
+    border-radius: 100px;
+    border-color: $border-color;
+    border-style: solid;
+    box-shadow: $box-shadow-sm;
+    transition: $transition-base;
+    margin-right: $spacer / 2;
+    cursor: pointer;
+
+    &:hover {
+        box-shadow: $box-shadow;
+        border-color: $gray-600;
+    }
+}

@@ -1,0 +1,16 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+
+<ul class="nav flex-column">
+    @foreach (var node in Model.Nodes)
+    {
+        <li class="nav-item">
+            @if (node.IsClickable)
+            {
+                <a class="nav-link p-0 text-reset" href="@node.Link" title="@node.Name">@node.Name</a>
+            } else {
+                <span class="nav-link p-0 text-reset" title="@node.Name">@node.Name</span>
+            }
+        </li>
+    }
+</ul>
+

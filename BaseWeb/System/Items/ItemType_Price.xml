@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Shared" name="Price" systemName="Price" description="" icon="AttachMoney" iconColor="None" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Font" systemName="Font" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ItemTypeEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ItemTypeEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ItemTypeEditor" name="Item type" value="Font" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Background color" systemName="BackgroundColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="#FFFFFF">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border color" systemName="BorderColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="#FFFFFF">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+    </fields>
+    <rules>
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="ItemList" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="Price" systemName="PriceGroup" collapsibleState="Expanded" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="Font" />
+            <field systemName="BackgroundColor" />
+            <field systemName="BorderColor" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

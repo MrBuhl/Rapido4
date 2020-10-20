@@ -1,0 +1,72 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+
+@{
+    string pageId = GetGlobalValue("Global:Page.ID");
+}
+
+<form name="UserManagementEditForm" id="UserManagementEditForm" method="post">
+    <input type="hidden" name="UserManagementForm" value="1">
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Name" class="form-label">@Translate("Name", "Name")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_Name" id="UserManagement_Form_Name" value="@GetString("UserManagement:User.Name")" required />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Name.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Email") (@Translate("Username"))</label>
+        <input type="email" class="form-control" name="UserManagement_Form_Email" id="UserManagement_Form_Email" value="@GetString("UserManagement:User.Email")" required />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Email.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_NewPassword" class="form-label">@Translate("Password", "Password")</label>
+        @GetString("UserManagement:User.NewPassword.Input").Replace("input ", "input class=\"form-control\"")
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.NewPassword.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_NewPasswordConfirm" class="form-label">@Translate("Confirm password", "Confirm password")</label>
+        @GetString("UserManagement:User.NewPasswordConfirm.Input").Replace("input ", "input class=\"form-control\"")
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.NewPasswordConfirm.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Address", "Address")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_Address" id="UserManagement_Form_Address" value="@GetString("UserManagement:User.Address")" />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Address.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Zip", "Zip")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_Zip" id="UserManagement_Form_Zip" value="@GetString("UserManagement:User.Zip")" />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Zip.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("City", "City")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_City" id="UserManagement_Form_City" value="@GetString("UserManagement:User.City")" />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.City.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Country", "Country")</label>
+                    
+        <select name="UserManagement_Form_Country" id="UserManagement_Form_Country" class="form-control">
+            @foreach (LoopItem country in GetLoop("UserManagement.CountryList"))
+            {
+                string selected = GetString("UserManagement:User.Country") == country.GetString("Country.Code2") ? "selected" : "";
+                <option value="@country.GetString("Country.Code2")" @selected>@country.GetString("Country.Name")</option>
+            }
+        </select>
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Country.Input.Error")</div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Phone", "Phone")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_Phone" id="UserManagement_Form_Phone" value="@GetString("UserManagement:User.Phone")" />
+    </div>
+    <div class="invalid-feedback">@GetString("UserManagement:User.Phone.Input.Error")</div>
+
+    <button type="submit" class="btn btn-primary w-100" id="submitter" onclick="Buttons.LockButton(event)">@Translate("Create your new account")</button>
+</form>

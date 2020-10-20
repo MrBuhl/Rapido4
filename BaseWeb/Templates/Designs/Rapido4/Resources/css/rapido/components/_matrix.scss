@@ -1,0 +1,81 @@
+//Matrix
+
+.matrix {
+    border: 0px;
+    border-collapse: collapse;
+    border-spacing: 0px;
+    background-color: #fff;
+    margin: 0;
+    border-color: $gray-200;
+
+    &__icon {
+        .is-open & {
+            &::before {
+                content: '\f056';
+            }
+        }
+    }
+}
+
+.matrix__head {
+  
+}
+
+.matrix__input-cell {
+    padding: 0 !important;
+    vertical-align: middle;
+    padding: 0px;
+    border-width: 0px;
+    margin: 0px;
+    border: 1px solid $gray-200;
+    height: 55px;
+}
+
+.matrix__cell-disabled {
+    width: 100%;
+    height: 100%;
+    background-color: $gray-200;
+}
+
+.matrix-input-field {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: 100% !important;
+    max-height: 100% !important;
+    margin: 0;
+    text-align: center;
+    border: 2px solid rgba(0,0,0,0) !important;
+
+    &::-webkit-inner-spin-button,
+    &::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    &:hover {
+        border: 2px solid #C62828 !important;
+        background-color: $gray-100;
+    }
+}
+
+.matrix-label-field-left {
+    padding-left: 1em;
+    min-width: 120px;
+}
+
+.matrix-label-field-right {
+    padding-right: 1em !important;
+    min-width: 60px;
+}
+
+.matrix-option-image img {
+    border-radius: 100px;
+}
+
+.matrix-option-image {
+    border-radius: 100px;
+    border: 1px solid $gray-300;
+    padding: 2px;
+    margin: 4px;
+    cursor: pointer;
+}

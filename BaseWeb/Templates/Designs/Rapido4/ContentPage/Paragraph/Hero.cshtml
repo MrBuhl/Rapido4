@@ -1,0 +1,70 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using System.IO
+
+@{ 
+    string link = !string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("Link")) ? Model.Item.GetItem("Content").GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self";
+}
+
+@if (!string.IsNullOrEmpty(link) && string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("ButtonText"))) {
+    <a href="@link" target="@linkTarget">
+        @RenderTheContent(link, linkTarget)
+    </a> 
+} else {
+    @RenderTheContent(link, linkTarget)
+}
+
+@helper RenderTheContent(string link, string linkTarget) { 
+    string theme = !string.IsNullOrEmpty(Model.Item.GetItem("Adjust").GetString("ThemeLayout")) ? Model.Item.GetItem("Adjust").GetList("ThemeLayout").SelectedName : "";
+    string horizontalAlign = Model.Item.GetItem("Adjust").GetList("HorizontalAlignment") != null ? "justify-content-" + Model.Item.GetItem("Adjust").GetList("HorizontalAlignment").SelectedValue.ToString().ToLower() : "";
+    horizontalAlign = horizontalAlign.Replace("right", "end");
+    horizontalAlign += " text-" + Model.Item.GetItem("Adjust").GetList("HorizontalAlignment").SelectedValue.ToLower();
+    string verticalAlign = Model.Item.GetItem("Adjust").GetList("VerticalAlignment") != null ? "align-items-" + Model.Item.GetItem("Adjust").GetList("VerticalAlignment").SelectedValue.ToString().ToLower() : "";
+
+    <div class="h-100 d-flex @theme @horizontalAlign @verticalAlign position-relative">
+        @if (!string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("BackgroundImage"))) {
+            int cropMode = 0;
+            string imagePath = Model.Item.GetItem("Content").GetFile("BackgroundImage") != null ? Model.Item.GetItem("Content").GetFile("BackgroundImage").Path : "";
+            string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + imagePath;
+
+
+            int xPos = Model.Item.GetItem("Content").GetFile("BackgroundImage").FocalX;
+            int yPos = Model.Item.GetItem("Content").GetFile("BackgroundImage").FocalY;
+
+            xPos = xPos < 0 ?  (xPos / 2 + 50) : xPos / 2 + 50;
+            yPos = yPos < 0 ?  -(yPos / 2 - 50) : 50 - yPos / 2;
+
+            <div class="background-image">
+                <div class="background-image__wrapper">
+                    <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@imagePath" style="object-fit: none; object-position: @(xPos)% @(yPos)%" />
+                </div> 
+            </div>  
+        }
+
+        <div class="position-relative p-3">
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("Subheading"))) {
+                <div class="caption">@Model.Item.GetItem("Content").GetString("Subheading")</div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("Title"))) {
+                <div>
+                    @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+                </div> 
+            }
+            
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("Text"))) {
+                <div class="text mt-1">@Model.Item.GetItem("Content").GetString("Text")</div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("Content").GetString("ButtonText")) && !string.IsNullOrEmpty(link)) {
+                string buttonLayout = Model.Item.GetItem("Adjust").GetList("ThemeLayout").SelectedValue;
+
+                <div class="mt-4">
+                    <button href="@link" type="button" class="btn @buttonLayout">@Model.Item.GetItem("Content").GetString("ButtonText")</button>
+                </div>
+            }
+        </div>
+    </div>    
+}
+

@@ -1,0 +1,49 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+@{ 
+    string position = Model.Item.GetString("Position") != null ? Model.Item.GetList("Position").SelectedValue : "block";
+    string newsletterSignUpPageId = Model.Item.GetString("SignUpPage");
+
+    string buttonLayout = Model.Item.GetString("ButtonLayout") != null ? Model.Item.GetList("ButtonLayout").SelectedValue : "btn-primary";
+}
+
+@if (position == "inline") {
+    <div class="d-flex flex-row align-items-center">
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+            <h4 class="h6 m-0 mr-3">@Model.Item.GetString("Title")</h4>
+        }
+
+        <form action="/@newsletterSignUpPageId" method="post" enctype="multipart/form-data">
+            <input type="hidden" value="@newsletterSignUpPageId" />
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+                <div class="d-inline-block mr-2">@Model.Item.GetString("Text")</div>
+            }
+
+            <div class="input-group">
+                <input type="email" placeholder="@Translate("Your email address")" class="form-control mr-2" />
+                <button type="submit" class="btn @buttonLayout" onclick="Buttons.LockButton(event)">@Translate("Sign up")</button>
+            </div>
+        </form>
+    </div>
+} else {
+    if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <h4>@Model.Item.GetString("Title")</h4>
+    }
+
+    <form action="/@newsletterSignUpPageId" method="post" enctype="multipart/form-data" class="d-flex flex-column h-100">
+        <div class="flex-fill">
+            <input type="hidden" value="@newsletterSignUpPageId" />
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+                <div class="mb-3">@Model.Item.GetString("Text")</div>
+            }
+        </div>
+
+        <div class="input-group w-100">
+            <input type="email" placeholder="@Translate("Your email address")" class="form-control " />
+            <button type="submit" class="btn @buttonLayout" onclick="Buttons.LockButton(event)">@Translate("Sign up")</button>
+        </div>
+    </form>
+}   
+
+

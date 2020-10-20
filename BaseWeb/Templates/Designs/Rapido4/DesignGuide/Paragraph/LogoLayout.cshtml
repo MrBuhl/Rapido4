@@ -1,0 +1,34 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+
+
+<div style="width: 100%; height: 100%; background-color: #ccc" >
+    <style>
+        @{
+            string cssClassName = Model.Item.GetString("CSS_ClassName") != null ? Model.Item.GetString("CSS_ClassName") : "";
+            string logoType = Model.Item.GetString("LogoType") != null ? Model.Item.GetString("LogoType") : "";
+            string url = Model.Item.GetString("Image") != null ? Model.Item.GetFile("Image").Path : "";
+            string width = Model.Item.GetString("Width") != null ? Model.Item.GetString("Width") : "120";
+            string height = Model.Item.GetString("Height") != null ? Model.Item.GetString("Height") : "45";
+
+            if (!string.IsNullOrEmpty(cssClassName) && logoType.ToLower() == "image")
+            {
+                <text>
+                    .@(cssClassName) {
+                        background: url(@url);
+                        width: @(width)px;
+                        height: @(height)px;
+                        background-repeat: no-repeat;
+                    }
+                </text>
+            }
+        }
+    </style>
+
+    <div class="@cssClassName"></div>
+</div>
+
+
+
+
+

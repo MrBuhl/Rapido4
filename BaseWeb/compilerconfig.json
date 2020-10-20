@@ -1,0 +1,22 @@
+﻿[
+  {
+    "outputFile": "Templates/Designs/Rapido/css/base/base.css",
+    "inputFile": "Templates/Designs/Rapido/css/base/_main.less"
+  },
+  {
+    "outputFile": "Templates/Designs/Rapido/css/ignite/ignite.css",
+    "inputFile": "Templates/Designs/Rapido/css/ignite/_ignite.less"
+  },
+  {
+    "outputFile": "Templates/Designs/Rapido/css/rapido/devtest.css",
+    "inputFile": "Templates/Designs/Rapido/css/_rapido-tester.less"
+  },
+  {
+    "outputFile": "Templates/Designs/Rapido/css/printable/printable.css",
+    "inputFile": "Templates/Designs/Rapido/css/printable/_printable.less"
+  },
+  {
+    "outputFile": "Templates/Designs/Rapido/css/printable/custom/custom.css",
+    "inputFile": "Templates/Designs/Rapido/css/printable/custom/_custom.less"
+  }
+]

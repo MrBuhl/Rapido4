@@ -1,0 +1,129 @@
+﻿@inherits ViewModelTemplate<ProductListViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@{
+    string detailsPageLink = System.Web.HttpContext.Current.Items["DetailsPageLink"] != null ? System.Web.HttpContext.Current.Items["DetailsPageLink"].ToString() : "";
+
+    bool hideProducts = Model.Products == null;
+
+    bool hideNumber = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideNumber"]);
+	bool hideRatings = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideRatings"]);
+    bool hideStock = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideStock"]);
+    bool hidePrice = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HidePrice"]);
+
+    bool hideAddToFavorites = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideAddToFavorites"]);
+    bool hideAddToCart = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideAddToCart"]);
+    bool hideViewMore = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideViewMore"]);
+
+    string headerStyle = Pageview.CurrentParagraph.Item["HeaderStyle"] != null ? Pageview.CurrentParagraph.Item["HeaderStyle"].ToString() : "h3";
+    string imageAspectRatio = Pageview.CurrentParagraph.Item["ImageAspectRatio"] != null ? Pageview.CurrentParagraph.Item["ImageAspectRatio"].ToString() : "1-1";
+    string imageSize = "width=550&height=550";
+    imageSize = imageAspectRatio == "16-9" ? "width=550&height=260" : imageSize;
+    imageSize = imageAspectRatio == "9-16" ? "width=550&height=977" : imageSize;
+    imageSize = imageAspectRatio == "4-3" ? "width=550&height=412" : imageSize;
+    imageSize = imageAspectRatio == "3-4" ? "width=412&height=550" : imageSize;
+    string fillCanvas = "";
+
+    if (Pageview.CurrentParagraph.Item["KeepAspectRatio"] != null) {
+        fillCanvas = Convert.ToBoolean(Pageview.CurrentParagraph.Item["KeepAspectRatio"]) ? "&fillcanvas=true" : "";
+    }
+
+    bool hideShortDescription = false;
+
+    if (Pageview.CurrentParagraph.Item["HideShortDescription"] != null) {
+		hideShortDescription = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideShortDescription"]);
+    }
+
+	bool hideUnits = Pageview.CurrentParagraph.Item["HideUnits"] != null ? Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideUnits"]) : false;
+	bool hideQuantity = Pageview.CurrentParagraph.Item["HideQuantity"] != null ? Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideQuantity"]) : false;
+}
+
+@if (!hideProducts)
+{
+    foreach (var product in Model.Products)
+    {
+        string productLink = detailsPageLink + "&amp;ProductID=" + product.Id;
+		hideAddToCart = string.IsNullOrEmpty(product.VariantId) && hideAddToCart ? true : false;
+
+        <article class="card mb-4">
+			<div class="card-body">
+				<div class="d-flex">
+					<aside class="mr-3 position-relative">
+						@{ 
+							Dictionary<string, object> stickersSettings = new Dictionary<string, object>();
+							stickersSettings.Add("DiscountStickerLayout", Pageview.CurrentParagraph.Item["DiscountStickerLayout"]);
+							stickersSettings.Add("NewsStickerLayout", Pageview.CurrentParagraph.Item["NewsStickerLayout"]);
+							stickersSettings.Add("CustomStickerLayout", Pageview.CurrentParagraph.Item["CustomStickerLayout"]);
+							stickersSettings.Add("DiscountStickerPosition", Pageview.CurrentParagraph.Item["DiscountStickerPosition"]);
+							stickersSettings.Add("NewsStickerPosition", Pageview.CurrentParagraph.Item["NewsStickerPosition"]);
+							stickersSettings.Add("CustomStickerPosition", Pageview.CurrentParagraph.Item["CustomStickerPosition"]);
+						}
+
+						@RenderPartial("Components/Ecommerce/StickersPositioned.cshtml", product, stickersSettings) 
+						<a href="@productLink">
+							<img src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?@imageSize&crop=5@(fillCanvas)&image=@product.DefaultImage.Value" class="b-lazy w-lg-220px">
+						</a>
+					</aside>
+					<div class="d-flex flex-column">
+						<div class="d-flex flex-row">
+							<div class="mt-2 mb-3 flex-fill">
+								<a href="@productLink" class="text-reset @headerStyle">@product.Name @product.VariantId</a>
+							</div>
+							@if (!hideRatings) {
+								<div class="mr-3">@RenderPartial("Components/Ecommerce/Ratings.cshtml", product, new Dictionary<string, object> { { "layout", "compact"} })</div>   
+							}
+							@if (!hideAddToFavorites) {
+								@RenderPartial("Components/Ecommerce/FavoriteListSelect.cshtml", product) 
+							}
+						</div>
+						@if (!hideNumber) {
+							<small>@product.Number</small>
+                        }
+
+						@if (!hidePrice) {
+							string priceLayout = Pageview.CurrentParagraph.Item["PriceLayout"] != null ? Pageview.CurrentParagraph.Item["PriceLayout"].ToString().ToLower() : "";
+							Dictionary<string, object> priceSettings = new Dictionary<string, object>();
+							priceSettings.Add("PriceLayout", priceLayout);
+
+							<div class="mb-3">
+								@RenderPartial("Components/Ecommerce/Price.cshtml", product, priceSettings)   
+							</div>
+						}
+
+						@if (!hideStock) {
+							<div></div>
+						}
+
+						@if (!hideShortDescription) {
+							@product.ShortDescription
+                        }
+
+						<div class="flex-fill"></div>
+
+						@if (!hideAddToCart || !hideViewMore) {
+							<div class="mt-2">
+								@if (!hideAddToCart) {
+									@RenderPartial("Components/Ecommerce/AddToCart.cshtml", product, new Dictionary<string, object> { { "hideQuantity", hideQuantity }, { "hideUnits", hideUnits } })  
+								} else if (!hideViewMore) {
+									<a href="@productLink" class="btn btn-primary w-100">@Translate("View")</a>
+								}
+							</div>
+                        }  
+
+						@if (!hideStock || !hideRatings) {
+							<div class="mt-2">
+								@if (!hideStock) {
+									<div class="float-left">
+										@RenderPartial("Components/Ecommerce/StockInfo.cshtml", product)
+										@RenderPartial("Components/Ecommerce/ShippingInfo.cshtml", product)
+									</div>
+                                }
+							</div>
+						}
+					</div> 
+				</div> 
+			</div> 
+		</article>
+    }
+}

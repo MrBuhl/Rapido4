@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="62dad3ac-305c-478d-9d70-29f881418266" Name="Fashion - Woman apparel">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP11" DisplayValue="Fashion - Warehouse" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ParentGroupNames" />
+        </Left>
+        <Right>
+          <TermExpression Value="women" DisplayValue="women" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains" Disabled="false">
+        <Left>
+          <FieldExpression Field="IsVariant" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="False" Type="System.Boolean[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="EAN" SystemName="" Source="ProductEAN" Sort="3" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="4" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="5" />
+    <Field Name="Product images" SystemName="" Source="ProductImages" Sort="6" />
+  </ViewFields>
+  <ViewLanguages />
+  <CompletionRules>
+    <Rule ID="7" />
+  </CompletionRules>
+  <CompletionLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+  </CompletionLanguages>
+  <SortOrder>
+    <Sort Field="Season_facet" Direction="Ascending" />
+  </SortOrder>
+</Query>

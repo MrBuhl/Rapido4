@@ -1,0 +1,38 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content.Items
+@using System.Web
+
+@Include("ParagraphBase.cshtml")
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+}
+
+@if (product.VariantInfo != null) {
+    if (product.VariantInfo.VariantInfo != null) {
+        <div>
+            @RenderPartial("Components/Ecommerce/VariantInfoMatrix.cshtml", product.VariantInfo)   
+        </div>
+    } else if (isVisualEditor) {
+        @NoContentInVisualEditor()
+    } 
+} else if (isVisualEditor) {
+    @NoContentInVisualEditor()
+}
+
+@helper NoContentInVisualEditor() { 
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Variant matrix: The variant matrix will be shown here, if any")</span>
+    </div>
+}
+

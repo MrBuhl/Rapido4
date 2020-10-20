@@ -1,0 +1,91 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+@using Dynamicweb
+@using System.Web
+
+
+@Include("ColumnBase.cshtml")
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    var colorService = new ColorSwatchService();
+    string containerLayout = Model.Item.GetList("Width").SelectedValue  != "stretch" ? "container" : "container-fluid"; 
+    string height = Model.Item.GetList("Height") != null ? "row-height-" + Model.Item.GetList("Height").SelectedValue : "";
+    string spacing;
+    
+    if (Model.Item.GetList("SpacingPosition").SelectedValue != "top-bottom") {
+        spacing = "p" + Model.Item.GetList("SpacingPosition").SelectedValue + "-" + Model.Item.GetList("Spacing").SelectedValue;
+    } else {
+        spacing = "py-" + Model.Item.GetList("Spacing").SelectedValue;
+    }
+
+    string columnGap = Model.Item.GetList("ColumnGap") != null ? "gx-" + Model.Item.GetList("ColumnGap").SelectedValue : "gx-sm";
+    string backgroundColor = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundColor")) && Model.Item.GetString("BackgroundColor") != "transparent" ? Model.Item.GetString("BackgroundColor") : "";
+    if (Model.Item.GetString("BackgroundColor") != "transparent") {
+        backgroundColor = !backgroundColor.Contains("#") ? "style=\"background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "\"" : "style=\"background-color: " + backgroundColor + "\"";
+    }
+
+    int columnSize = 12 / Model.Columns.Count();
+
+    bool contentFound = false;
+    foreach (var column in Model.Columns) {
+        if (!string.IsNullOrEmpty(column.Output())) {
+            contentFound = true;
+        }
+    }
+}
+
+@if (contentFound == true) {
+    int columnCount = 0;
+
+    <div class="item-type:@Model.Definition.ItemType" @backgroundColor>
+        <div class="@containerLayout @spacing @height position-relative">
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Image")))
+            {
+                int cropMode = !string.IsNullOrEmpty(Convert.ToString(Model.Item.GetList("ImageCrop"))) ? Convert.ToInt32(Model.Item.GetList("ImageCrop").SelectedValue) : 0;
+                string imagePath = Model.Item.GetFile("Image") != null ? Model.Item.GetFile("Image").Path : "";
+                string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + imagePath;
+
+                <div class="background-image dw-mod">
+                    <div class="background-image__wrapper dw-mod">
+                        <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@imagePath" />
+                    </div> 
+                </div>
+            }
+
+            <div class="row @columnGap card-group" id="Row-@(Model.Id)">
+                <div class="col-md-6 col-xs-12">
+                    <div class="row">
+                        @foreach (var column in Model.Columns) {
+                            if (!string.IsNullOrEmpty(column.Output()) || isVisualEditor) {
+                                if (columnCount != 0) {
+                                    @RenderColumn(column, 12)
+                                }
+                                
+                                columnCount++;
+                            }
+                        }
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-12">
+                    @RenderColumn(Model.Column(1), 12)
+                </div>
+            </div>
+        </div>
+    </div>
+}

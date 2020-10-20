@@ -1,0 +1,33 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Rapido.Blocks.Components
+
+@{ 
+    string authorName = !string.IsNullOrEmpty(Model.Item.GetString("AuthorName")) ? Model.Item.GetString("AuthorName") : "";
+    string authorText = !string.IsNullOrEmpty(Model.Item.GetString("AuthorTitle")) ? Model.Item.GetString("AuthorTitle") : "";
+    authorText += !string.IsNullOrEmpty(Model.Item.GetString("AuthorTitle")) && !string.IsNullOrEmpty(Model.Item.GetString("AuthorCompany")) ? " - " : "";
+    authorText += !string.IsNullOrEmpty(Model.Item.GetString("AuthorCompany")) ? Model.Item.GetString("AuthorCompany") : "";
+
+    string text = Regex.Replace(Model.Item.GetString("Text"), "<.*?>", string.Empty);
+}
+
+
+
+<div class="h-100 w-100 mb-3">
+    @if (!string.IsNullOrEmpty(text))
+    {
+        <div class="quote-text">
+            <div><i class="fas fa-quote-right quote-icon"></i></div>
+            @text
+        </div>
+    }
+
+    @if (authorName != "") {
+        <h2>@authorName</h2>
+    }
+
+    @if (!string.IsNullOrEmpty(authorText))
+    {
+        <small>@authorText</small>
+    }
+</div>

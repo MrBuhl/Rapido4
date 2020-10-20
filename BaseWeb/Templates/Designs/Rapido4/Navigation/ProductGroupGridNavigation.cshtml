@@ -1,0 +1,49 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb.Rapido.Blocks.Components
+@using Dynamicweb.Rapido.Blocks.Components.General
+@using System.Web
+
+@GetNodes(Model.Nodes)
+
+@helper GetNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        if (node.IsActive) {
+            if (node.Nodes.Count() > 0)
+            {
+                @RenderNodes(node.Nodes)
+            }
+        } else {
+            if (node.Nodes.Count() > 0)
+            {
+                @GetNodes(node.Nodes)
+            }
+        }
+    }
+}
+
+@helper RenderNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    <div class="row g-3">
+        @foreach (var node in nodes)
+        {
+            string groupImage = "/Files/images/missing_image.jpg";
+
+            if (!string.IsNullOrEmpty(node.GroupId)) {
+                groupImage = !string.IsNullOrEmpty(Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(node.GroupId).LargeImage) ? "/Files" + Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(node.GroupId).LargeImage : groupImage;
+            }
+
+            <div class="col-md-2 col-sm-6">
+                <figure class="card">
+                    <a class="text-reset" href="@node.Link" title="@node.Name">
+			            <img src="/Admin/Public/GetImage.ashx?width=220&height=160&crop=0&image=@groupImage" class="img-fluid">
+			            <figcaption class="border-top text-center py-2">
+				            <small class="text-uppercase font-weight-bolder">@node.Name</small>
+			            </figcaption>
+                    </a>
+		        </figure>
+            </div>
+        }
+    </div>
+}

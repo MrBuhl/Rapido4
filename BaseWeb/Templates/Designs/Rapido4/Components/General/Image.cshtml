@@ -1,0 +1,54 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.IO
+@using System.Web
+
+@{ 
+    string imagePath = Model.Item.GetFile("Image") != null ? Model.Item.GetFile("Image").Path : "";
+
+    string imageCropStyle = Model.Item.GetString("ImageCropStyle") != null ? "img-crop-" + Model.Item.GetList("ImageCropStyle").SelectedValue : "img-crop-none";
+
+    int cropMode = 0;
+    string imageAspectRatio = Model.Item.GetString("ImageAspectRatio") != null ? Model.Item.GetList("ImageAspectRatio").SelectedValue.ToString() : "1-1";
+    int width = Model.Item.GetString("ImageWidth") != null ? Model.Item.GetInt32("ImageWidth") : 650;
+    string imageSize = "width=" + width + "&height=" + width;
+    imageSize = imageAspectRatio == "16-9" ? "width=" + width + "&height=" + (width/16)*9 : imageSize;
+    imageSize = imageAspectRatio == "9-16" ? "width=" + width + "&height=" + (width/9)*16 : imageSize;
+    imageSize = imageAspectRatio == "4-3" ? "width=" + width + "&height=" + (width/4)*3 : imageSize;
+    imageSize = imageAspectRatio == "3-4" ? "width=" + width + "&height=" + (width/3)*4 : imageSize;
+    imageSize = imageAspectRatio == "0" ? "width=" + width : imageSize;
+    imageSize = imageCropStyle != "img-crop-none" ? "width=" + width + "&height=" + width : imageSize;
+    string fillCanvas = "";
+
+    if (Pageview.CurrentParagraph.Item["KeepAspectRatio"] != null) {
+        fillCanvas = Model.Item.GetBoolean("ImageAspectRatio") ? "&fillcanvas=true" : "";
+    }
+
+    string image = "";
+    if (Model.Item.GetFile("Image") != null) {
+        image = "/Admin/Public/GetImage.ashx?" + imageSize + "&crop=" + cropMode + fillCanvas + "&image=" + imagePath + "&" + Model.Item.GetFile("Image").GetFocalPointParameters();
+
+        if (Path.GetExtension(imagePath).ToLower() == ".svg") {
+            image = imagePath;
+        }
+    }
+
+    string styleSetting = Model.Item.GetString("ImageStyle") != null ? Model.Item.GetList("ImageStyle").SelectedValue : "";
+    string margin = Model.Item.GetString("ImageMargin") != null && Model.Item.GetString("ImageMarginPosition") != null ? " p" + Model.Item.GetList("ImageMarginPosition").SelectedValue.ToLower().Replace("around", "") + "-" + Model.Item.GetList("ImageMargin").SelectedValue.ToLower() : "";
+
+    string verticalAlign = Model.Item.GetList("VerticalAlignment") != null ? "align-items-" + Model.Item.GetList("VerticalAlignment").SelectedValue.ToString().ToLower() : "";
+    string horizontalAlign = Model.Item.GetList("HorizontalAlignment") != null ? "justify-content-" + Model.Item.GetList("HorizontalAlignment").SelectedValue.ToString().ToLower() : "";
+
+}
+
+@if (!string.IsNullOrEmpty(Model.Item.GetString("Image")))
+{
+    <div class="@margin d-flex h-100 @verticalAlign @horizontalAlign">
+        @if (Path.GetExtension(imagePath).ToLower() == ".svg") {
+            <div style="width: @(width)px;">
+                 @System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath(imagePath))   
+            </div>
+        } else {
+            <img class="b-lazy img-fluid @imageCropStyle" src="/Files/Images/placeholder.gif" data-src="@image" />
+        }
+    </div>
+}

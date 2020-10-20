@@ -1,0 +1,9 @@
+
+.rating {
+    color: $gray-300;
+    font-size: 0.9rem;
+
+    &.active {
+        color: orange;
+    }
+}

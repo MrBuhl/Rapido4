@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Content" name="Content product details page" systemName="ContentProductDetailsPage" description="For the Visual Editor" icon="Archive" iconColor="None" image="" includeInUrlIndex="False" pageDefaultView="paragraph" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Background color" systemName="BackgroundColor" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Background image" systemName="BackgroundImage" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.FileEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.FileEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Base directory" value="/Images" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Extensions" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Show as image selector" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Use focal point selector for images" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Allow file upload from frontend" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Max files to add" value="" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+    </fields>
+    <rules>
+      <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ChildItemTypeRestrictionRule, Dynamicweb" value="BreadcrumbParagraph,ContentRow,ProductCatalogDetailsApp,ProductDetailsFields,ProductImage,ProductInfoOne,ProductInfoTwo,ProductLongDescription,ProductShortDescription,ProductTitle,ProductVideos,VariantMatrix" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Pages" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="General" systemName="General" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="BackgroundColor" />
+            <field systemName="BackgroundImage" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

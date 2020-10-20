@@ -1,0 +1,77 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@{ 
+    string link = !string.IsNullOrEmpty(Model.Item.GetString("Link")) ? Model.Item.GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self";
+}
+
+@if (!string.IsNullOrEmpty(link)) {
+        <a href="@link" target="@linkTarget">
+             @RenderTheContent()
+        </a>
+    } else {
+        @RenderTheContent()
+    }
+}
+
+@helper RenderTheContent() {
+    string padding = Model.Item.GetList("Padding") != null ? " p" + Model.Item.GetList("PaddingPosition").SelectedValue.ToLower().Replace("around", "") + "-" + Model.Item.GetList("Padding").SelectedValue.ToLower() : "";
+
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Image"))) {
+            int cropMode = 0;
+            string imagePath = Model.Item.GetFile("Image") != null ? Model.Item.GetFile("Image").Path : "";
+            string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + imagePath;
+
+            <div class="background-image">
+                <div class="background-image__wrapper">
+                    <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@imagePath" />
+                </div> 
+            </div>  
+        }
+
+        <div class="@padding position-relative">
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) || !string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+                <div class="mb-3">
+                    @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+                    <div>@Model.Item.GetString("Text")</div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("ButtonOne").GetString("Title")) || !string.IsNullOrEmpty(Model.Item.GetItem("ButtonTwo").GetString("Title")) || !string.IsNullOrEmpty(Model.Item.GetItem("ButtonThree").GetString("Title"))) {
+                <div>
+                    @ParagraphButton(Model.Item.GetItem("ButtonOne")) 
+                    @ParagraphButton(Model.Item.GetItem("ButtonTwo")) 
+                    @ParagraphButton(Model.Item.GetItem("ButtonThree")) 
+                </div>
+            }
+        </div>
+    </div>
+}
+
+
+
+@helper ParagraphButton(ItemViewModel item) { 
+    if (item != null) {
+        if (!string.IsNullOrEmpty(item.GetString("Title"))) {
+            <button href="@item.GetString("Link")" type="button" class="btn @item.GetList("Design").SelectedValue">@item.GetString("Title")</button>
+        }    
+    }
+}
+
+
+
+

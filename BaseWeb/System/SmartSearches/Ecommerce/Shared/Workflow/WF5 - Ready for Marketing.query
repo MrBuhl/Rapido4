@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="3448cb78-7cce-4bb8-aca7-04d2aa1f8693" Name="WF5 - Ready for Marketing">
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="WorkflowState" />
+        </Left>
+        <Right>
+          <TermExpression Value="4,10" DisplayValue="Ready for Marketing,Ready for Marketing" Type="System.Int32[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP4" DisplayValue="PIM - Bikes &amp; Equipments" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Workflow state" SystemName="" Source="ProductWorkflowStateId" Sort="1" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="2" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="3" />
+    <Field Name="Product images" SystemName="" Source="ProductImages" Sort="4" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="5" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="6" />
+    <Field Name="Brand" SystemName="" Source="CustomField_brand" Sort="7" />
+    <Field Name="Brand details - Brand logo" SystemName="" Source="ProductCategory|Brand_detail|Brandlogo" Sort="8" />
+    <Field Name="Brand details - Brand text" SystemName="" Source="ProductCategory|Brand_detail|Brandtext" Sort="9" />
+    <Field Name="Brand details - Reviews" SystemName="" Source="ProductCategory|Brand_detail|reviews" Sort="10" />
+    <Field Name="Brand details - Type of products" SystemName="" Source="ProductCategory|Brand_detail|Type_of_products" Sort="11" />
+    <Field Name="Brand details - Website" SystemName="" Source="ProductCategory|Brand_detail|website" Sort="12" />
+    <Field Name="Meta canonical" SystemName="" Source="ProductMetaCanonical" Sort="13" />
+    <Field Name="Meta description" SystemName="" Source="ProductMetaDescription" Sort="14" />
+    <Field Name="Meta keywords" SystemName="" Source="ProductMetaKeywords" Sort="15" />
+    <Field Name="Meta title" SystemName="" Source="ProductMetaTitle" Sort="16" />
+    <Field Name="Meta url" SystemName="" Source="ProductMetaUrl" Sort="17" />
+  </ViewFields>
+  <ViewLanguages>
+    <Language ID="LANG2" Name="Danish" SortOrder="0" />
+    <Language ID="LANG1" Name="English" SortOrder="1" />
+    <Language ID="LANG11" Name="Deutsch" SortOrder="2" />
+    <Language ID="LANG8" Name="French" SortOrder="3" />
+  </ViewLanguages>
+  <Meta />
+  <CompletionRules>
+    <Rule ID="4" />
+  </CompletionRules>
+  <CompletionLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+    <Language ID="LANG2" Name="Danish" SortOrder="1" />
+    <Language ID="LANG11" Name="Deutsch" SortOrder="2" />
+    <Language ID="LANG8" Name="French" SortOrder="3" />
+  </CompletionLanguages>
+</Query>

@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Content" name="Content product list page" systemName="ContentProductListPage" description="For the Visual Editor" icon="AlignJustify" iconColor="None" image="" includeInUrlIndex="False" pageDefaultView="paragraph" fieldForTitle="" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Background Color" systemName="BackgroundColor" description="Background color" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="#FFF">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+    </fields>
+    <rules>
+      <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ChildItemTypeRestrictionRule, Dynamicweb" value="ProductCatalogApp,ContentProductDetailsPage,ContentRow,DropdownFacets,Facets,ProductGroupDescription,ProductGroupHeader,ProductGroupNavigation,ProductList,ProductListDetailsView,ProductListGridCompactView,ProductListGridUltraCompactView,ProductListGridView,ProductListListCompactView,ProductListListView,ProductLoadMore,ProductPagination,SelectedFacets" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Allowed parents" type="Dynamicweb.Content.Items.Activation.ParentRestrictionRule, Dynamicweb" value="RootOfWebsite,RegularPage" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Pages" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="General" systemName="General" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="BackgroundColor" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

@@ -1,0 +1,67 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+
+@{ 
+    string placeholder = !string.IsNullOrEmpty(Model.Item.GetString("Title")) ? Model.Item.GetString("Title") : Translate("Search");
+    string buttonDesign = !string.IsNullOrEmpty(Model.Item.GetString("SearchButtonDesign")) ? Model.Item.GetList("SearchButtonDesign").SelectedValue : "teritary";
+}
+
+<style>
+    @if (Model.Item.GetInt32("FieldHeight") != 0) {
+        <text>
+            #SearchField_@Model.ID {
+                height: @Model.Item.GetInt32("FieldHeight")px;
+            }
+
+            #SearchField_@Model.ID .search-icon {
+                line-height: @Model.Item.GetInt32("FieldHeight")px;
+            }
+        </text>
+    }
+
+    @if (Model.Item.GetInt32("BorderRadius") != 0 && !Model.Item.GetBoolean("HideSearchButton")) {
+        <text>
+            #SearchField_@Model.ID .form-control {
+                border-top-left-radius: @Model.Item.GetInt32("BorderRadius")px;
+                border-bottom-left-radius: @Model.Item.GetInt32("BorderRadius")px;
+            }
+            #SearchField_@Model.ID .btn {
+                border-top-right-radius: @Model.Item.GetInt32("BorderRadius")px;
+                border-bottom-right-radius: @Model.Item.GetInt32("BorderRadius")px;
+            }
+        </text>
+    }
+
+    @if (Model.Item.GetInt32("BorderRadius") != 0 && Model.Item.GetBoolean("HideSearchButton")) {
+        <text>
+            #SearchField_@Model.ID .form-control {
+                border-radius: @Model.Item.GetInt32("BorderRadius")px;
+            }
+        </text>
+    }
+
+    @if (Model.Item.GetString("BorderDesign") != null) {
+        if (Model.Item.GetList("BorderDesign").SelectedValue == "bottom") {
+            <text>
+                #SearchField_@Model.ID .form-control {
+                    border-top: none;
+                    border-left: none;
+                    border-right: none;
+                }
+            </text>
+        }
+    }
+</style>
+
+<div class="input-group" id="SearchField_@Model.ID">
+    <input type="text" class="form-control" placeholder="@placeholder"/>
+    @if (!Model.Item.GetBoolean("HideSearchButton")) {
+        <button class="btn @buttonDesign"><i class="fal fa-search"></i></button>
+    } else {
+        <div class="search-icon">
+            <i class="fal fa-search"></i>
+        </div>
+    }
+</div>
+

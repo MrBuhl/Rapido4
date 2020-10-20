@@ -1,0 +1,25 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System
+@using System.Web
+@using Dynamicweb.Frontend.Navigation
+
+@{ 
+    var navigationSettings = new NavigationSettings();
+    navigationSettings.StartLevel = 1;
+    navigationSettings.StopLevel = 5;
+    navigationSettings.ExpandMode = ExpandMode.All;
+
+    if (!string.IsNullOrWhiteSpace(Model.Item.GetString("NavigationRoot"))) {
+        int rootPageId = Convert.ToInt32(Model.Item.GetString("NavigationRoot").Substring(Model.Item.GetString("NavigationRoot").LastIndexOf('=') + 1));
+        navigationSettings.RootPageId = rootPageId;    
+    } else {
+        navigationSettings.StartLevel = 2;
+    }
+}
+
+<div class="w-100">
+    @Navigation.RenderNavigation("Navigation/LeftNavigationExpandable.cshtml", navigationSettings)
+</div>
+
+
+

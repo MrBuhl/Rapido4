@@ -1,0 +1,49 @@
+﻿@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering
+@MasterPageFile("/Files/Templates/Designs/Rapido/EmailMaster.cshtml")
+@Include("/Files/Templates/Designs/Rapido/EmailHelpers.cshtml")
+@Include("NotificationsEmailHelpers.cshtml")
+
+<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" id="emailBody">
+    @RenderMessage()
+    @RenderTemplateTagsValues(GetTableStyle(), GetHeaderStyle(), GetCellStyle())
+</table>
+
+@helper RenderMessage()
+{
+    var variablesToIgnore = new[] { "ALL_RAW", "ALL_HTTP", "HTTP_COOKIE" };
+    var statusMessage = GetString("Ecom:DataIntegration.ScheduledActivity.ErrorMessage") ?? "";
+    var result = GetString("Ecom:DataIntegration.ScheduledActivity.MessageType") ?? "";
+    result = result.Trim();
+    var resultSuccessful = result == "Success" || statusMessage.Equals("Scheduled task completed successfully", System.StringComparison.CurrentCultureIgnoreCase);
+    var resultFailed = result.Equals("Error", System.StringComparison.CurrentCultureIgnoreCase);
+    var resultUnknown = !resultSuccessful && !resultFailed;
+    var statusText = "";
+
+    if (resultSuccessful)
+    {
+        statusText = "<span style=\"color: green;\">and completed successfully</span>";
+    }
+    if (resultFailed)
+    {
+        statusText = "<span style=\"color: red; font-weight: bold;\">but did not complete successfully</span>";
+    }
+    if (resultUnknown)
+    {
+        statusText = "<span style=\"color: red; font-weight: bold;\">and completed with unknown results</span>. Please check the error log below";
+    }
+
+    Column message = new Column();
+    message.header = "The scheduled task <strong>" + GetValue("Ecom:DataIntegration.ScheduledTaskName") + "</strong> has run " + statusText;
+    @CreateRow(message);
+
+    <table style="@GetTableStyle()">
+        @RenderHeading("Core Information")
+        @RenderKeyValueHeading("Key", "Values", GetHeaderStyle())
+        @RenderTemplateValues(GetCellStyle())
+        @RenderKeyValueRow("Host (Scheme and Authority)", GetCurrentUrl(true), GetCellStyle())
+        @RenderKeyValueRow("Executed URL", GetCurrentUrl(), GetCellStyle())
+        @RenderKeyValueRow("Machine name", Environment.MachineName, GetCellStyle())
+        @RenderServerVariables(variablesToIgnore, GetCellStyle())
+    </table>
+}

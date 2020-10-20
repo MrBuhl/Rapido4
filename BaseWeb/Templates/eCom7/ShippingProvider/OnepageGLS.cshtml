@@ -1,0 +1,40 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Rapido.Blocks.Components
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@{
+    var parcelShops = GetLoop("ParcelShops");
+}
+
+@if ( parcelShops != null && parcelShops.Count() > 0 ) {
+    <fieldset class="card-body">
+        <h5 class="u-margin-bottom--lg">@Translate("Select pick-up parcel shop")</h5>
+
+        <div class="checkout__input-wrapper">
+
+            @foreach ( LoopItem shop in GetLoop("ParcelShops") ) {
+                string city = shop.GetString("CityName");
+                string street = shop.GetString("Streetname");
+                string zipCode = shop.GetString("ZipCode");
+                string company = shop.GetString("CompanyName");
+
+                string name = company + ( !string.IsNullOrWhiteSpace(city + street + zipCode) ? "," : "" );
+
+                @Render(new RadioButtonField {
+                    Name = $"{shop.GetString("FieldPrefix")}ParcelShopNumber",
+                    Id = shop.GetString("Number"),
+                    Value = shop.GetString("Number"),
+                    Checked = shop.GetBoolean("IsSelected"),
+                    Label = $"<span><strong>{name}</strong> {street}, {zipCode} {city}</span>",
+                    WrapperCssClass = "form__field-group--bordered",
+                })
+            }
+        </div>
+    </fieldset>
+
+}
+
+
+@* Include the required Grid builder (Contains the methods @RenderBlockList and @RenderBlock) *@
+@Include("../../Designs/Rapido/Components/Gridbuilder.cshtml")
+@Include("../../Designs/Rapido/Components/GeneralComponents.cshtml")

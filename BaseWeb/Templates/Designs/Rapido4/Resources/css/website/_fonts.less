@@ -1,0 +1,98 @@
+﻿//FONTS
+
+//H!
+h1, .h1 {
+    font-family: @design-h-1-font-family;
+    font-weight: @design-h-1-font-style;
+    color: @design-h-1-color;
+    font-size: unit(@design-h-1-size, px);
+    .h1-mixin();
+}
+
+.h1-mixin() when not (@design-h-1-casing = "default") {
+    text-transform: @design-h-1-casing;
+}
+
+
+//H2
+h2, .h2 {
+    font-family: @design-h-2-font-family;
+    font-weight: @design-h-2-font-style;
+    color: @design-h-2-color;
+    font-size: unit(@design-h-2-size, px);
+    .h2-mixin();
+}
+
+.h2-mixin() when not (@design-h-2-casing = "default") {
+    text-transform: @design-h-2-casing;
+}
+
+
+//H3
+h3, .h3 {
+    font-family: @design-h-3-font-family;
+    font-weight: @design-h-3-font-style;
+    color: @design-h-3-color;
+    font-size: unit(@design-h-3-size, px);
+    .h3-mixin();
+}
+
+.h3-mixin() when not (@design-h-3-casing = "default") {
+    text-transform: @design-h-3-casing;
+}
+
+
+//H4
+h4, .h4 {
+    font-family: @design-h-4-font-family;
+    font-weight: @design-h-4-font-style;
+    color: @design-h-4-color;
+    font-size: unit(@design-h-4-size, px);
+    .h4-mixin();
+}
+
+.h4-mixin() when not (@design-h-4-casing = "default") {
+    text-transform: @design-h-4-casing;
+}
+
+
+//H5
+h5, .h5 {
+    font-family: @design-h-5-font-family;
+    font-weight: @design-h-5-font-style;
+    color: @design-h-5-color;
+    font-size: unit(@design-h-5-size, px);
+    .h5-mixin();
+}
+
+.h5-mixin() when not (@design-h-5-casing = "default") {
+    text-transform: @design-h-5-casing;
+}
+
+
+//H6
+h6, .h6 {
+    font-family: @design-h-6-font-family;
+    font-weight: @design-h-6-font-style;
+    color: @design-h-6-color;
+    font-size: unit(@design-h-6-size, px);
+    .h3-mixin();
+}
+
+.h6-mixin() when not (@design-h-6-casing = "default") {
+    text-transform: @design-h-6-casing;
+}
+
+
+//Body
+body, .text {
+    font-family: @design-body-font-family;
+    font-weight: @design-body-font-style;
+    color: @design-body-color;
+    font-size: unit(@design-body-size, px);
+    .body-mixin();
+}
+
+.body-mixin() when not (@design-body-casing = "default") {
+    text-transform: @design-body-casing;
+}

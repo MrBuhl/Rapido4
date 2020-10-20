@@ -1,0 +1,43 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Collections.Generic
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+@{
+    BlocksPage paymentErrorCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+    string errorMessage;
+
+    if (GetString("CheckoutHandler:ErrorType") == "SavedCard")
+    {
+        errorMessage = Translate("The credit card is no longer attached to this shop. The credit card token is expired or deleted. Make a new payment in order to save the credit card again");
+    } 
+    else if (!string.IsNullOrEmpty(GetString("CheckoutHandler:ErrorMessage")))
+    {
+        errorMessage = GetString("CheckoutHandler:ErrorMessage");
+    }
+    else
+    {
+        errorMessage = Translate("You have cancelled your payment");
+    }
+    
+    paymentErrorCheckoutPage.Add("PaymentDetails", new Block
+    {
+        Id = "PaymentDetailsError",
+        SortId = 20,
+        Design = new Design { RenderType = RenderType.CardBody, CssClass = "u-color-light--bg" },
+        BlocksList = new List<Block>
+        {
+            new Block
+            {
+                Id = "PaymentDetailsErrorTitle",
+                SortId = 10,
+                Component = new NotificationMessage { Message = Translate("An error has happened"), MessageType = NotificationMessageType.Error }
+            },
+            new Block
+            {
+                Id = "PaymentDetailsErrorMessage",
+                SortId = 20,
+                Component = new NotificationMessage { Message = errorMessage, MessageType = NotificationMessageType.Error }
+            }
+        }
+    });
+}

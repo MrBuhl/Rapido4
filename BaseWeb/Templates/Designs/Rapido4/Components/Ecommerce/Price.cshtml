@@ -1,0 +1,22 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    string price = Model.Price != null ? Model.Price.PriceFormatted : "";
+    string beforePrice = Model.PriceBeforeDiscount != null ? Model.PriceBeforeDiscount.PriceFormatted : "";
+
+    string layout = GetViewParameterString("PriceLayout") != null ? GetViewParameterString("PriceLayout") : "";
+}
+
+<div class="@(layout)-group">
+   <div class="price mb-1">@price</div>
+
+    @if (Model.Price != Model.PriceBeforeDiscount)
+    {
+        if (beforePrice != null) {
+            <small class="before-price">@beforePrice</small>
+        }
+    }
+</div>

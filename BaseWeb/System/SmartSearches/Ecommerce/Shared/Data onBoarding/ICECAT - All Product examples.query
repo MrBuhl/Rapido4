@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="07bf766a-a3da-459c-82cf-e91d95fd1654" Name="ICECAT - All Product examples">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP5" DisplayValue="PIM - Product data OnBoarding" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains" Disabled="false">
+        <Left>
+          <FieldExpression Field="ParentGroupIDs" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="GROUP265" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Workflow state" SystemName="" Source="ProductWorkflowStateId" Sort="1" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="2" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="3" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="4" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="5" />
+    <Field Name="EAN" SystemName="" Source="ProductEAN" Sort="6" />
+    <Field Name="Manufacturer ID" SystemName="" Source="ProductManufacturerID" Sort="7" />
+    <Field Name="NameForSort" SystemName="" Source="ProductName" Sort="8" />
+    <Field Name="Product images" SystemName="" Source="ProductImages" Sort="9" />
+    <Field Name="ProductName_Search" SystemName="" Source="ProductName" Sort="10" />
+    <Field Name="ProductNumber_Search" SystemName="" Source="ProductNumber" Sort="11" />
+  </ViewFields>
+  <ViewLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+    <Language ID="LANG2" Name="Danish" SortOrder="1" />
+  </ViewLanguages>
+  <CompletionRules />
+  <CompletionLanguages />
+</Query>

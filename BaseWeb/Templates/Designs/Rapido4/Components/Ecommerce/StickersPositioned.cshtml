@@ -1,0 +1,93 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    string discountStickerLabel = Model.Discount.Price != 0 ? Math.Round((Model.PriceBeforeDiscount.Price - Model.Price.Price) * (Model.PriceBeforeDiscount.Price/100), 0) + "%" : "";
+    string newsStickerLabel = Translate("New");
+    string customStickerLabel = "";
+    string customStickerTwoLabel = "";
+
+    if (Model.ProductFields.ContainsKey("StickerOne")) {
+        customStickerLabel = Model.ProductFields["StickerOne"].Value.ToString();
+    }
+
+    if (Model.ProductFields.ContainsKey("StickerTwo")) {
+        customStickerTwoLabel = Model.ProductFields["StickerTwo"].Value.ToString();
+    }
+
+    string stickersLayout = !string.IsNullOrEmpty(GetViewParameterString("StickersLayout")) ? "-" + GetViewParameterString("StickersLayout") : "";
+
+    string discountStickerLayout = GetViewParameterString("DiscountStickerLayout") != null ? GetViewParameterString("DiscountStickerLayout") : "";
+    string newsStickerLayout = GetViewParameterString("NewsStickerLayout") != null ? GetViewParameterString("NewsStickerLayout") : "";
+    string customStickerLayout = GetViewParameterString("CustomStickerLayout") != null ? GetViewParameterString("CustomStickerLayout") : "";
+    string discountStickerPosition = GetViewParameterString("DiscountStickerPosition") != null ? GetViewParameterString("DiscountStickerPosition") : "top-left";
+    string newsStickerPosition = GetViewParameterString("NewsStickerPosition") != null ? GetViewParameterString("NewsStickerPosition") : "top-left";
+    string customStickerPosition = GetViewParameterString("CustomStickerPosition") != null ? GetViewParameterString("CustomStickerPosition") : "top-left";
+
+    Dictionary<string, string> stickersTopLeft = new Dictionary<string, string>();
+    Dictionary<string, string> stickersTopRight = new Dictionary<string, string>();
+    Dictionary<string, string> stickersBottomRight = new Dictionary<string, string>();
+    Dictionary<string, string> stickersBottomLeft = new Dictionary<string, string>();
+
+    if (Model.Discount.Price != 0 && Model.PriceBeforeDiscount.Price != Model.Price.Price) {
+        if (discountStickerPosition == "top-left") { stickersTopLeft.Add(discountStickerLayout, discountStickerLabel); }
+        if (discountStickerPosition == "top-right") { stickersTopRight.Add(discountStickerLayout, discountStickerLabel); }
+        if (discountStickerPosition == "bottom-right") { stickersBottomRight.Add(discountStickerLayout, discountStickerLabel); }
+        if (discountStickerPosition == "bottom-left") { stickersBottomLeft.Add(discountStickerLayout, discountStickerLabel); }
+    }
+
+    if (Model.Created.Value.AddDays(7.0) > DateTime.Now) {
+        if (newsStickerPosition == "top-left") { stickersTopLeft.Add(newsStickerLayout, newsStickerLabel); }
+        if (newsStickerPosition == "top-right") { stickersTopRight.Add(newsStickerLayout, newsStickerLabel); }
+        if (newsStickerPosition == "bottom-right") { stickersBottomRight.Add(newsStickerLayout, newsStickerLabel); }
+        if (newsStickerPosition == "bottom-left") { stickersBottomLeft.Add(newsStickerLayout, newsStickerLabel); }
+    }
+
+    if (!string.IsNullOrEmpty(customStickerLabel)) {
+        if (customStickerPosition == "top-left") { stickersTopLeft.Add(customStickerLayout, customStickerLabel); }
+        if (customStickerPosition == "top-right") { stickersTopRight.Add(customStickerLayout, customStickerLabel); }
+        if (customStickerPosition == "bottom-right") { stickersBottomRight.Add(customStickerLayout, customStickerLabel); }
+        if (customStickerPosition == "bottom-left") { stickersBottomLeft.Add(customStickerLayout, customStickerLabel); }
+    }
+
+    if (!string.IsNullOrEmpty(customStickerTwoLabel)) {
+        if (customStickerPosition == "top-left") { stickersTopLeft.Add(customStickerLayout + "-2", customStickerTwoLabel); }
+        if (customStickerPosition == "top-right") { stickersTopRight.Add(customStickerLayout + "-2", customStickerTwoLabel); }
+        if (customStickerPosition == "bottom-right") { stickersBottomRight.Add(customStickerLayout + "-2", customStickerTwoLabel); }
+        if (customStickerPosition == "bottom-left") { stickersBottomLeft.Add(customStickerLayout + "-2", customStickerTwoLabel); }
+    }
+}
+
+@if (stickersTopLeft.Count > 0) { 
+    <div class="position-absolute-top-left">
+        @foreach (var sticker in stickersTopLeft) {
+            <div class="sticker @sticker.Key.Replace("-2", "") top-left">@sticker.Value</div>   
+        }
+    </div>
+}
+@if (stickersTopRight.Count > 0)
+{
+    <div class="position-absolute-top-right">
+        @foreach (var sticker in stickersTopRight) {
+            <div class="sticker @sticker.Key.Replace("-2", "") top-right">@sticker.Value</div>   
+        }
+    </div>
+}
+@if (stickersBottomRight.Count > 0)
+{
+    <div class="position-absolute-bottom-right">
+        @foreach (var sticker in stickersBottomRight) {
+            <div class="sticker @sticker.Key.Replace("-2", "") bottom-right">@sticker.Value</div>   
+        }
+    </div>
+}
+@if (stickersBottomLeft.Count > 0)
+{
+    <div class="position-absolute-bottom-left">
+        @foreach (var sticker in stickersBottomLeft) {
+            <div class="sticker @sticker.Key.Replace("-2", "") bottom-left">@sticker.Value</div>   
+        }
+    </div>
+}

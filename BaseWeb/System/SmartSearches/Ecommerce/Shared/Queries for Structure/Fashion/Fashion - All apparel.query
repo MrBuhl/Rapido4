@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="9774ae70-fdb6-405a-846f-13d07a1b468c" Name="Fashion - All apparel">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP11" DisplayValue="Fashion - Warehouse" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains" Disabled="false">
+        <Left>
+          <FieldExpression Field="IsVariant" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="False" Type="System.Boolean[]" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="And" Negate="True">
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="CustomField_season" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Price" SystemName="" Source="ProductPrice" Sort="3" />
+    <Field Name="EAN" SystemName="" Source="ProductEAN" Sort="4" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="5" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="6" />
+    <Field Name="Season" SystemName="" Source="CustomField_season" Sort="7" />
+    <Field Name="Gender" SystemName="" Source="CustomField_gender" Sort="8" />
+    <Field Name="Apparel" SystemName="" Source="CustomField_apparel" Sort="9" />
+  </ViewFields>
+  <ViewLanguages />
+  <CompletionRules>
+    <Rule ID="7" />
+  </CompletionRules>
+  <CompletionLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+  </CompletionLanguages>
+</Query>

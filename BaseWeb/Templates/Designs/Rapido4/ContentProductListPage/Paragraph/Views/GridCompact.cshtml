@@ -1,0 +1,108 @@
+﻿@inherits ViewModelTemplate<ProductListViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@{
+	string detailsLinkFromParameter = GetViewParameterString("productDetailsLink") != null ? GetViewParameterString("productDetailsLink") : "";
+    string detailsPageLink = System.Web.HttpContext.Current.Items["DetailsPageLink"] != null ? System.Web.HttpContext.Current.Items["DetailsPageLink"].ToString() : detailsLinkFromParameter;
+
+    bool hideProducts = Model.Products == null;
+
+	bool hideNumber = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideNumber"]);
+	bool hideStock = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideStock"]);
+	bool hidePrice = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HidePrice"]);
+
+	bool hideAddToFavorites = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideAddToFavorites"]);
+	bool hideAddToCart = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideAddToCart"]);
+	bool hideViewMore = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideViewMore"]);
+
+	string headerStyle = Pageview.CurrentParagraph.Item["HeaderStyle"] != null ? Pageview.CurrentParagraph.Item["HeaderStyle"].ToString() : "h3";
+
+	string imageAspectRatio = Pageview.CurrentParagraph.Item["ImageAspectRatio"] != null ? Pageview.CurrentParagraph.Item["ImageAspectRatio"].ToString() : "1-1";
+    string imageSize = "width=550&height=550";
+    imageSize = imageAspectRatio == "16-9" ? "width=550&height=260" : imageSize;
+    imageSize = imageAspectRatio == "9-16" ? "width=550&height=977" : imageSize;
+    imageSize = imageAspectRatio == "4-3" ? "width=550&height=412" : imageSize;
+    imageSize = imageAspectRatio == "3-4" ? "width=412&height=550" : imageSize;
+    string fillCanvas = "&fillcanvas=true";
+
+    if (Pageview.CurrentParagraph.Item["KeepAspectRatio"] == null) {
+		fillCanvas = Convert.ToBoolean(Pageview.CurrentParagraph.Item["KeepAspectRatio"]) ? "&fillcanvas=true" : "";
+    }
+
+	bool hideUnits = Pageview.CurrentParagraph.Item["HideUnits"] != null ? Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideUnits"]) : false;
+	bool hideQuantity = Pageview.CurrentParagraph.Item["HideQuantity"] != null ? Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideQuantity"]) : false;
+}
+
+@if (!hideProducts)
+{
+    <div class="row g-3">
+        @foreach (var product in Model.Products)
+		{
+			string productLink = detailsPageLink + "&amp;ProductID=" + product.Id;
+			hideAddToCart = string.IsNullOrEmpty(product.VariantId) && hideAddToCart ? true : false;
+
+			<div class="col-md-3 col-sm-6">
+				<div class="card h-100">
+					@if (!hideAddToFavorites) {
+						<div class="position-absolute w-100">
+							<div class="text-right m-3">
+								@RenderPartial("Components/Ecommerce/FavoriteListSelect.cshtml", product)
+							</div>
+						</div>
+					}
+					<a href="@productLink" class="text-reset position-relative">
+						@{ 
+							Dictionary<string, object> stickersSettings = new Dictionary<string, object>();
+							stickersSettings.Add("DiscountStickerLayout", Pageview.CurrentParagraph.Item["DiscountStickerLayout"]);
+							stickersSettings.Add("NewsStickerLayout", Pageview.CurrentParagraph.Item["NewsStickerLayout"]);
+							stickersSettings.Add("CustomStickerLayout", Pageview.CurrentParagraph.Item["CustomStickerLayout"]);
+							stickersSettings.Add("DiscountStickerPosition", Pageview.CurrentParagraph.Item["DiscountStickerPosition"]);
+							stickersSettings.Add("NewsStickerPosition", Pageview.CurrentParagraph.Item["NewsStickerPosition"]);
+							stickersSettings.Add("CustomStickerPosition", Pageview.CurrentParagraph.Item["CustomStickerPosition"]);
+						}
+
+						@RenderPartial("Components/Ecommerce/StickersPositioned.cshtml", product, stickersSettings) 
+						<img src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?@imageSize&crop=5@(fillCanvas)&image=@product.DefaultImage.Value" class="card-img-top b-lazy img-fluid">
+					</a>
+					<div class="card-body pb-0">
+						<a href="@productLink" class="text-reset flex-fill">
+							<h3 class="card-title m-0 @headerStyle">@product.Name @product.VariantId</h3>
+							@if (!hideNumber) {
+								<small>@product.Number</small>
+                            }
+						</a>  
+					</div>
+					<div class="card-footer bg-white border-top-0">
+						@if (!hidePrice) {
+							string priceLayout = Pageview.CurrentParagraph.Item["PriceLayout"] != null ? Pageview.CurrentParagraph.Item["PriceLayout"].ToString().ToLower() : "";
+							Dictionary<string, object> priceSettings = new Dictionary<string, object>();
+							priceSettings.Add("PriceLayout", priceLayout);
+
+							@RenderPartial("Components/Ecommerce/Price.cshtml", product, priceSettings)
+                        }
+
+						@if (!hideAddToCart || !hideViewMore) {
+                            string layout = "compact";
+                            if (Pageview.CurrentParagraph.Item["HideUnits"] != null) {
+								layout = Convert.ToBoolean(Pageview.CurrentParagraph.Item["HideUnits"]) ? "stretch" : "compact";
+                            }
+
+							<div class="my-2">
+								@if (!hideAddToCart) {
+									@RenderPartial("Components/Ecommerce/AddToCart.cshtml", product, new Dictionary<string, object> { { "layout", layout }, { "hideQuantity", hideQuantity }, { "hideUnits", hideUnits } })  
+								} else if (!hideViewMore) {
+									<a href="@productLink" class="btn btn-primary w-100">@Translate("View")</a>
+								}
+							</div>
+                        }
+
+						@if (!hideStock) {
+							@RenderPartial("Components/Ecommerce/StockInfo.cshtml", product)
+						}
+					</div>
+				</div>
+			</div>
+		}
+	</div> 
+}

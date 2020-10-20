@@ -1,0 +1,110 @@
+﻿@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering;
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Security;
+@using Dynamicweb.Ecommerce.Orders
+
+@Include("../../Designs/Rapido/EmailGeneralHelpers.cshtml")
+@Include("../../Designs/Rapido/EmailHelpers.cshtml")
+
+<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" width="500" id="emailBody">
+    @RenderHeaderSection()
+    @RenderMessage()
+    @RenderOrderList()
+    @RenderReviewButton()
+</table>
+
+@* CONTENT HELPERS *@
+
+@helper RenderHeaderSection()
+{
+    Column info = new Column();
+    info.header = Translate("Complete your purchase");
+    info.text.Add(GetString("Ecom:Order.Date"));
+    info.align = "center";
+
+    @CreateRow(info);
+
+    @CreateRowDivider();
+}
+
+@helper RenderMessage()
+{
+    Column message = new Column();
+    message.text.Add(Translate("Hi") + " " + GetString("EmailMessaging:Recipient.Name"));
+    message.text.Add("");
+    message.text.Add(Translate("Your shopping cart at") + " <a href='" + Dynamicweb.Context.Current.Request.Url.Scheme + "://" + GetGlobalValue("Global:Request.Host") + "'>" + GetGlobalValue("Global:Request.Host") + "</a> " + Translate("has products left and are awaiting your return") + ".");
+    message.text.Add(Translate("As an extra service we therefore send you this mail") + ".");
+
+    @CreateRow(message);
+}
+
+@helper RenderOrderList()
+{
+    foreach (LoopItem orderline in GetLoop("OrderLines").Where(o => o.GetInteger("Ecom:Order:OrderLine.Type") != (int)OrderLineType.Tax).ToList())
+    {
+        @RenderOrderline(orderline);
+
+        @CreateRowDivider();
+    }
+
+    @RenderSummary();
+    @RenderTotal();
+}
+
+
+@helper RenderSummary()
+{
+    Column summaryLeft = new Column();
+    summaryLeft.text.Add(Translate("Total"));
+    if (!string.IsNullOrEmpty(GetString("Ecom:Order.PaymentMethod")))
+    {
+        summaryLeft.text.Add(Translate("Payment method") + ": " + Translate(GetString("Ecom:Order.PaymentMethod")));
+    }
+    else
+    {
+        summaryLeft.text.Add(Translate("Payment method"));
+    }
+    if (!string.IsNullOrEmpty(GetString("Ecom:Order.ShippingMethod")))
+    {
+        summaryLeft.text.Add(Translate("Shipping method") + ": " + Translate(GetString("Ecom:Order.ShippingMethod")));
+    }
+    else
+    {
+        summaryLeft.text.Add(Translate("Shipping method"));
+    }
+    summaryLeft.text.Add(Translate("VAT"));
+
+    Column summaryRight = new Column();
+    summaryRight.text.Add(GetString("Ecom:Order.Price.PriceWithoutVATFormatted"));
+    summaryRight.text.Add(GetString("Ecom:Order.PaymentFee.PriceFormatted"));
+    summaryRight.text.Add(GetString("Ecom:Order.ShippingFee.PriceFormatted"));
+    summaryRight.text.Add(GetString("Ecom:Order.Price.VATFormatted"));
+    summaryRight.align = "right";
+
+    @CreateRow(summaryLeft, summaryRight);
+}
+
+
+@helper RenderTotal()
+{
+    Column totalsLeft = new Column();
+    totalsLeft.subheader = Translate("Total");
+
+    Column totalsRight = new Column();
+    totalsRight.subheader = GetString("Ecom:Order.Price.PriceWithVATFormatted");
+    totalsRight.align = "right";
+
+    @CreateRow(totalsLeft, totalsRight, new RowSettings { backgroundColor = "#e4e4e4" });
+}
+
+@helper RenderReviewButton()
+{
+    Column review = new Column();
+    review.link = Dynamicweb.Context.Current.Request.Url.Scheme + "://" + GetGlobalValue("Global:Request.Host") + "/Default.aspx?CartCmd=loadorder&LoadingOrderId=" + GetString("Ecom:Order.ID") + "&LoadingOrderSecret=" + GetString("Ecom:Order.LoadingOrderSecret");
+    review.linkText = Translate("Resume your order");
+    review.align = "center";
+
+    @CreateRow(review);
+}

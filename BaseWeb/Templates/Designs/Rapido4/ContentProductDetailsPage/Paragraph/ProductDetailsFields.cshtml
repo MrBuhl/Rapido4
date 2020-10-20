@@ -1,0 +1,32 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content.Items
+@using System.Web
+
+@Include("ParagraphBase.cshtml")
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+}
+
+@if (product.ProductFields != null) { 
+    <div>
+        @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+        @RenderPartial("Components/Ecommerce/ProductDetailsFields.cshtml", product)   
+    </div>
+} else if (isVisualEditor) {
+    <div class="alert alert-dark" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Product detail fields: The fields will be shown here, if any")</span>
+    </div>
+}
+
+

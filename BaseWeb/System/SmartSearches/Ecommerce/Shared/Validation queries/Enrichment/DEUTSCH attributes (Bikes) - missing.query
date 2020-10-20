@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="eb5f11f5-4856-42e2-bafe-3cf352c0ef0f" Name="DEUTSCH attributes (Bikes) - missing">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal" Disabled="false">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP4,SHOP5" DisplayValue="PIM - Bikes &amp; Equipments,PIM - Warehouse #2" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ParentGroupNames" />
+        </Left>
+        <Right>
+          <TermExpression Value="bikes,importedproducts" DisplayValue="bikes,importedproducts" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="Name" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="LessThanOrEqual" Disabled="false">
+          <Left>
+            <FieldExpression Field="Price" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="0" Type="System.Double" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="LongDescription" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="ShortDescription" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <TermExpression Value="LANG11" DisplayValue="Deutsch" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Price" SystemName="" Source="ProductPrice" Sort="3" />
+  </ViewFields>
+  <ViewLanguages />
+  <CompletionRules>
+    <Rule ID="8" />
+  </CompletionRules>
+  <CompletionLanguages>
+    <Language ID="LANG11" Name="Deutsch" SortOrder="0" />
+  </CompletionLanguages>
+</Query>

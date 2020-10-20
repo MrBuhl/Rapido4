@@ -1,0 +1,14 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@{
+    BlocksPage paymentDetailTitleCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+    paymentDetailTitleCheckoutPage.Add("PaymentDetails", new Block
+    {
+        Id = "PaymentDetailsTitle",
+        SortId = 10,
+        Design = new Design { RenderType = RenderType.CardHeader, CssClass = "u-color-light--bg" },
+        Component = new Heading { Title = Translate("Payment details"), Level = 3, Icon = new Icon { Name = "fa-credit-card", Prefix = "fas", LabelPosition = IconLabelPosition.After }}
+    });
+}

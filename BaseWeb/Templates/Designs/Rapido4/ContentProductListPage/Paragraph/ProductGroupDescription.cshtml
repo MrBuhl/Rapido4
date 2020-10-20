@@ -1,0 +1,27 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using System.Web
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    string groupId = Dynamicweb.Context.Current.Request["GroupID"] ?? string.Empty;
+    string groupDescription = "";
+
+    if (!string.IsNullOrEmpty(groupId)) {
+        groupDescription = !string.IsNullOrEmpty(Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(groupId).Description) ? Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(groupId).Description : "";
+    }
+}
+
+@if (!string.IsNullOrEmpty(groupDescription)) {
+    <div>
+        @groupDescription
+    </div>
+} else if (isVisualEditor) {
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Group description: The description will be shown here, if any")</span>
+    </div>
+}
+
+
+

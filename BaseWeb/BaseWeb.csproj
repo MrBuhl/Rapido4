@@ -1,0 +1,1759 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="packages\Microsoft.Net.Compilers.3.6.0-2.final\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.3.6.0-2.final\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props" Condition="Exists('packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F5ABD3F2-432B-4190-97FB-81381BAFFB8A}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>BaseWeb</RootNamespace>
+    <AssemblyName>BaseWeb</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <SccProjectName>SAK</SccProjectName>
+    <SccLocalPath>SAK</SccLocalPath>
+    <SccAuxPath>SAK</SccAuxPath>
+    <SccProvider>SAK</SccProvider>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
+    <Use64BitIISExpress />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="dotless.Core, Version=1.5.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>packages\dotless.1.5.3-alpha2\lib\dotless.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb, Version=9.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.9.10.0-Alpha\lib\net472\Dynamicweb.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Analytics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Analytics.2.0.9\lib\net46\Dynamicweb.Analytics.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Caching, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Caching.2.2.2\lib\net46\Dynamicweb.Caching.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Configuration, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Configuration.3.0.0\lib\net46\Dynamicweb.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Core, Version=1.0.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Core.2.14.1-Alpha\lib\net472\Dynamicweb.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Core.UI, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Core.UI.1.4.2-Alpha\lib\net472\Dynamicweb.Core.UI.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Data, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Data.1.8.1-Alpha\lib\net472\Dynamicweb.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.DataProcessing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.DataProcessing.1.0.12\lib\net46\Dynamicweb.DataProcessing.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Diagnostics, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Diagnostics.3.1.3\lib\net46\Dynamicweb.Diagnostics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Ecommerce, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Ecommerce.1.9.0-Alpha\lib\net46\Dynamicweb.Ecommerce.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Environment, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Environment.3.3.1\lib\net46\Dynamicweb.Environment.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Extensibility, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Extensibility.3.2.7\lib\net46\Dynamicweb.Extensibility.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Hosting, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Hosting.1.1.2\lib\net46\Dynamicweb.Hosting.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Imaging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Imaging.6.1.1-Alpha\lib\net472\Dynamicweb.Imaging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Indexing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Indexing.3.7.2\lib\net46\Dynamicweb.Indexing.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Logging, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Logging.4.8.3\lib\net46\Dynamicweb.Logging.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Mailing, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Mailing.3.0.7\lib\net46\Dynamicweb.Mailing.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Rapido, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Rapido.6.33.0-Alpha\lib\net472\Dynamicweb.Rapido.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.Scheduling, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Scheduling.2.0.6\lib\net46\Dynamicweb.Scheduling.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Dynamicweb.Security, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Security.9.0.2-Alpha\lib\net472\Dynamicweb.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.SmartSearch, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.SmartSearch.1.2.7-Alpha\lib\net472\Dynamicweb.SmartSearch.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.UI.Elements, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.UI.Elements.2.12.2-Alpha\lib\net472\Dynamicweb.UI.Elements.dll</HintPath>
+    </Reference>
+    <Reference Include="Dynamicweb.UserManagement, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.UserManagement.2.2.12-Alpha\lib\net472\Dynamicweb.UserManagement.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageGlue, Version=7.5.0.1, Culture=neutral, PublicKeyToken=d78d2cea5dcfdc98, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Imaging.5.2.1-Alpha\lib\net472\ImageGlue.dll</HintPath>
+    </Reference>
+    <Reference Include="IronPdf, Version=4.4.9.15720, Culture=neutral, PublicKeyToken=94e1c31412563c75, processorArchitecture=MSIL">
+      <HintPath>packages\IronPdf.4.4.9\lib\net40\IronPdf.dll</HintPath>
+    </Reference>
+    <Reference Include="MetadataExtractor, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\MetadataExtractor.2.0.0\lib\net45\MetadataExtractor.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.CSharp.Workspaces.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.CSharp.Workspaces.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.VisualBasic.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.VisualBasic.Workspaces.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.VisualBasic.Workspaces.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.Workspaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeAnalysis.Workspaces.Desktop, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeAnalysis.Workspaces.Common.1.0.0-rc2\lib\net45\Microsoft.CodeAnalysis.Workspaces.Desktop.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Win32.TaskScheduler, Version=1.5.3943.25226, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\Dynamicweb.Scheduling.2.0.6\lib\net46\Microsoft.Win32.TaskScheduler.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Owin, Version=1.0.0.0, Culture=neutral, PublicKeyToken=f0ebd12fd5e55cc5, processorArchitecture=MSIL">
+      <HintPath>packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="RazorEngine, Version=3.10.0.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>packages\RazorEngine.3.10.0\lib\net45\RazorEngine.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="RazorEngine.Roslyn, Version=3.6.1.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
+      <HintPath>packages\RazorEngine.Roslyn.3.6.1-rc1\lib\net45\RazorEngine.Roslyn.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=1.1.33.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Collections.Immutable.1.1.33-beta\lib\portable-net45+win8+wp8+wpa81\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.Composition" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System" />
+    <Reference Include="System.Composition.AttributedModel, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.AttributedModel.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Convention, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Convention.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Hosting, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Hosting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.Runtime, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Composition.TypedParts, Version=1.0.27.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.Composition.1.0.27\lib\portable-net45+win8+wp8+wpa81\System.Composition.TypedParts.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.IO.Compression.dll</HintPath>
+    </Reference>
+    <Reference Include="System.IO.Compression.FileSystem">
+      <HintPath>..\..\..\..\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6\System.IO.Compression.FileSystem.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Reflection.Metadata, Version=1.0.18.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>packages\System.Reflection.Metadata.1.0.18-beta\lib\portable-net45+win8\System.Reflection.Metadata.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime" />
+    <Reference Include="System.Runtime.InteropServices" />
+    <Reference Include="System.Threading.Thread" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="XmpCore, Version=5.1.3.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\XmpCore.5.1.3\lib\net35\XmpCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App_Code\RapidoComponents.cshtml" />
+    <Content Include="GlobalSettings.aspx" />
+    <Content Include="Images\Column_BreadcrumbHeader.png" />
+    <Content Include="Images\Column_CatalogApp.png" />
+    <Content Include="Images\Column_Details.png" />
+    <Content Include="Images\Column_Facets.png" />
+    <Content Include="Images\Column_Grid.png" />
+    <Content Include="Images\Column_GridCompact.png" />
+    <Content Include="Images\Column_GridUltraCompact.png" />
+    <Content Include="Images\Column_GroupNavigation.png" />
+    <Content Include="Images\Column_List.png" />
+    <Content Include="Images\Column_ListCompact.png" />
+    <Content Include="Images\Column_Pagination.png" />
+    <Content Include="Images\ContentTest\activity-bicycle-bike-biker-276517.jpg" />
+    <Content Include="Images\ContentTest\adult-bag-beauty-model-blue-background-1126993.jpg" />
+    <Content Include="Images\ContentTest\adventure.jpg" />
+    <Content Include="Images\ContentTest\black-mountain-bicycle-990113.jpg" />
+    <Content Include="Images\ContentTest\man-sitting-beside-bicycle-2270328.jpg" />
+    <Content Include="Images\ContentTest\man-standing-near-shore-1208777.jpg" />
+    <Content Include="Images\ContentTest\scenic.jpg" />
+    <Content Include="Images\ContentTest\shallow-focus-photography-of-assorted-color-clothes-hanged-1078958.jpg" />
+    <Content Include="Images\ContentTest\woman-in-black-full-zip-jacket-1034859.jpg" />
+    <Content Include="Images\ContentTest\woman-in-blue-and-white-striped-top-raising-her-left-hand-1462637.jpg" />
+    <Content Include="Images\ContentTest\woman-wearing-maroon-velvet-plunge-neck-long-sleeved-dress-972995.jpg" />
+    <Content Include="Images\ContentTest\woman-wearing-pink-collared-half-sleeved-top-1036623.jpg" />
+    <Content Include="Images\ContentTest\women-s-pink-sweatshirt-and-brown-plaid-skirt-794064.jpg" />
+    <Content Include="Images\Delivery\gls-logo-positive-rgb-download-11622.png" />
+    <Content Include="Images\Demo\080722-F-5435R-041.JPG" />
+    <Content Include="Images\Demo\1991_Giro_d_Italia_Stage_13_Savigliano-Sestriere.jpg" />
+    <Content Include="Images\Demo\31602918811_522a2bb5c8_b.jpg" />
+    <Content Include="Images\Demo\8026157750_b98560948c_b.jpg" />
+    <Content Include="Images\Demo\adventure-1867074_1920.jpg" />
+    <Content Include="Images\Demo\bicycle-1838604_960_720.jpg" />
+    <Content Include="Images\Demo\bicycle-1868162_960_720.jpg" />
+    <Content Include="Images\Demo\bicycle-871265_960_720.jpg" />
+    <Content Include="Images\Demo\bike.png" />
+    <Content Include="Images\Demo\bikelogo.png" />
+    <Content Include="Images\Demo\bikelogo_medium.png" />
+    <Content Include="Images\Demo\BikeShop2.png" />
+    <Content Include="Images\Demo\bonfire-1867275_1920.jpg" />
+    <Content Include="Images\Demo\city-south-park-1125x2000-1140x641.jpg" />
+    <Content Include="Images\Demo\cyclists-trail-bike-clouds-163407.jpeg" />
+    <Content Include="Images\Demo\jogging-2377983_960_720.jpg" />
+    <Content Include="Images\Demo\mountain-bike-hd-wallpapers-8.jpg" />
+    <Content Include="Images\Demo\mountain-biking-2006831_960_720.jpg" />
+    <Content Include="Images\Demo\Mountain_bike_ParcoSibillini.jpg" />
+    <Content Include="Images\Demo\mountain_bike_race-wide.jpg" />
+    <Content Include="Images\Demo\patagonia-1581878_1280.jpg" />
+    <Content Include="Images\Demo\pexels-photo-128202.jpeg" />
+    <Content Include="Images\Demo\pexels-photo-165029.jpeg" />
+    <Content Include="Images\Demo\Rapido-bikes-mix6.png" />
+    <Content Include="Images\Demo\shoes-1638873_1920.jpg" />
+    <Content Include="Images\Demo\summer-sport-bikes-bicycles.jpg" />
+    <Content Include="Images\Demo\tent-548022_1920.jpg" />
+    <Content Include="Images\Demo\truck.png" />
+    <Content Include="Images\Demo\vintage-bikes-825726_960_720.jpg" />
+    <Content Include="Images\Demo\Wheels-Cycling-Road-Bikes-Wheel-Bicycles-Sport-183476.jpg" />
+    <Content Include="Images\Demo\wrench.png" />
+    <Content Include="Images\DWLogo.png" />
+    <Content Include="Images\DWLogo.svg" />
+    <Content Include="Images\DWLogoColor.svg" />
+    <Content Include="Images\DWLogoStar.png" />
+    <Content Include="Images\Ecom\Products\img_high.jpg" />
+    <Content Include="Images\Ecom\Products\img_square.jpg" />
+    <Content Include="Images\Ecom\Products\img_std.jpg" />
+    <Content Include="Images\Ecom\Products\img_wide.jpg" />
+    <Content Include="Images\favicon.png" />
+    <Content Include="Images\HeaderCleanLargeSearch.png" />
+    <Content Include="Images\logo-dynamicweb.png" />
+    <Content Include="Images\missing_image.jpg" />
+    <Content Include="Images\OptionOrange.jpg" />
+    <Content Include="Images\OptionRed.jpg" />
+    <Content Include="Images\OptionYellow.jpg" />
+    <Content Include="Images\Page_ProductDetailsSplitImageTop.png" />
+    <Content Include="Images\Page_ProductDetailsSplitTop1.png" />
+    <Content Include="Images\Page_ProductDetailsSplitTopTwo.png" />
+    <Content Include="Images\Payment\diners.png" />
+    <Content Include="Images\Payment\dk.png" />
+    <Content Include="Images\Payment\klarna.png" />
+    <Content Include="Images\Payment\maestro.png" />
+    <Content Include="Images\Payment\mastercard.png" />
+    <Content Include="Images\Payment\MKsecure.png" />
+    <Content Include="Images\Payment\mobilepay.png" />
+    <Content Include="Images\Payment\Norton.png" />
+    <Content Include="Images\Payment\paypal.png" />
+    <Content Include="Images\Payment\visa.png" />
+    <Content Include="Images\Payment\VisaSecure.png" />
+    <Content Include="Images\Payment\visa_e.png" />
+    <Content Include="Images\placeholder.gif" />
+    <Content Include="Images\ProductDetailsBackgroundImageColors.png" />
+    <Content Include="Images\ProductDetailsBackgroundImageGray.png" />
+    <Content Include="Images\ProductDetailsFullTop.png" />
+    <Content Include="Images\ProductDetailsGiant.png" />
+    <Content Include="Images\ProductDetailsLongImage.png" />
+    <Content Include="Images\ProductDetailsTopCard.png" />
+    <Content Include="Images\ProductDetailsTopClean.png" />
+    <Content Include="Images\ProductDetailsTopCleanTwo.png" />
+    <Content Include="Images\Rapido\ArticleBanner.png" />
+    <Content Include="Images\Rapido\ArticleClean.png" />
+    <Content Include="Images\Rapido\ArticleSplit.png" />
+    <Content Include="Images\Rapido\bordeaux-150955.png" />
+    <Content Include="Images\Rapido\box.svg" />
+    <Content Include="Images\Rapido\branch-3316987.png" />
+    <Content Include="Images\Rapido\iphone-2854305.png" />
+    <Content Include="Images\Rapido\iphone-2854325.png" />
+    <Content Include="Images\Rapido\money-bill.svg" />
+    <Content Include="Images\Rapido\truck.svg" />
+    <Content Include="Images\Row_BreadcrumbHeader.png" />
+    <Content Include="Images\Row_CatalogApp.png" />
+    <Content Include="Images\Row_Details.png" />
+    <Content Include="Images\Row_Grid.png" />
+    <Content Include="Images\Row_GridCompact.png" />
+    <Content Include="Images\Row_GridUltraCompact.png" />
+    <Content Include="Images\Row_GroupDescription.png" />
+    <Content Include="Images\Row_GroupNavigation.png" />
+    <Content Include="Images\Row_List.png" />
+    <Content Include="Images\Row_ListCompact.png" />
+    <Content Include="Images\Row_Pagination.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597651780943.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597651912986.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597652008311.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597652096584.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597652408367.png" />
+    <Content Include="Images\screencapture-rapidohead-local-dynamicweb-dk-rapido-4-b2c-products-men-1597652514050.png" />
+    <Content Include="Images\SocialIcons\fab fa-facebook-square.png" />
+    <Content Include="Images\SocialIcons\fab fa-google-plus-square.png" />
+    <Content Include="Images\SocialIcons\fab fa-instagram.png" />
+    <Content Include="Images\SocialIcons\fab fa-linkedin.png" />
+    <Content Include="Images\SocialIcons\fab fa-pinterest-square.png" />
+    <Content Include="Images\SocialIcons\fab fa-twitter-square.png" />
+    <Content Include="Images\SocialIcons\fab fa-vimeo-square.png" />
+    <Content Include="Images\SocialIcons\fab fa-youtube-square.png" />
+    <Content Include="Images\SplitImageLeft.png" />
+    <Content Include="Images\SplitImageRight.png" />
+    <Content Include="Images\WineBoutique-inverted.svg" />
+    <Content Include="Images\WineBoutique.svg" />
+    <Content Include="Images\WineBranch.jpg" />
+    <Content Include="Scripts\less-1.5.1.js" />
+    <Content Include="Scripts\less-1.5.1.min.js" />
+    <Content Include="System\Editor\ckeditor\config\advanced.js" />
+    <Content Include="System\Editor\ckeditor\config\basic.js" />
+    <Content Include="System\Editor\ckeditor\config\clean.js" />
+    <Content Include="System\Editor\ckeditor\config\default.js" />
+    <Content Include="System\Editor\ckeditor\config\developer.js" />
+    <Content Include="System\Editor\ckeditor\config\email.js" />
+    <Content Include="System\Integration\Jobs\ModuleSpecificJobs\UserManagementModuleJobs\ImportJobs\ImportUsers.xml" />
+    <Content Include="System\Integration\Jobs\ModuleSpecificJobs\UserManagementModuleJobs\ImportJobs\ImportUsersFromExcel.xml" />
+    <Content Include="System\Items\ItemType_Address.xml" />
+    <Content Include="System\Items\ItemType_ButtonLayout.xml" />
+    <Content Include="System\Items\ItemType_ContentPage.xml" />
+    <Content Include="System\Items\ItemType_DropdownFacets.xml" />
+    <Content Include="System\Items\ItemType_FooterMegamenu.xml" />
+    <Content Include="System\Items\ItemType_FooterLogo.xml" />
+    <Content Include="System\Items\ItemType_FooterCopyrightNotice.xml" />
+    <Content Include="System\Items\ItemType_FooterAddress.xml" />
+    <Content Include="System\Items\ItemType_HeaderLogo.xml" />
+    <Content Include="System\Items\ItemType_HeaderLanguageSelector.xml" />
+    <Content Include="System\Items\ItemType_HeaderSearch.xml" />
+    <Content Include="System\Items\ItemType_HeroSplit.xml" />
+    <Content Include="System\Items\ItemType_Hero.xml" />
+    <Content Include="System\Items\ItemType_HeroAdjust.xml" />
+    <Content Include="System\Items\ItemType_HeroContent.xml" />
+    <Content Include="System\Items\ItemType_PriceLayout.xml" />
+    <Content Include="System\Items\ItemType_ProductCatalogDetailsApp.xml" />
+    <Content Include="System\Items\ItemType_ContentProductDetailsPage.xml" />
+    <Content Include="System\Items\ItemType_ContentProductListPage.xml" />
+    <Content Include="System\Items\ItemType_ContentCheckoutPage.xml" />
+    <Content Include="System\Items\ItemType_ContentPageProperties.xml" />
+    <Content Include="System\Items\ItemType_BillingAddress.xml" />
+    <Content Include="System\Items\ItemType_DesignGuide.xml" />
+    <Content Include="System\Items\ItemType_FontLayout.xml" />
+    <Content Include="System\Items\ItemType_LogoLayout.xml" />
+    <Content Include="System\Items\ItemType_PaymentMethods.xml" />
+    <Content Include="System\Items\ItemType_PlaceOrderButton.xml" />
+    <Content Include="System\Items\ItemType_ParcelShops.xml" />
+    <Content Include="System\Items\ItemType_PaymentMethod.xml" />
+    <Content Include="System\Items\ItemType_OrderSummary.xml" />
+    <Content Include="System\Items\ItemType_DeliveryMethods.xml" />
+    <Content Include="System\Items\ItemType_HeaderImpersonation.xml" />
+    <Content Include="System\Items\ItemType_HeaderMainNavigation.xml" />
+    <Content Include="System\Items\ItemType_HeaderUtilitiesNavigation.xml" />
+    <Content Include="System\Items\ItemType_HeaderToolbarNavigation.xml" />
+    <Content Include="System\Items\ItemType_HeaderButtons.xml" />
+    <Content Include="System\Items\ItemType_Button.xml" />
+    <Content Include="System\Items\ItemType_CardTypeAndVerifiedPayment.xml" />
+    <Content Include="System\Items\ItemType_CustomSettings.xml" />
+    <Content Include="System\Items\ItemType_BreadcrumbParagraph.xml" />
+    <Content Include="System\Items\ItemType_NavigationParagraph.xml" />
+    <Content Include="System\Items\ItemType_HeaderPlainText.xml" />
+    <Content Include="System\Items\ItemType_FooterPayments.xml" />
+    <Content Include="System\Items\ItemType_FooterSocialLinks.xml" />
+    <Content Include="System\Items\ItemType_FooterSignUp.xml" />
+    <Content Include="System\Items\ItemType_FooterPlainText.xml" />
+    <Content Include="System\Items\ItemType_ImageParagraph.xml" />
+    <Content Include="System\Items\ItemType_MasterFooterLayout.xml" />
+    <Content Include="System\Items\ItemType_MasterHeaderLayout.xml" />
+    <Content Include="System\Items\ItemType_MasterLayoutTemplate.xml" />
+    <Content Include="System\Items\ItemType_NavigationFolder.xml" />
+    <Content Include="System\Items\ItemType_Carousel.xml" />
+    <Content Include="System\Items\ItemType_ContentRow.xml" />
+    <Content Include="System\Items\ItemType_App.xml" />
+    <Content Include="System\Items\ItemType_ContentProductCatalogApp.xml" />
+    <Content Include="System\Items\ItemType_Facets.xml" />
+    <Content Include="System\Items\ItemType_ProductLoadMore.xml" />
+    <Content Include="System\Items\ItemType_SelctedFacets.xml" />
+    <Content Include="System\Items\ItemType_ProductDetailsFields.xml" />
+    <Content Include="System\Items\ItemType_ProductInfoTwo.xml" />
+    <Content Include="System\Items\ItemType_ProductListDetailsView.xml" />
+    <Content Include="System\Items\ItemType_ProductListGridUltraCompactView.xml" />
+    <Content Include="System\Items\ItemType_ProductListGridCompactView.xml" />
+    <Content Include="System\Items\ItemType_ProductListGridView.xml" />
+    <Content Include="System\Items\ItemType_ProductListListCompactView.xml" />
+    <Content Include="System\Items\ItemType_ProductListListView.xml" />
+    <Content Include="System\Items\ItemType_ProductGroupDescription.xml" />
+    <Content Include="System\Items\ItemType_ProductLongDescription.xml" />
+    <Content Include="System\Items\ItemType_ProductPagination.xml" />
+    <Content Include="System\Items\ItemType_ProductGroupHeader.xml" />
+    <Content Include="System\Items\ItemType_ProductList.xml" />
+    <Content Include="System\Items\ItemType_ProductInfoOne.xml" />
+    <Content Include="System\Items\ItemType_ProductGroupNavigation.xml" />
+    <Content Include="System\Items\ItemType_ProductShortDescription.xml" />
+    <Content Include="System\Items\ItemType_ProductTitle.xml" />
+    <Content Include="System\Items\ItemType_ProductImage.xml" />
+    <Content Include="System\Items\ItemType_ProductVideos.xml" />
+    <Content Include="System\Items\ItemType_SearchParagraph.xml" />
+    <Content Include="System\Items\ItemType_SeparationLine.xml" />
+    <Content Include="System\Items\ItemType_SimpleMap.xml" />
+    <Content Include="System\Items\ItemType_Slide.xml" />
+    <Content Include="System\Items\ItemType_StandardParagraphBackground.xml" />
+    <Content Include="System\Items\ItemType_Card.xml" />
+    <Content Include="System\Items\ItemType_StandardParagraphOne.xml" />
+    <Content Include="System\Items\ItemType_StickerLayout.xml" />
+    <Content Include="System\Items\ItemType_ThemeLayout.xml" />
+    <Content Include="System\Items\ItemType_VariantMatrix.xml" />
+    <Content Include="System\Items\ItemType_VideoParagraph.xml" />
+    <Content Include="System\Items\ItemType_PlainHeading.xml" />
+    <Content Include="System\Items\ItemType_PrintablePapers.xml" />
+    <Content Include="System\Items\ItemType_Paper.xml" />
+    <Content Include="System\Items\ItemType_PageSheet.xml" />
+    <Content Include="System\Items\ItemType_ProductDataSheet.xml" />
+    <Content Include="System\Items\ItemType_Quote.xml" />
+    <Content Include="System\Items\ItemType_SharedParagraphSettings.xml" />
+    <Content Include="System\Items\ItemType_SheetFooter.xml" />
+    <Content Include="System\Items\ItemType_SheetHeader.xml" />
+    <Content Include="System\Items\ItemType_ProductlistSheet.xml" />
+    <Content Include="System\Items\ItemType_CoverSheet.xml" />
+    <Content Include="System\Items\ItemType_Overlay.xml" />
+    <Content Include="System\Items\ItemType_Icons.xml" />
+    <Content Include="System\Items\ItemType_Image.xml" />
+    <Content Include="System\Items\ItemType_Location.xml" />
+    <Content Include="System\Items\ItemType_Font.xml" />
+    <Content Include="System\Items\ItemType_Maps.xml" />
+    <Content Include="System\Items\ItemType_ProductCatalogDetailsView.xml" />
+    <Content Include="System\Items\ItemType_ProductCatalogGridView.xml" />
+    <Content Include="System\Items\ItemType_ProductCatalogListView.xml" />
+    <Content Include="System\Items\ItemType_PromotionProducts.xml" />
+    <Content Include="System\Items\ItemType_FooterColumn.xml" />
+    <Content Include="System\Items\ItemType_Price.xml" />
+    <Content Include="System\Items\ItemType_AreaSettings.xml" />
+    <Content Include="System\Items\ItemType_SocialLinks.xml" />
+    <Content Include="System\Items\ItemType_SystemToolsFolder.xml" />
+    <Content Include="System\Items\ItemType_FooterNavigation.xml" />
+    <Content Include="System\Items\ItemType_Video.xml" />
+    <Content Include="System\Items\ItemType_WebsiteSettings.xml" />
+    <Content Include="System\Items\Translations.xml" />
+    <Content Include="System\Items\WebsiteLayouts_1.xml" />
+    <Content Include="System\Repositories\FacetRenderOptions.xml" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\ai.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\avi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\css.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\csv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\dir.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\dirup.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\doc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\exe.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\file.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\html.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\jpg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\js.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\json.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\pdf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\png.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\ppt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\psd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\rtf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\svg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\txt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\xls.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\xml.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FileTypes\zip.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\book-heart.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\book-heart.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box-heart.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box-heart.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\box_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard-list.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard-list_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard-list_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\clipboard_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly-flatbed-alt_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\dolly_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\flag_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\gem.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\gem.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\globe_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart-circle.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart-circle.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart-square.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart-square.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\heart.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\search_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-bag_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-basket_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\shopping-cart_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\star.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\star.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\suitcase_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\thumbs-up.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\thumbs-up.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\truck_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle-1.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle-2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user-circle_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user_light.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\FontAwesome\user_regular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\userProfile.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_1-1.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_16-9.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_3-4.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_4-3.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_9-16.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Aspect_original.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\BorderAround.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\BorderBottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Crop_Ball.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\Crop_Triangle.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_CaseLower.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_CaseRegular.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_CaseUpper.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-gap-lg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-gap-md.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-gap-none.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-gap-sm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-gap-xl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-around.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-bottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-left-right.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-left.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-right.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-top-bottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_column-padding-top.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-center.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-compressed.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-spacing-lg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-spacing-md.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-spacing-none.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-spacing-sm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-spacing-xl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_row-stretch.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_TextCenter.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_TextFull.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_TextLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_TextRight.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_VerticalAlignBottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_VerticalAlignFull.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_VerticalAlignMiddle.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\DW_VerticalAlignTop.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\IconTextBottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\IconTextLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\IconTextRight.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterBlur.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterColorize.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterDarken.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterExposure.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterGrayscale.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterLighten.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterNone.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ImageFilterSepia.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\MenuItemBorderAround.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\MenuItemBorderBottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\MenuItemBorderNone.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingLG.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingMD.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingNone.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingSM.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingXL.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PaddingXS.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ParagraphImageLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ParagraphImageTop.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ParagraphTitleTop.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PosBlock.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PosInline.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PricePosBlock.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\PricePosInline.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerBall.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerBottomLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerBottomRight.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerClean.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerNone.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerOffset.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerTopLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerTopRight.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\StickerTriangle.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ThumbsBottom.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ThumbsLeft.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ThumbsRight.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VectorItemTypes\ThumbsTop.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Contact-form.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Contact-simplemap.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Media-moutainimage.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Media-pinkbackground.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Media-summerhats-cards.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Media-Video.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-BeachReady.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-EasterSale.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-multispices.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-NewEquipment.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-SummerInTheAir.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-takeABreak.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-TapasNight.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-TodaysMenu.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorColumnPresets\Text-WeekenBrunch.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Accessories.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\BeachReady.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\BikeBanner.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\bikeimages3.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Burger-Sandwhiches-Menus.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\DenimAndPrints.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\EasterSale.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\FormContact.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Info-boxes.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Info-cards.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\infotext-Form.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\infotext-video.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Local-Cusine.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Menus-1-2 copy.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\MountainBikes.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Multiple-Spices.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\NewEquipment.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\SummerIsInTheAir.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\SummerTrend2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Swimwear.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\TakeABreak2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Tapas-Night.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Testamonial2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Todaysmenu-TapasDeluxe2.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditorRowPresets\Weekend-Brunch.jpg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_1-2-1-split.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_1-2-split.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_2-1-split.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_2-column.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_3-column.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_4-column.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_6-column.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_Full.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_Row_Tabs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_SplitListLeftRow.svg" />
+    <Content Include="Templates\Designs\Rapido4\Images\VisualEditor\DW_SplitListRightRow.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\custom\Custom.css" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ad.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ae.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\af.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ag.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ai.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\al.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\am.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ao.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\aq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ar.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\as.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\at.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\au.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\aw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ax.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\az.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ba.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\be.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\br.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\by.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\bz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ca.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ch.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ci.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ck.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\co.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\cz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\de.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\dj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\dk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\dm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\do.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\dz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ec.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ee.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\eg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\eh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\er.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\es-ct.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\es.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\et.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\eu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\fr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ga.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gb-eng.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gb-nir.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gb-sct.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gb-wls.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ge.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\gy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\hk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\hm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\hn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\hr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ht.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\hu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\id.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ie.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\il.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\im.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\in.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\io.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\iq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ir.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\is.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\it.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\je.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\jm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\jo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\jp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ke.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ki.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\km.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ky.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\kz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\la.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\li.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ls.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\lv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ly.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ma.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\md.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\me.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ml.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ms.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\my.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\mz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\na.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ne.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ng.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ni.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\no.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\np.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\nz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\om.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pe.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ph.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ps.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\pw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\py.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\qa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\re.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ro.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\rs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ru.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\rw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\se.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\si.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\so.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ss.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\st.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\sz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\td.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\th.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\to.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\tz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ua.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ug.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\um.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\un.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\us.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\uy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\uz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\va.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\vc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ve.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\vg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\vi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\vn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\vu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\wf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ws.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\xk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\ye.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\yt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\za.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\zm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\1x1\zw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ad.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ae.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\af.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ag.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ai.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\al.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\am.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ao.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\aq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ar.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\as.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\at.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\au.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\aw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ax.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\az.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ba.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\be.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\br.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\by.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\bz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ca.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ch.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ci.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ck.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\co.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\cz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\de.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\dj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\dk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\dm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\do.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\dz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ec.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ee.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\eg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\eh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\er.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\es-ct.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\es.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\et.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\eu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\fr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ga.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gb-eng.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gb-nir.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gb-sct.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gb-wls.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ge.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\gy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\hk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\hm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\hn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\hr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ht.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\hu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\id.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ie.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\il.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\im.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\in.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\io.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\iq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ir.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\is.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\it.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\je.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\jm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\jo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\jp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ke.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ki.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\km.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ky.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\kz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\la.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\li.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ls.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\lv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ly.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ma.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\md.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\me.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ml.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mo.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mp.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mq.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ms.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\my.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\mz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\na.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ne.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ng.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ni.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\no.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\np.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\nz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\om.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pe.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ph.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ps.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\pw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\py.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\qa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\re.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ro.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\rs.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ru.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\rw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sa.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sb.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sd.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\se.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sh.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\si.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\so.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ss.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\st.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sx.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\sz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\td.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\th.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tj.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tl.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\to.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tr.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tv.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\tz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ua.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ug.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\um.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\un.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\us.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\uy.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\uz.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\va.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\vc.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ve.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\vg.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\vi.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\vn.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\vu.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\wf.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ws.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\xk.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\ye.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\yt.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\za.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\zm.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\4x3\zw.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\flags\flag-icon.min.css" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\rapido.css">
+      <DependentUpon>rapido.scss</DependentUpon>
+    </Content>
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\rapido.min.css">
+      <DependentUpon>rapido.css</DependentUpon>
+    </Content>
+    <Content Include="Templates\Designs\Rapido4\Resources\css\website\rapido4_26.min.css" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\css\all.min.css" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-brands-400.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-regular-400.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-solid-900.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\css\all.min.css" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-brands-400.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-duotone-900.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-light-300.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-regular-400.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-solid-900.svg" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.bundle.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.bundle.min.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.min.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\Ajax.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\blazy.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\ProductList.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\Cart.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\Matrix.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\rapido.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\rapido.min.js">
+      <DependentUpon>rapido.js</DependentUpon>
+    </Content>
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\Video.js" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\Wireframe.js" />
+    <Content Include="Templates\Designs\Rapido4\Translations.xml" />
+    <Content Include="Templates\DataIntegration\Notifications\NotificationsEmailHelpers.cshtml" />
+    <Content Include="Templates\DataIntegration\Notifications\LiveIntegrationErrorEmail.cshtml" />
+    <Content Include="Templates\DataIntegration\Notifications\ScheduledTaskErrorEmail.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentMaster.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowDefinitions.json" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\1-2-1SplitRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\1-2SplitRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\2-1SplitRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\2ColumnRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\3ColumnRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\4ColumnRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\6ColumnRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\ColumnBase.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\FullRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\RowBase.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\App.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Articles.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\BreadcrumbParagraph.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Buttons.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Card.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Carousel.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\ImageParagraph.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\NavigationParagraph.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\PlainHeading.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Quote.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\SeparationLine.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\StandardParagraphBackground.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\StandardParagraphOne.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\VideoParagraph.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\CleanBuilder.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterPayments.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterPlainText.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterSignUp.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterSocialLinks.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderUtilitiesNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderButtons.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderLogo.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderMainNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderPlainText.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderToolbarNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\abstracts\_variables.scss" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\Dropdown.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\Breadcrumbs.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\FooterMenu.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\MainNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\Megamenu.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\Toolbar.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\content\_bootstrap.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\content\_images.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\content\_icons.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\bootstrap-grid.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\bootstrap-reboot.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\bootstrap-utilities.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\bootstrap.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-check.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-control.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-file.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-range.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-select.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_form-text.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_input-group.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_labels.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\forms\_validation.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_clearfix.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_colored-links.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_embed.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_position.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_screenreaders.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_stretched-link.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_text-truncation.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_alert.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_border-radius.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_box-shadow.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_breakpoints.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_buttons.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_caret.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_clearfix.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_container.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_deprecate.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_forms.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_gradients.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_grid.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_image.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_list-group.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_lists.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_pagination.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_reset-text.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_resize.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_screen-reader.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_table-variants.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_text-truncate.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_transition.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_utilities.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\utilities\_api.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\vendor\_rfs.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_alert.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_badge.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_breadcrumb.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_button-group.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_buttons.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_card.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_carousel.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_close.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_containers.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_dropdown.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_forms.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_functions.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_grid.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_helpers.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_images.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_list-group.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_mixins.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_modal.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_nav.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_navbar.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_pagination.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_popover.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_progress.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_reboot.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_root.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_spinners.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_tables.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_toasts.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_tooltip.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_transitions.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_type.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_utilities.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\_variables.scss" />
+    <Content Include="Templates\Designs\Rapido4\Forms\Form\Default.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ParagraphBase.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductImage.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductInfoOne.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductTitle.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\AddToCart.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\Price.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\VariantInfoMatrix.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_matrix.scss" />
+    <Content Include="Templates\Designs\Rapido4\eCom\ProductCatalog\ProductViewDetail.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\eCom\ProductCatalog\ProductViewList.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductGroupDescription.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductGroupHeader.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductGroupNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductList.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\ProductGroupGridNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\Pagination.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_megamenu.scss" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductCatalogApp.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_price.scss" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\FavoriteLIstSelect.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\List.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\ListCompact.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductPagination.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\Grid.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\GridCompact.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\Details.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Views\GridUltraCompact.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\ProductGroupHeader.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListGridView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListListView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListDetailsView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListListCompactView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListGridCompactView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductListGridUltraCompactView.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\Facets.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\ProductGroupTreeNavigation.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\CleanText.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\DesignGuide.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\DesignGuide\Paragraph\LogoLayout.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductCatalogDetailsApp.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\ProductDetailsFields.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductDetailsFields.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\VariantMatrix.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductShortDescription.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductLongDescription.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductVideos.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_video.scss" />
+    <Content Include="Templates\Designs\Rapido4\Components\General\ParagraphTitle.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\ProductInfoTwo.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\VariantSelector.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductDetailsPage\Paragraph\BreadcrumbParagraph.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_stock.scss" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\StockInfo.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\ShippingInfo.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_ratings.scss" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\Ratings.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\Tabs.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Components\General\Image.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_image.scss" />
+    <Content Include="Templates\Designs\Rapido4\Components\Ecommerce\StickersPositioned.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_product.scss" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderSearch.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\SplitListLeftRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\SplitListRightRow.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\1-2SplitRowCompact.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Grid\Standard\RowTemplates\2-1SplitRowCompact.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterLogo.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\PromotionProducts.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_colorbox.scss" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterCopyrightNotice.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterAddress.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterFooterLayout\Paragraph\FooterMegamenu.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\UtilitiesMenu.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_mini-cart.scss" />
+    <Content Include="Templates\Designs\Rapido4\MiniCart.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\MasterHeaderLayout\Paragraph\HeaderLanguageSelector.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_ratio.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\helpers\_visually-hidden.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\bootstrap\scss\mixins\_visually-hidden.scss" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\Hero.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentPage\Paragraph\HeroSplit.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\SelectedFacets.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\ProductLoadMore.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\ContentProductListPage\Paragraph\DropdownFacets.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Navigation\LeftNavigationExpandable.cshtml" />
+    <None Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_separation.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\helpers\_base.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_variant-selector.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_shipping-info.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\helpers\_position.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_stickers.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\components\_preloaders.scss" />
+    <None Include="Templates\Designs\Rapido4\Resources\css\rapido\helpers\_spacing.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.js.map" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.min.js.map" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\rapido\rapido.scss" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-brands-400.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-brands-400.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-brands-400.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-brands-400.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-regular-400.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-regular-400.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-regular-400.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-regular-400.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-solid-900.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-solid-900.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-solid-900.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\free\webfonts\fa-solid-900.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-brands-400.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-brands-400.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-brands-400.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-brands-400.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-duotone-900.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-duotone-900.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-duotone-900.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-duotone-900.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-light-300.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-light-300.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-light-300.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-light-300.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-regular-400.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-regular-400.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-regular-400.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-regular-400.woff2" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-solid-900.eot" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-solid-900.ttf" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-solid-900.woff" />
+    <Content Include="Templates\Designs\Rapido4\Resources\icons\fontawesome\pro\webfonts\fa-solid-900.woff2" />
+    <Content Include="Templates\cookiewarning\ModalWarning.cshtml" />
+    <Content Include="Templates\cookiewarning\PanelWarning.cshtml" />
+    <Content Include="Templates\cookiewarning\Blocks\CookieForm.cshtml" />
+    <Content Include="Templates\cookiewarning\Blocks\CookieScript.cshtml" />
+    <Content Include="Templates\cookiewarning\Blocks\Custom__Blocks.cshtml" />
+    <Content Include="System\Repositories\Products\Build+Index.task" />
+    <Content Include="System\Repositories\Products\Products.facets">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="System\Repositories\Products\Products.index" />
+    <Content Include="System\Repositories\Products\Products.query" />
+    <Content Include="System\Repositories\Products\repository.info">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="System\Repositories\Secondary users\repository.info" />
+    <Content Include="System\Repositories\Secondary users\Users.index" />
+    <Content Include="System\Repositories\Secondary users\Users.query" />
+    <Content Include="System\Repositories\Files\Files.index" />
+    <Content Include="System\Repositories\Files\Files.query" />
+    <Content Include="System\Repositories\Files\repository.info" />
+    <Content Include="System\Repositories\Products\FrontpagePromotion.query" />
+    <Content Include="bundleconfig.json" />
+    <Content Include="System\Repositories\Products\Promotion.query" />
+    <Content Include="System\Repositories\Content\Content builder.index" />
+    <Content Include="System\Repositories\Content\Content search.query" />
+    <Content Include="System\Repositories\Content\repository.info" />
+    <Content Include="System\Repositories\Content\Content facets.facets" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Error\checkouthandler_error.html" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\Post_custom.html" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\Post_simple.html" />
+    <Content Include="Templates\eCom7\ShippingProvider\Unifaun.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\Custom__Blocks.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\MultiStepBar.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\MultiStepBlockStructure.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\OneStepBar.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\OneStepBlockStructure.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\PayButton.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\PaymentDetailsTitle.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\PaymentError.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Blocks\PaymentInformation.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\ErrorTemplate\Error_multi-step.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\ErrorTemplate\Error_one-step.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\website\_colors.less" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\website\_spacing.less" />
+    <None Include="Templates\Designs\Rapido4\Resources\css\website\_fonts.less" />
+    <Content Include="Templates\Designs\Rapido4\Resources\css\website\_variables_26.auto.less" />
+    <Content Include="Templates\Designs\Rapido4\UserManagement\Login\Login.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\UserManagement\CreateProfile\CreateAccountB2B.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\UserManagement\CreateProfile\CreateAccountB2C.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\UserManagement\Login\PasswordRecovery.cshtml" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\rapido\rapido.min.js.map">
+      <DependentUpon>rapido.min.js</DependentUpon>
+    </Content>
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.bundle.js.map" />
+    <Content Include="Templates\Designs\Rapido4\Resources\js\bootstrap\bootstrap.bundle.min.js.map" />
+    <Content Include="Templates\Designs\Rapido4\UserManagement\ViewProfile\EditProfile.cshtml" />
+    <None Include="Templates\eCom7\ShippingProvider\GLS.cshtml" />
+    <Content Include="Templates\Repositories\Indexes\Notifications\BuildNotificationTemplate.cshtml" />
+    <None Include="Templates\eCom\Vouchers\ContextVoucher.cshtml" />
+    <None Include="Templates\Searchv1\NoResult.cshtml" />
+    <None Include="Templates\Searchv1\SearchBox.cshtml" />
+    <Content Include="Templates\Searchv1\SearchResult.cshtml" />
+    <Content Include="Templates\SitemapV2\sitemap.xslt" />
+    <Content Include="update.xml" />
+    <Content Include="UpdateVersion_ecom.xml" />
+    <Content Include="Templates\Less.config" />
+    <Content Include="Templates\eCom\Order\AbandonCartEmail.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Error\CheckouthandlerError.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\PostCustom.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\PostRedirect.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\PostSimple.cshtml" />
+    <Content Include="Templates\eCom7\CheckoutHandler\Stripe\Post\Post_redirect.cshtml" />
+    <Content Include="Templates\Searchv1\SearchResultItem.cshtml" />
+    <Content Include="web.config" />
+    <None Include="web.Debug.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+    <None Include="web.Release.config">
+      <DependentUpon>web.config</DependentUpon>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="app.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="compilerconfig.json" />
+    <None Include="compilerconfig.json.defaults">
+      <DependentUpon>compilerconfig.json</DependentUpon>
+    </None>
+    <Content Include="packages.config">
+      <SubType>Designer</SubType>
+    </Content>
+    <Content Include="System\Log\ChangedVersion\2016-11-29.log" />
+    <Content Include="System\Log\Licensing\2016-11-29.log" />
+    <Content Include="System\Log\Licensing\Errors\2016\11\29-135740.log" />
+    <Content Include="updatelog.log" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Files\" />
+    <Folder Include="System\Integration\Jobs\ModuleSpecificJobs\UserManagementModuleJobs\ExportJobs\" />
+    <Folder Include="System\Packages\" />
+    <Folder Include="Templates\Designs\Rapido4\Resources\fonts\" />
+    <Folder Include="Templates\Designs\Rapido4\Resources\js\custom\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.0.0-rc2\tools\analyzers\C#\Microsoft.CodeAnalysis.Analyzers.dll" />
+    <Analyzer Include="packages\Microsoft.CodeAnalysis.Analyzers.1.0.0-rc2\tools\analyzers\C#\Microsoft.CodeAnalysis.CSharp.Analyzers.dll" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>False</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>34566</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:34566/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Net.Compilers.3.2.1\build\Microsoft.Net.Compilers.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('packages\Microsoft.Net.Compilers.3.6.0-2.final\build\Microsoft.Net.Compilers.props')" Text="$([System.String]::Format('$(ErrorText)', 'packages\Microsoft.Net.Compilers.3.6.0-2.final\build\Microsoft.Net.Compilers.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

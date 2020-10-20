@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="7c06c0f0-3672-41f4-8dbf-3ec14b334244" Name="All Bikes in PIM">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP4" DisplayValue="PIM - Bikes &amp; Equipments" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In">
+        <Left>
+          <FieldExpression Field="GroupNames" />
+        </Left>
+        <Right>
+          <TermExpression Value="bikes" DisplayValue="bikes" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Price" SystemName="" Source="ProductPrice" Sort="3" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="4" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="5" />
+    <Field Name="Product image default" SystemName="" Source="ImageDefault" Sort="6" />
+    <Field Name="Product images" SystemName="" Source="ProductImages" Sort="7" />
+  </ViewFields>
+  <ViewLanguages />
+  <CompletionRules />
+  <CompletionLanguages />
+</Query>

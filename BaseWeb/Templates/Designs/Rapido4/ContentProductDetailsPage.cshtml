@@ -1,0 +1,40 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@using Dynamicweb.Content.Items
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@MasterPageFile("ContentMaster.cshtml")
+
+@{ 
+    var pageColorService = new ColorSwatchService();
+
+    string pageBackgroundColor = "";
+    string pageBackgroundImage = "";
+
+    if (Model.Item != null) {
+        pageBackgroundColor = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundColor")) && Model.Item.GetString("BackgroundColor") != "transparent" ? Model.Item.GetString("BackgroundColor") : "";
+
+        if (Model.Item.GetString("BackgroundColor") != "transparent") {
+            pageBackgroundColor = !pageBackgroundColor.Contains("#") ? "style=\"background-color: " + pageColorService.GetHexColor(Pageview.AreaID, pageBackgroundColor) + "\"" : "style=\"background-color: " + pageBackgroundColor + "\"";
+        }
+
+        pageBackgroundImage = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundImage")) ? Model.Item.GetFile("BackgroundImage").Path : "";
+    } 
+}
+
+@* Render the grid *@
+<div class="item-type:@Model.ItemType position-relative" id="Page-@(Model.ID)" @pageBackgroundColor>
+    @if (pageBackgroundImage != "") {
+        int cropMode = 5;
+        string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + pageBackgroundImage;
+
+        <div class="background-image">
+            <div class="background-image__wrapper">
+                <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@image" />
+            </div> 
+        </div>  
+    }
+
+    @Model.Grid("Grid", "Grid", "default:true;sort:1", "Standard")
+</div>
+
+

@@ -1,0 +1,24 @@
+﻿@inherits RazorTemplateBase<RazorTemplateModel<Template>>
+@using Dynamicweb.Rendering
+@MasterPageFile("/Files/Templates/Designs/Rapido/EmailMaster.cshtml")
+@Include("/Files/Templates/Designs/Rapido/EmailHelpers.cshtml")
+@Include("NotificationsEmailHelpers.cshtml")
+
+<table bgcolor="#FFFFFF" border="0" cellpadding="0" cellspacing="0" id="emailBody">
+    @RenderMessage()
+    @RenderTemplateTagsValues(GetTableStyle(), GetHeaderStyle(), GetCellStyle())
+</table>
+
+@helper RenderMessage()
+{
+    Column message = new Column();
+    message.header = "Here are the errors occurred in the Live Integration Add-In named: <strong>" + GetValue("Ecom:LiveIntegration.AddInName") + "</strong>";
+    @CreateRow(message);
+
+    <table style="@GetTableStyle()">
+        @RenderHeading("Core Information")
+        @RenderKeyValueRowLog("Log Information", GetString("Ecom:LiveIntegration.ErrorMessage"), GetCellStyle())
+        @RenderKeyValueRow("Host (Scheme and Authority)", GetCurrentUrl(true), GetCellStyle())
+        @RenderKeyValueRow("Machine name", System.Environment.MachineName, GetCellStyle())
+    </table>
+}

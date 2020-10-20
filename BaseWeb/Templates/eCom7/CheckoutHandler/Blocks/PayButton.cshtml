@@ -1,0 +1,26 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@{
+    BlocksPage payButtonCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+    
+    if (payButtonCheckoutPage.GetBlockById("StepNavigationContainer") != null)
+    {
+        payButtonCheckoutPage.Add("StepNavigationContainer", new Block
+        {
+            Id = "PayButton",
+            SortId = 20,
+            Design = new Design { CssClass = "u-pull--right" },
+            Component = new Button
+            {
+                ButtonType = ButtonType.Submit,
+                ButtonLayout = ButtonLayout.Primary,
+                CssClass = "u-pull--right u-no-margin",
+                Title = Translate("Pay"),
+                OnClick = "document.getElementById('SubmitButton').click()",
+                Disabled = !string.IsNullOrEmpty(GetString("CheckoutHandler:ErrorMessage"))
+            }
+        });
+    }
+}

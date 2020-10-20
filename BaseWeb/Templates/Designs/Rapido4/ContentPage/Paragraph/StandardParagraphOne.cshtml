@@ -1,0 +1,130 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content.Items
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@{ 
+    var colorService = new ColorSwatchService();
+
+    string backgroundColor = Model.Item.GetString("BackgroundColor") != null && Model.Item.GetString("BackgroundColor") != "transparent" ? Model.Item.GetString("BackgroundColor") : "";
+    if (backgroundColor != "") {
+        backgroundColor = !backgroundColor.Contains("#") ? "background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "; " : "background-color: " + backgroundColor +  "; ";
+    }
+
+    string link = !string.IsNullOrEmpty(Model.Item.GetString("Link")) ? Model.Item.GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self"; 
+    string cardDesign = Model.Item.GetBoolean("CardDesign") ? "card" : "";
+}
+
+<div class="@cardDesign w-100 h-100 d-flex" style="@backgroundColor">
+    @if (!string.IsNullOrEmpty(link)) {
+        <a href="@link" target="@linkTarget" class="u-overlay">&nbsp;</a>
+        @RenderTheContent()
+    } else {
+        @RenderTheContent()
+    }
+</div>
+
+
+
+@helper RenderTheContent() {
+    string layout = Model.Item.GetList("Layout") != null ? Model.Item.GetList("Layout").SelectedValue : "image-top";
+    string horizontalAlign = Model.Item.GetList("HorizontalAlignment") != null ? "justify-content-" + Model.Item.GetList("HorizontalAlignment").SelectedValue.ToString().ToLower() : "";
+    horizontalAlign = horizontalAlign.Replace("right", "end");
+    string verticalAlign = Model.Item.GetList("VerticalAlignment") != null ? "align-items-" + Model.Item.GetList("VerticalAlignment").SelectedValue.ToString().ToLower() : "";
+    string padding = Model.Item.GetList("Padding") != null ? " p" + Model.Item.GetList("PaddingPosition").SelectedValue.ToLower().Replace("around", "") + "-" + Model.Item.GetList("Padding").SelectedValue.ToLower() : "";
+
+    if (layout == "image-top") {
+        <div class="flex-fill @verticalAlign">
+            @RenderPartial("Components/General/Image.cshtml", Model)
+        </div>
+
+        <div class="h-100 w-100 d-flex @padding @horizontalAlign @verticalAlign">
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) || !string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+                <div>
+                    <div class="d-flex">@RenderPartial("Components/General/ParagraphTitle.cshtml", Model)</div>
+                    <div>@Model.Item.GetString("Text")</div>
+                </div>
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("ButtonOne").GetString("Title"))) {
+                <div class="mt-3">
+                    @ParagraphButton(Model.Item.GetItem("ButtonOne")) 
+                </div>
+            } 
+        </div>  
+    }
+
+    if (layout == "title-top") {
+        if (!string.IsNullOrEmpty(Model.Item.GetString("Title"))) {
+            <div class="w-100 @padding @horizontalAlign @verticalAlign">
+                @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+            </div>
+        }
+
+        <div>
+            @RenderPartial("Components/General/Image.cshtml", Model)
+        </div>
+
+        <div class="w-100 @padding @horizontalAlign @verticalAlign">
+            @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) { 
+                <div>@Model.Item.GetString("Text")</div> 
+            }
+
+            @if (!string.IsNullOrEmpty(Model.Item.GetItem("ButtonOne").GetString("Title"))) {
+                <div class="mt-3">
+                    @ParagraphButton(Model.Item.GetItem("ButtonOne")) 
+                </div>
+            }  
+        </div>
+    }
+
+    if (layout == "image-left") {
+        <div class="d-flex">
+            <div>
+                @RenderPartial("Components/General/Image.cshtml", Model)
+            </div>
+
+            <div class="@padding @horizontalAlign @verticalAlign">
+                @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) || !string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+                    <div>
+                        @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+                        <div>@Model.Item.GetString("Text")</div>
+                    </div>
+                }
+
+                @if (!string.IsNullOrEmpty(Model.Item.GetItem("ButtonOne").GetString("Title"))) {
+                    <div class="mt-3">
+                        @ParagraphButton(Model.Item.GetItem("ButtonOne")) 
+                    </div>
+                }  
+            </div>
+        </div>   
+    }
+    
+}
+
+
+@helper ParagraphButton(ItemViewModel item) { 
+    if (item != null) {
+        if (!string.IsNullOrEmpty(item.GetString("Title"))) {
+            <button href="@item.GetString("Link")" type="button" class="btn @item.GetList("Design").SelectedValue">@item.GetString("Title")</button>
+        }    
+    }
+}
+
+
+
+
+

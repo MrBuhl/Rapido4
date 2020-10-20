@@ -1,0 +1,44 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    int variantFirstCount = 0;
+    VariantInfoViewModel selectedFirstOption = null;
+
+    <h6 class="h6">Colors</h6>
+    <div class="mb-3">
+        @foreach (VariantInfoViewModel option in Model.VariantInfo.VariantInfo) {
+            @RenderOption(option)
+
+            if (variantFirstCount == 0) {
+                selectedFirstOption = option;
+            }
+
+            variantFirstCount++;
+        }
+    </div>
+
+    if (selectedFirstOption.VariantInfo != null) {
+        <h6 class="h6">Sizes</h6>
+        <div class="mb-3">
+            @foreach (VariantInfoViewModel option in selectedFirstOption.VariantInfo) {
+                @RenderOption(option)
+            }
+        </div>
+    }
+}
+
+
+@helper RenderOption(VariantInfoViewModel option) { 
+    if (!string.IsNullOrEmpty(option.OptionImage.Value)) {
+        <img src="/Admin/Public/GetImage.ashx?width=48&height=48&crop=5&image=@option.OptionImage.Value" title="@option.OptionName" class="variant-option-image" />
+    } else if (option.OptionName != null) {
+        if (option.OptionName.Contains("#")) {
+            <div class="variant-option-color" style="background-color: @option.OptionName" title="@option.OptionName"></div>
+        } else {
+            <div class="variant-option-text">@option.OptionName</div>
+        }
+    }
+}

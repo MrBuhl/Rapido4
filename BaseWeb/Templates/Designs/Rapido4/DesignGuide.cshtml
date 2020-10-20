@@ -1,0 +1,474 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@using Dynamicweb.Frontend;
+@using Dynamicweb.Content.Items
+@using Dynamicweb.Imaging.Colors
+
+@MasterPageFile("CleanText.cshtml")
+
+@{ 
+    string paragraphId = HttpContext.Current.Request.QueryString.Get("ParagraphId");
+
+    var colorService = new ColorSwatchService();
+    int areaId = Model.Area.ID;
+
+    var colorCount = 1;
+    var designGuidePageId = GetPageIdByNavigationTag("DesignGuide");
+
+    string[] fontList = new string[50];
+    int fontCount = 0;
+
+    dynamic parentFontFamily = new object() { };
+    string parentFontColor = "#353535";
+    string parentFontSize = "2.5";
+    string parentCasing = "inherit";
+}
+
+@if (paragraphId == null)
+{
+    <style>
+        :root {
+            @foreach (var color in colorService.GetColorSwatch(areaId).Palette)
+            {
+                <text> --brand-color-@(colorCount): @(color.Value);</text>
+                colorCount++;
+            }
+            --bs-primary: var(--brand-color-1);
+            --bs-secondary: var(--brand-color-2);
+        }
+
+        @foreach (var paragraph in Dynamicweb.Services.Paragraphs.GetParagraphsByPageId(designGuidePageId))
+        {
+            string itemName = paragraph.Item.SystemName;
+
+            if (itemName == "ThemeLayout") {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string headingColor = paragraph.Item["HeadingColor"] != null ? paragraph.Item["HeadingColor"].ToString() : "";
+                headingColor = !headingColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, headingColor) : headingColor;
+                string subheadingColor = paragraph.Item["SubheadingColor"] != null ? paragraph.Item["SubheadingColor"].ToString() : "";
+                subheadingColor = !subheadingColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, subheadingColor) : subheadingColor;
+                string textColor = paragraph.Item["TextColor"] != null ? paragraph.Item["TextColor"].ToString() : "";
+                textColor = !textColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, textColor) : textColor;
+                string backgroundColor = paragraph.Item["BackgroundColor"] != null ? paragraph.Item["BackgroundColor"].ToString() : "";
+                backgroundColor = !backgroundColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, backgroundColor) : backgroundColor;
+
+                if (!string.IsNullOrEmpty(cssClassName))
+                {
+                    if (!string.IsNullOrEmpty(headingColor)) {
+                        <text>
+                            .@(cssClassName) .heading {
+                                color: @(headingColor) !important;
+                            }
+                        </text>
+                    }
+                    if (!string.IsNullOrEmpty(subheadingColor)) {
+                        <text>
+                            .@(cssClassName) .caption {
+                                color: @(subheadingColor) !important;
+                            }
+                        </text>
+                    }
+                    if (!string.IsNullOrEmpty(textColor)) {
+                        <text>
+                            .@(cssClassName) .text {
+                                color: @(subheadingColor) !important;
+                            }
+                        </text>
+                    }
+                    if (!string.IsNullOrEmpty(backgroundColor)) {
+                        <text>
+                            .@(cssClassName) .background {
+                                color: @(backgroundColor) !important;
+                            }
+                        </text>
+                    }
+                }
+            }
+
+            if (itemName == "ButtonLayout")
+            {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string fontColor = paragraph.Item["FontColor"] != null ? paragraph.Item["FontColor"].ToString() : "";
+                fontColor = !fontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, fontColor) : fontColor;
+                string backgroundColor = paragraph.Item["BackgroundColor"] != null ? paragraph.Item["BackgroundColor"].ToString() : "";
+                backgroundColor = !backgroundColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, backgroundColor) : backgroundColor;
+                string borderColor = paragraph.Item["BorderColor"] != null ? paragraph.Item["BorderColor"].ToString() : "";
+                borderColor = !borderColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, borderColor) : borderColor;
+                borderColor = borderColor == "transparent" || string.IsNullOrEmpty(borderColor) ? backgroundColor : borderColor;
+                string borderWidth = paragraph.Item["BorderWidth"] != null ? paragraph.Item["BorderWidth"].ToString() : "0";
+                string borderRadius = paragraph.Item["BorderRadius"] != null ? paragraph.Item["BorderRadius"].ToString() : "0";
+                string fontSize = paragraph.Item["FontSize"] != null ? paragraph.Item["FontSize"].ToString() : "1";
+                string fontWeight = paragraph.Item["FontWeight"] != null ? paragraph.Item["FontWeight"].ToString() : "300";
+                string casing = paragraph.Item["Casing"] != null ? paragraph.Item["Casing"].ToString() : "inherit";
+
+                var hoverFontColor = !string.IsNullOrEmpty(fontColor) ? Color.Lighten(fontColor, 10) : null;
+                var hoverBackgroundColor = !string.IsNullOrEmpty(backgroundColor) ? Color.Lighten(backgroundColor, 10) : null;
+                var hoverBorderColor = !string.IsNullOrEmpty(borderColor) ? Color.Lighten(borderColor, 10) : null;
+
+                if (!string.IsNullOrEmpty(cssClassName))
+                {
+                    <text>
+                        .@(cssClassName), .@(cssClassName):disabled, .@(cssClassName).disabled {
+                            color: @(fontColor);
+                            background-color: @(backgroundColor);
+                            border-color: @borderColor;
+                            border-width: @(borderWidth)px;
+                            border-radius: @(borderRadius)px;
+                            font-size: @(fontSize)rem;
+                            font-weight: @fontWeight;
+                            text-transform: @casing;
+                        }
+
+                        .@(cssClassName):hover, .@(cssClassName):focus, .@(cssClassName):active {
+                            color: @(hoverFontColor);
+                            background-color: @(hoverBackgroundColor);
+                            border-color: @hoverBorderColor;
+                        }
+                    </text>
+                }
+            }
+
+            if (itemName == "FontLayout")
+            {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string style = paragraph.Item["Style"] != null ? paragraph.Item["Style"].ToString() : "auto";
+                dynamic fontFamily = Newtonsoft.Json.JsonConvert.DeserializeObject(paragraph.Item["FontFamily"].ToString());
+                string fontColor = paragraph.Item["FontColor"] != null ? paragraph.Item["FontColor"].ToString() : "";
+                fontColor = !fontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, fontColor) : fontColor;
+                string fontSize = paragraph.Item["FontSize"] != null ? paragraph.Item["FontSize"].ToString() : "1";
+                string casing = paragraph.Item["Casing"] != null ? paragraph.Item["Casing"].ToString() : "inherit";
+
+                if (!string.IsNullOrEmpty(cssClassName) && style != "auto")
+                {
+                    <text>
+                        @(cssClassName), .@(cssClassName) {
+                            font-family: "@(fontFamily.Family)";
+                            font-weight: @(fontFamily.SelectedVariant);
+                            color: @(fontColor);
+                            font-size: @(fontSize)rem;
+                            text-transform: @casing;
+                        }
+                    </text>
+                }
+                else if (cssClassName != "text")
+                {
+                    fontFamily = parentFontFamily;
+                    fontColor = parentFontColor;
+                    fontSize = (Math.Round(Convert.ToDouble(parentFontSize) * 0.8, 2)).ToString();
+                    casing = parentCasing;
+
+                    <text>
+                        @(cssClassName), .@(cssClassName) {
+                            font-family: "@(parentFontFamily.Family)";
+                            font-weight: @(parentFontFamily.SelectedVariant);
+                            color: @(parentFontColor);
+                            font-size: @(Math.Round(Convert.ToDouble(parentFontSize) * 0.8, 2))rem;
+                            text-transform: @parentCasing;
+                        }
+                    </text>
+                }
+
+                parentFontFamily = fontFamily;
+                parentFontColor = fontColor;
+                parentFontSize = fontSize;
+                parentCasing = casing;
+
+                if (fontFamily.Family != null)
+                {
+                    fontList[fontCount] = fontFamily.Family;
+                    fontCount++;
+                }
+            }
+
+            if (itemName == "LogoLayout")
+            {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string logoType = paragraph.Item["LogoType"] != null ? paragraph.Item["LogoType"].ToString() : "";
+                dynamic fontFamily = Newtonsoft.Json.JsonConvert.DeserializeObject(paragraph.Item["Font"].ToString());
+                string fontColor = paragraph.Item["FontColor"] != null ? paragraph.Item["FontColor"].ToString() : "";
+                fontColor = !fontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, fontColor) : fontColor;
+                string fontSize = paragraph.Item["FontSize"] != null ? paragraph.Item["FontSize"].ToString() : "1";
+                string casing = paragraph.Item["Casing"] != null ? paragraph.Item["Casing"].ToString() : "inherit";
+
+                if (!string.IsNullOrEmpty(cssClassName) && logoType == "font")
+                {
+                    <text>
+                        .@(cssClassName) {
+                            font-family: "@(fontFamily.Family)";
+                            font-weight: @(fontFamily.SelectedVariant);
+                            color: @(fontColor);
+                            font-size: @(Math.Round(Convert.ToDouble(fontSize) * 0.8, 2))rem;
+                            text-transform: @casing;
+                        }
+                    </text>
+
+                    if (fontFamily.Family != null)
+                    {
+                        fontList[fontCount] = fontFamily.Family;
+                        fontCount++;
+                    }
+                }
+            }
+
+            if (itemName == "PriceLayout")
+            {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string position = paragraph.Item["Position"] != null ? paragraph.Item["Position"].ToString() : "";
+
+                string priceFontColor = paragraph.Item["PriceFontColor"] != null ? paragraph.Item["PriceFontColor"].ToString() : "";
+                priceFontColor = !priceFontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, priceFontColor) : priceFontColor;
+                string priceBackgroundColor = paragraph.Item["PriceBackgroundColor"] != null ? paragraph.Item["PriceBackgroundColor"].ToString() : "";
+                priceBackgroundColor = !priceBackgroundColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, priceBackgroundColor) : priceBackgroundColor;
+                string priceBorderColor = paragraph.Item["PriceBorderColor"] != null ? paragraph.Item["PriceBorderColor"].ToString() : "";
+                priceBorderColor = !priceBorderColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, priceBorderColor) : priceBorderColor;
+                priceBorderColor = priceBorderColor == "transparent" || string.IsNullOrEmpty(priceBorderColor) ? priceBackgroundColor : priceBorderColor;
+                string priceBorderWidth = paragraph.Item["PriceBorderWidth"] != null ? paragraph.Item["PriceBorderWidth"].ToString() : "0";
+                string priceBorderRadius = paragraph.Item["PriceBorderRadius"] != null ? paragraph.Item["PriceBorderRadius"].ToString() : "0";
+                string priceFontSize = paragraph.Item["PriceFontSize"] != null ? paragraph.Item["PriceFontSize"].ToString() : "1";
+                string priceFontWeight = paragraph.Item["PriceFontWeight"] != null ? paragraph.Item["PriceFontWeight"].ToString() : "300";
+
+                string beforeFontColor = paragraph.Item["BeforeFontColor"] != null ? paragraph.Item["BeforeFontColor"].ToString() : "";
+                beforeFontColor = !beforeFontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, beforeFontColor) : beforeFontColor;
+                string beforeBackgroundColor = paragraph.Item["BeforeBackgroundColor"] != null ? paragraph.Item["BeforeBackgroundColor"].ToString() : "";
+                beforeBackgroundColor = !beforeBackgroundColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, beforeBackgroundColor) : beforeBackgroundColor;
+                string beforeBorderColor = paragraph.Item["BeforeBorderColor"] != null ? paragraph.Item["BeforeBorderColor"].ToString() : "";
+                priceBorderColor = !beforeBorderColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, beforeBorderColor) : beforeBorderColor;
+                priceBorderColor = beforeBorderColor == "transparent" || string.IsNullOrEmpty(beforeBorderColor) ? beforeBackgroundColor : beforeBorderColor;
+                string beforeBorderWidth = paragraph.Item["BeforeBorderWidth"] != null ? paragraph.Item["BeforeBorderWidth"].ToString() : "0";
+                string beforeBorderRadius = paragraph.Item["BeforeBorderRadius"] != null ? paragraph.Item["BeforeBorderRadius"].ToString() : "0";
+                string beforeFontSize = paragraph.Item["BeforeFontSize"] != null ? paragraph.Item["BeforeFontSize"].ToString() : "1";
+                string beforeFontWeight = paragraph.Item["BeforeFontWeight"] != null ? paragraph.Item["BeforeFontWeight"].ToString() : "300";
+
+
+                if (!string.IsNullOrEmpty(cssClassName))
+                {
+                    <text>
+                        .@(cssClassName)-group .price {
+                            color: @(priceFontColor);
+                            @if (!string.IsNullOrEmpty(priceBackgroundColor)) { 
+                                <text>background-color: @(priceBackgroundColor);</text> 
+                                <text>padding: 0.5rem 0.75rem;</text>
+                            } else { 
+                                <text>background-color: transparent;</text> 
+                                <text>padding: 0;</text>
+                            }
+                            border-color: @priceBorderColor;
+                            border-width: @(priceBorderWidth)px;
+                            border-radius: @(priceBorderRadius)px;
+                            border-style: solid;
+                            font-size: @(priceFontSize)rem;
+                            font-weight: @priceFontWeight;
+                            display: @position;
+                        }
+
+                        .@(cssClassName)-group .before-price {
+                            color: @(beforeFontColor);
+                            @if (!string.IsNullOrEmpty(beforeBackgroundColor)) { 
+                                <text>background-color: @(beforeBackgroundColor);</text> 
+                                <text>padding: 0.5rem 0.75rem;</text>
+                            } else { 
+                                <text>background-color: transparent;</text> 
+                                <text>padding: 0;</text>
+                            }
+                            border-color: @beforeBorderColor;
+                            border-width: @(beforeBorderWidth)px;
+                            border-radius: @(beforeBorderRadius)px;
+                            border-style: solid;
+                            font-size: @(beforeFontSize)rem;
+                            font-weight: @beforeFontWeight;
+                            display: @position;
+                        }
+                    </text>
+                }
+            }
+
+            if (itemName == "StickerLayout")
+            {
+                string cssClassName = paragraph.Item["CSS_ClassName"] != null ? paragraph.Item["CSS_ClassName"].ToString() : "";
+                string fontColor = paragraph.Item["FontColor"] != null ? paragraph.Item["FontColor"].ToString() : "";
+                fontColor = !fontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, fontColor) : fontColor;
+                string backgroundColor = paragraph.Item["BackgroundColor"] != null ? paragraph.Item["BackgroundColor"].ToString() : "";
+                backgroundColor = !backgroundColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, backgroundColor) : backgroundColor;
+                string borderColor = paragraph.Item["BorderColor"] != null ? paragraph.Item["BorderColor"].ToString() : "";
+                borderColor = !borderColor.Contains("#") ? colorService.GetHexColor(Model.Area.ID, borderColor) : borderColor;
+                borderColor = borderColor == "transparent" || string.IsNullOrEmpty(borderColor) ? backgroundColor : borderColor;
+                string borderWidth = paragraph.Item["BorderWidth"] != null ? paragraph.Item["BorderWidth"].ToString() : "0";
+                string borderRadius = paragraph.Item["BorderRadius"] != null ? paragraph.Item["BorderRadius"].ToString() : "0";
+                string fontSize = paragraph.Item["FontSize"] != null ? paragraph.Item["FontSize"].ToString() : "1";
+                string fontWeight = paragraph.Item["FontWeight"] != null ? paragraph.Item["FontWeight"].ToString() : "300";
+                string padding = paragraph.Item["Padding"] != null ? paragraph.Item["Padding"].ToString() + "rem" : "0";
+                string style = paragraph.Item["Style"] != null ? paragraph.Item["Style"].ToString() : "clean";
+
+                if (!string.IsNullOrEmpty(cssClassName))
+                {
+                    <text>
+                        .@(cssClassName) {
+                            color: @(fontColor);
+                            font-size: @(fontSize)rem;
+                            font-weight: @fontWeight;
+                            padding: 0 @padding;
+                            transform-style: preserve-3d;
+                        }
+                    </text>
+
+                    if (style == "clean") {
+                        <text>
+                            .@(cssClassName) {
+                                @if (!string.IsNullOrEmpty(backgroundColor)) { 
+                                    <text>background-color: @(backgroundColor);</text> 
+                                } else { 
+                                    <text>background-color: transparent;</text> 
+                                }
+                                border-color: @borderColor;
+                                border-width: @(borderWidth)px;
+                                border-radius: @(borderRadius)px;
+                                border-style: solid;
+                            }
+
+                            .@(cssClassName).top-left {
+                                margin-top: 0.5rem;
+                                margin-left: 0.5rem;
+                            }
+                            .@(cssClassName).top-right {
+                                margin-top: 0.5rem;
+                                margin-right: 0.5rem;
+                            }
+                            .@(cssClassName).bottom-right {
+                                margin-bottom: 0.5rem;
+                                margin-right: 0.5rem;
+                            }
+                            .@(cssClassName).bottom-left {
+                                margin-bottom: 0.5rem;
+                                margin-left: 0.5rem;
+                            }
+                        </text>
+                    }
+
+                    if (style == "ball") {
+                        <text>
+                            .@(cssClassName) {
+                                @if (!string.IsNullOrEmpty(backgroundColor)) { 
+                                    <text>background-color: @(backgroundColor);</text> 
+                                } else { 
+                                    <text>background-color: transparent;</text> 
+                                }
+                                border-color: @borderColor;
+                                border-width: @(borderWidth)px;
+                                border-radius: @(borderRadius)px;
+                                border-style: solid;
+                                margin: 0.5rem;
+                                min-width: 70px;
+                                min-height: 70px;
+                                line-height: 70px;
+                                text-align: center;
+                                border-radius: 200px;
+                            }
+                        </text>
+                    }
+
+                    if (style == "triangle") {
+                        <text>
+                            .@(cssClassName).top-left::before {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                top: 0;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 80px 80px 0 0;
+                                border-color: @(backgroundColor) transparent transparent transparent;
+                                background-color: transparent;
+                                transform: translateZ(-1px);
+                            }
+
+                            .@(cssClassName).top-right::before {
+                                content: '';
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 80px 80px 0;
+                                border-color: transparent @(backgroundColor) transparent transparent;
+                                background-color: transparent;
+                                transform: translateZ(-1px);
+                            }
+
+                            .@(cssClassName).bottom-right::before {
+                                content: '';
+                                position: absolute;
+                                right: 0;
+                                bottom: 0;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 0 0 80px 80px;
+                                border-color: transparent transparent @(backgroundColor) transparent;
+                                background-color: transparent;
+                                transform: translateZ(-1px);
+                            }
+
+                            .@(cssClassName).bottom-left::before {
+                                content: '';
+                                position: absolute;
+                                left: 0;
+                                bottom: 0;
+                                width: 0;
+                                height: 0;
+                                border-style: solid;
+                                border-width: 80px 0 0 80px;
+                                border-color: transparent transparent transparent @(backgroundColor);
+                                background-color: transparent;
+                                transform: translateZ(-1px);
+                            }
+                        </text>
+                    }
+
+                    if (style == "offset") {
+                        <text>
+                            .@(cssClassName) {
+                                @if (!string.IsNullOrEmpty(backgroundColor)) { 
+                                    <text>background-color: @(backgroundColor);</text> 
+                                } else { 
+                                    <text>background-color: transparent;</text> 
+                                }
+                                border-color: @borderColor;
+                                border-width: @(borderWidth)px;
+                                border-radius: @(borderRadius)px;
+                                border-style: solid;
+                            }
+
+                            .@(cssClassName).top-left {
+                                margin-top: 0.5rem;
+                                left: -0.5rem;
+                                position: relative;
+                            }
+                            .@(cssClassName).top-right {
+                                margin-top: 0.5rem;
+                                right: -0.5rem;
+                                position: relative;
+                            }
+                            .@(cssClassName).bottom-left {
+                                margin-bottom: 0.5rem;
+                                left: -0.5rem;
+                                position: relative;
+                            }
+                            .@(cssClassName).bottom-right {
+                                margin-bottom: 0.5rem;
+                                right: -0.5rem;
+                                position: relative;
+                            }
+                        </text>
+                    }
+                }
+            }
+        }
+    </style>
+
+    var fontsToLink = string.Join("%7C", fontList.Where(x => !string.IsNullOrEmpty(x)).Distinct().Select(x => string.Format("{0}:100,200,300,400,500,600,700,800,900", x)));
+
+    <link href="https://fonts.googleapis.com/css?family=@fontsToLink" rel="stylesheet">
+} else {
+    @RenderParagraphContent(Convert.ToInt32(paragraphId))
+}

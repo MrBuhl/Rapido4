@@ -1,0 +1,38 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Collections.Generic
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@{
+    BlocksPage paymentInformationCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+    
+    paymentInformationCheckoutPage.Add("PaymentInformationRow", new Block
+    {
+        Id = "PaymentInformation",
+        SortId = 10,
+        Design = new Design { Size = "12", RenderType = RenderType.Column },
+        BlocksList = new List<Block>
+        {
+            new Block
+            {
+                Id = "PaymentInformationTitle",
+                SortId = 10,
+                Design = new Design { RenderType = RenderType.CardHeader, CssClass = "u-color-light--bg" },
+                Component = new Heading { Title = Translate("Payment information"), Level = 3, Icon = new Icon { Name = "fa-list-ul", Prefix = "fas", LabelPosition = IconLabelPosition.After }}
+            },
+            new Block
+            {
+                Id = "PaymentInformationBody",
+                SortId = 20,
+                Design = new Design { RenderType = RenderType.CardBody, CssClass = "u-color-light--bg" },
+                Template = RenderPaymentInformationBody()
+            }
+        }
+    });
+}
+
+@helper RenderPaymentInformationBody() {
+    <p class="u-no-margin--bottom"><span class="u-bold">@Translate("Order Id"):</span> @GetString("Ecom:Order.ID")</p>
+    <p class="u-no-margin--bottom"><span class="u-bold">@Translate("Amount"):</span> @GetString("Ecom:Order.Price.PriceWithVATFormatted")</p>
+    <p class="u-no-margin--bottom"><span class="u-bold">@Translate("Currency"):</span> @GetString("Ecom:Order.Currency")</p>
+}

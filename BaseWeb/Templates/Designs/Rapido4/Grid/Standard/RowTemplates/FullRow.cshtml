@@ -1,0 +1,8 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+
+@Include("RowBase.cshtml")
+
+@RenderRow(Model, "full")

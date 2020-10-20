@@ -1,0 +1,24 @@
+
+//Circle icon
+.circle-icon {
+    font-size: 10px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 9px;
+    display: inline-block;
+    position: relative;
+    width: 24px;
+}
+
+.circle-icon::after {
+    content: '';
+    position: absolute;
+    border: 1px solid #333;
+    border-color: inherit;
+    border-radius: 100px;
+    margin: 0;
+    width: 24px;
+    height: 24px;
+    right: 0;
+    top: -8px;
+}

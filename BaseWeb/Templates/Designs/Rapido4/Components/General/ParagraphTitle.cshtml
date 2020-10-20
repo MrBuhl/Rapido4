@@ -1,0 +1,21 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+ @if (!Model.Item.GetBoolean("HideTitle") || Model.Item.GetString("HideTitle") == null) {
+    string title = !string.IsNullOrEmpty(Model.Item.GetString("Title")) ? Model.Item.GetString("Title") : "";
+    title = Model.Item.GetItem("Content") != null ? Model.Item.GetItem("Content").GetString("Title") : title;
+
+    if (!string.IsNullOrEmpty("HeadingHTMLElement")) {
+        string headingStyle = Model.Item.GetString("HeadingStyle") != null ? Model.Item.GetList("HeadingStyle").SelectedValue + " heading" : "h2 heading";
+        headingStyle = Model.Item.GetItem("Adjust") != null ? Model.Item.GetItem("Adjust").GetList("HeadingStyle").SelectedValue + " heading" : headingStyle;
+        string headingElementTagOpen = !string.IsNullOrEmpty(Model.Item.GetString("HeadingHTMLElement")) ? "<" + Model.Item.GetList("HeadingHTMLElement").SelectedValue + " class=\"" + headingStyle + "\">" : "<h2 class=\"" + headingStyle + "\">";
+        headingElementTagOpen = Model.Item.GetItem("Adjust") != null ? "<" + Model.Item.GetItem("Adjust").GetList("HeadingHTMLElement").SelectedValue + " class=\"" + headingStyle + "\">" : headingElementTagOpen;
+        string headingElementTagClose = headingElementTagOpen.Replace("<", "</");
+
+        @headingElementTagOpen@title@headingElementTagClose
+    } else {
+        <h2 class="h2 heading">@title</h2>
+    }
+}

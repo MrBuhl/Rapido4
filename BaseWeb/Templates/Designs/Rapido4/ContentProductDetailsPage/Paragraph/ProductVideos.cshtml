@@ -1,0 +1,73 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using System.Text.RegularExpressions
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using Dynamicweb.Rapido.Blocks.Components
+@using Dynamicweb.Rapido.Blocks.Components.General
+@using Dynamicweb.Content.Items
+@using System.Web
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+
+    var selectedVideoCategories = Model.Item.GetList("VideoAssets").SelectedValues;
+
+    if (selectedVideoCategories != null && product.AssetCategories != null) {
+        var videoCategories = product.AssetCategories.Where(x => selectedVideoCategories.Contains(x.SystemName));
+        var videosCount = 0;
+
+        foreach (AssetCategoryViewModel category in videoCategories) {
+            foreach (var asset in category.Assets) {
+                videosCount++;
+            }
+        }
+
+        if (videosCount > 0) {
+            <div>
+                @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+
+                <div class="row">
+                    @foreach (AssetCategoryViewModel category in videoCategories) {
+                        foreach (var asset in category.Assets) {
+                            string videoCode = asset.Value;
+                            Regex regex = new Regex(@".be\/(.[^?]*)");
+                            Match match = regex.Match(videoCode);
+                            string videoId = "";
+                            if (match.Success)
+                            {
+                                videoId = match.Groups[1].Value;
+                            }
+                            else
+                            {
+                                regex = new Regex(@"v=([^&]+)");
+                                match = regex.Match(videoCode);
+                                if (match.Success)
+                                {
+                                    videoId = match.Groups[1].Value;
+                                }
+                            }
+
+                            <div class="col-sm-12 col-lg-4">
+                                <div class="video-wrapper">
+                                    <div class="js-youtube-video" data-video="@videoId" id="ytPlayer@(Guid.NewGuid().ToString("N"))" data-auto-play="False" data-enable-controls="1"></div>
+                                </div>
+                            </div>
+                        }
+                    }
+                </div>
+            </div>
+        }
+    } else if (isVisualEditor) {
+        <div class="alert alert-dark m-0" role="alert">
+            <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Videos: Product videos will be shown here, if any")</span>
+        </div>
+    }
+}

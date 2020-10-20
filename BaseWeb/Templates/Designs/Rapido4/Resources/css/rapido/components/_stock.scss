@@ -1,0 +1,31 @@
+
+.stock-icon {
+    display: inline-block;
+    border-radius: 100px;
+    width: 8px;
+    height: 8px;
+
+    &.in-stock {
+        background-color: $success;
+    }
+
+    &.out-of-stock {
+        background-color: $danger;
+    }
+
+    &.near-stock {
+        background-color: $warning;
+    }
+}
+
+.in-stock {
+    color: $success;
+}
+
+.out-of-stock {
+    color: $danger;
+}
+
+.near-stock {
+    color: $warning;
+}

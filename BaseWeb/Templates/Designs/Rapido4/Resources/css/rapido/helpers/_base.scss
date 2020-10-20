@@ -1,0 +1,100 @@
+
+//Row heights
+.row-height-xs > * {
+    min-height: 60px;
+
+    .carousel-item, .image-paragraph {
+        height: 60px;
+        overflow: hidden;
+    }
+}
+
+.row-height-sm > * {
+    min-height: 150px;
+
+    .carousel-item, .image-paragraph {
+        height: 150px;
+        overflow: hidden;
+    }
+}
+
+.row-height-md > * {
+    min-height: 220px;
+
+    .carousel-item, .image-paragraph {
+        height: 220px;
+        overflow: hidden;
+    }
+}
+
+.row-height-lg > * {
+    min-height: 350px;
+
+    .carousel-item, .image-paragraph {
+        height: 350px;
+        overflow: hidden;
+    }
+}
+
+.row-height-xl > * {
+    min-height: 550px;
+
+    .carousel-item, .image-paragraph {
+        height: 550px;
+        overflow: hidden;
+    }
+}
+
+.row-height-xxl > * {
+    min-height: 680px;
+
+    .carousel-item, .image-paragraph {
+        height: 680px;
+        overflow: hidden;
+    }
+}
+                                                                                                                 
+.row-height-auto > * {
+    min-height: auto;
+
+    .carousel-item, .image-paragraph {
+        height: 350px;
+        overflow: hidden;
+    }
+}
+
+.row-height-screen > * {
+    height: 100vh;
+
+    .carousel-item, .image-paragraph {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+
+.w-50px {
+    width: 50px !important;
+    max-width: 50px;
+}
+
+.w-60px {
+    width: 60px !important;
+    max-width: 60px;
+}
+
+.w-80px {
+    width: 80px !important;
+    max-width: 80px;
+}
+
+@media (min-width: 992px) {
+    .w-lg-220px {
+        width: 220px;
+        max-width: 220px;
+    }
+}
+
+.bg-gray-light {
+    background-color: #e4e4e4;
+}

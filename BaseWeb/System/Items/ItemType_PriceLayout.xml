@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Layout/DesignGuide" name="Price layout" systemName="PriceLayout" description="A price layout element" icon="Money" iconColor="None" image="" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="DesignName" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Design name" systemName="DesignName" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.TextEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.TextEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="CSS Class name" systemName="CSS_ClassName" description="I.e. btn-primary, btn-secondary etc." type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.TextEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.TextEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Position" systemName="Position" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="block">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Block" value="block" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PricePosBlock.svg" />
+            <option name="Inline" value="inline" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PricePosInline.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Font size" systemName="PriceFontSize" description="In rem" type="System.Double, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="1">
+        <editor type="Dynamicweb.Content.Items.Editors.DecimalEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DecimalEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="FontWeight" systemName="PriceFontWeight" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="300">
+        <editor type="Dynamicweb.Content.Items.Editors.DropDownListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="RemoveNothingSelected" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="100" value="100" icon="" />
+            <option name="200" value="200" icon="" />
+            <option name="300" value="300" icon="" />
+            <option name="400" value="400" icon="" />
+            <option name="500" value="500" icon="" />
+            <option name="600" value="600" icon="" />
+            <option name="700" value="700" icon="" />
+          </Static>
+        </options>
+      </field>
+      <field name="Font color" systemName="PriceFontColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="#333">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Background color" systemName="PriceBackgroundColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="transparent">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border color" systemName="PriceBorderColor" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border width" systemName="PriceBorderWidth" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="2">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.IntegerEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border radius" systemName="PriceBorderRadius" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="0">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.IntegerEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Font size" systemName="BeforeFontSize" description="In rem" type="System.Double, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="1">
+        <editor type="Dynamicweb.Content.Items.Editors.DecimalEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DecimalEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="FontWeight" systemName="BeforeFontWeight" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="300">
+        <editor type="Dynamicweb.Content.Items.Editors.DropDownListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="RemoveNothingSelected" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="100" value="100" icon="" />
+            <option name="200" value="200" icon="" />
+            <option name="300" value="300" icon="" />
+            <option name="400" value="400" icon="" />
+            <option name="500" value="500" icon="" />
+            <option name="600" value="600" icon="" />
+            <option name="700" value="700" icon="" />
+          </Static>
+        </options>
+      </field>
+      <field name="Font color" systemName="BeforeFontColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="#333">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Background color" systemName="BeforeBackgroundColor" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="transparent">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border color" systemName="BeforeBorderColor" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border width" systemName="BeforeBorderWidth" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="2">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.IntegerEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Border radius" systemName="BeforeBorderRadius" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="0">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.IntegerEditor" /></editorConfuguration>
+        </editor>
+      </field>
+    </fields>
+    <rules>
+      <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Allowed parents" type="Dynamicweb.Content.Items.Activation.ParentRestrictionRule, Dynamicweb" value="RootOfWebsite,RegularPage" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Paragraphs,ItemList" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="Information" systemName="Information" collapsibleState="None" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="DesignName" />
+            <field systemName="CSS_ClassName" />
+            <field systemName="Position" />
+          </fields>
+        </group>
+        <group name="Price" systemName="Price" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="PriceFontSize" />
+            <field systemName="PriceFontWeight" />
+            <field systemName="PriceFontColor" />
+            <field systemName="PriceBackgroundColor" />
+            <field systemName="PriceBorderColor" />
+            <field systemName="PriceBorderWidth" />
+            <field systemName="PriceBorderRadius" />
+          </fields>
+        </group>
+        <group name="Before price" systemName="Before price" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="BeforeFontSize" />
+            <field systemName="BeforeFontWeight" />
+            <field systemName="BeforeFontColor" />
+            <field systemName="BeforeBackgroundColor" />
+            <field systemName="BeforeBorderColor" />
+            <field systemName="BeforeBorderWidth" />
+            <field systemName="BeforeBorderRadius" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

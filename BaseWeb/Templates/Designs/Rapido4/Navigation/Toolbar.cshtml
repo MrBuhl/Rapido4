@@ -1,0 +1,38 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb
+
+@{ 
+    string spaceBetween = !string.IsNullOrEmpty(Model.Parameters["SpaceBetween"].ToString()) ? "space-between--" + Model.Parameters["SpaceBetween"].ToString() : "";
+}
+
+<ul class="navbar-nav main @spaceBetween dwnavigation">
+    @foreach (var node in Model.Nodes)
+    {
+        string icon = "";
+        bool hideTitle = false;
+        if (Services.Pages.GetPage(node.PageId) != null) {
+            icon = Services.Pages.GetPage(node.PageId).PropertyItem["Icon"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["Icon"].ToString() : "";
+            hideTitle = Services.Pages.GetPage(node.PageId).PropertyItem["HideTitle"] != null ? Convert.ToBoolean(Services.Pages.GetPage(node.PageId).PropertyItem["HideTitle"]) : false;
+        }
+
+        <li class="nav-item">
+            @if (node.IsClickable)
+            {
+                <a class="nav-link @(node.IsActive ? "active" : "")" href="@node.Link" title="@node.Name">
+                    @if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-2"></i>}
+                    @if (!hideTitle) {
+                        @node.Name
+                    }
+                </a>
+            } else {
+                <span class="nav-link" href="@node.Link" title="@node.Name">
+                    @if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-2"></i>}
+                    @if (!hideTitle) {
+                        @node.Name
+                    }
+                </span>
+            }
+        </li>
+    }
+</ul>
+

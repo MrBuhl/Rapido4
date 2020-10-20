@@ -1,0 +1,25 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb
+
+@RenderNodes(Model.Nodes)
+
+@helper RenderNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        var hasChildren = node.Nodes.Count() > 0;
+        string icon = "";
+        if (Services.Pages.GetPage(node.PageId) != null) {
+            icon = Services.Pages.GetPage(node.PageId).PropertyItem["Icon"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["Icon"].ToString() : "";
+        }
+
+        <li>
+            @if (node.IsClickable)
+            {
+                <a class="dropdown-item @(node.IsActive ? "active" : "")" href="@node.Link" title="@node.Name">@if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-3"></i>}@node.Name</a>
+            } else {
+                <span class="dropdown-item" title="@node.Name">@if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-2"></i>}@node.Name</span>
+            }
+        </li>
+    }
+}

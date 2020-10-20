@@ -1,0 +1,33 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using System.Web
+
+@Include("ParagraphBase.cshtml")
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+
+    string headingStyle = Model.Item.GetString("HeadingStyle") != null ? Model.Item.GetList("HeadingStyle").SelectedValue : "h2";
+    string headingElementTagOpen = Model.Item.GetString("HeadingHTMLElement") != null ? "<" + Model.Item.GetList("HeadingHTMLElement").SelectedValue + " class=\"" + headingStyle + "\">" : "<h2 style=\"" + headingStyle + "\">";
+    string headingElementTagClose = headingElementTagOpen.Replace("<", "</");
+}
+
+@if (!string.IsNullOrEmpty(product.Name)) {
+    <div>
+        @headingElementTagOpen@product.Name@headingElementTagClose
+    </div>
+} else if (isVisualEditor) {
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Product title: The product title will be shown here, if any")</span>
+    </div>
+}
+

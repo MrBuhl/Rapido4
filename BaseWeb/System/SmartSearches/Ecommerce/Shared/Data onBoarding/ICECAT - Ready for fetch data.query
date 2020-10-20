@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="db1da633-bb8a-4e0a-812b-5ad3867a96a0" Name="ICECAT - Ready for fetch data">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Contains" Disabled="false">
+        <Left>
+          <FieldExpression Field="ParentGroupIDs" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="GROUP265" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="IsEmpty" Disabled="false">
+        <Left>
+          <FieldExpression Field="CustomField_icecat_date" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="Empty" Type="System.String" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Workflow state" SystemName="" Source="ProductWorkflowStateId" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="3" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="4" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="5" />
+    <Field Name="EAN" SystemName="" Source="ProductEAN" Sort="6" />
+    <Field Name="Manufacturer ID" SystemName="" Source="ProductManufacturerID" Sort="7" />
+    <Field Name="Manufacturer name" SystemName="" Source="ManufacturerName" Sort="8" />
+  </ViewFields>
+  <ViewLanguages />
+  <CompletionRules />
+  <CompletionLanguages />
+</Query>

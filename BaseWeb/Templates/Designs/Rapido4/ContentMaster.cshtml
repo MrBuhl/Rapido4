@@ -1,0 +1,283 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@using System.Web
+@using Dynamicweb
+@using Dynamicweb.Frontend
+@using Dynamicweb.Frontend.Devices
+@using Dynamicweb.Extensibility
+@using Dynamicweb.Content
+@using Dynamicweb.Security
+@using Dynamicweb.Core
+@using System
+@using System.Web
+@using System.IO
+@using System.Net
+
+@{ 
+    bool removeMasterLayout = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("RemoveMasterLayout")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("RemoveMasterLayout")) : false;
+}
+
+@functions {
+    string getFontFamily(params string[] items)
+    {
+        var itemParent = Pageview.AreaSettings;
+        foreach (var item in items)
+        {
+            itemParent = itemParent.GetItem(item);
+            if (itemParent == null)
+            {
+                return null;
+            }
+        }
+
+        var googleFont = itemParent.GetGoogleFont("FontFamily");
+        if (googleFont == null)
+        {
+            return null;
+        }
+        return googleFont.Family.Replace(" ", "+");
+    }
+
+    public class ManifestIcon
+    {
+        public string src { get; set; }
+        public string type { get; set; }
+        public string sizes { get; set; }
+    }
+
+    public class Manifest
+    {
+        public string name { get; set; }
+        public string short_name { get; set; }
+        public string start_url { get; set; }
+        public string display { get; set; }
+        public string background_color { get; set; }
+        public string theme_color { get; set; }
+        public List<ManifestIcon> icons { get; set; }
+    }
+}
+
+@if (!removeMasterLayout) { 
+    var swatches = new Dynamicweb.Content.Items.ColorSwatchService();
+    var brandColors = swatches.GetColorSwatch(1);
+    string brandColorOne = brandColors.Palette["BrandColor1"];
+
+    var fonts = new string[] {
+    getFontFamily("Layout", "HeaderFont"),
+    getFontFamily("Layout", "SubheaderFont"),
+    getFontFamily("Layout", "TertiaryHeaderFont"),
+    getFontFamily("Layout", "BodyText"),
+    getFontFamily("Layout", "Header", "ToolsFont"),
+    getFontFamily("Layout", "Header", "NavigationFont"),
+    getFontFamily("Layout", "MobileNavigation", "Font"),
+    getFontFamily("ProductList", "Facets", "HeaderFont"),
+    getFontFamily("ProductPage", "PriceFontDesign"),
+    getFontFamily("Ecommerce", "SaleSticker", "Font"),
+    getFontFamily("Ecommerce", "NewSticker", "Font"),
+    getFontFamily("Ecommerce", "CustomSticker", "Font")
+    };
+
+    var family = string.Join("%7C", fonts.Where(x => !string.IsNullOrEmpty(x)).Distinct().Select(x => string.Format("{0}:100,200,300,400,500,600,700,800,900", x)));
+
+    string autoCssLink = "/Files/Templates/Designs/Rapido4/resources/css/website/rapido4_" + Model.Area.ID.ToString() + ".min.css?ticks=" + Model.Area.UpdatedDate.Ticks;
+    string favicon = "/Files/Images/favicon.png";
+    bool useFontAwesomePro = true;
+    string fontAwesomeCssLink = "/Files/Templates/Designs/Rapido4/resources/icons/fontawesome/free/css/all.min.css";
+    if (useFontAwesomePro)
+    {
+        fontAwesomeCssLink = "/Files/Templates/Designs/Rapido4/resources/icons/fontawesome/pro/css/all.min.css";
+    }
+
+    bool isNavigationStickyMenu = false;
+    string stickyTop = isNavigationStickyMenu ? "sticky-top" : "";
+    string headerShadow = "top-container--shadow";
+    string pagePos = isNavigationStickyMenu ? "js-page-pos" : "";
+
+    string cartTotalProducts = Model.Cart.TotalProductsCount != 0.0 ? Model.Cart.TotalProductsCount.ToString() : "0";
+
+
+    <!DOCTYPE html>
+
+    <html lang="@Pageview.Area.CultureInfo.TwoLetterISOLanguageName">
+        <head>
+            <!-- Rapido version 4.0 -->
+
+            @if (!string.IsNullOrEmpty(Model.Area.Item.GetItem("Settings").GetString("AppName")) && Model.Area.Item.GetItem("Settings").GetFile("AppIcon") != null)
+            {
+                Manifest manifest = new Manifest
+                {
+                    name = Model.Area.Item.GetItem("Settings").GetString("AppName"),
+                    short_name = !string.IsNullOrEmpty(Model.Area.Item.GetItem("Settings").GetString("AppShortName")) ? Model.Area.Item.GetItem("Settings").GetString("AppShortName") : Model.Area.Item.GetItem("Settings").GetString("AppName"),
+                    start_url = "/",
+                    display = "standalone",
+                    background_color = Model.Area.Item.GetItem("Settings").GetString("AppBackgroundColor"),
+                    theme_color = Model.Area.Item.GetItem("Settings").GetString("AppThemeColor")
+                };
+
+                manifest.icons = new List<ManifestIcon> {
+                    new ManifestIcon {
+                        src = "/Admin/Public/GetImage.ashx?width=192&height=192&crop=5&image=" + Model.Area.Item.GetItem("Settings").GetFile("AppIcon").PathUrlEncoded,
+                        sizes = "192x192",
+                        type = "image/png"
+                    },
+                    new ManifestIcon {
+                        src = "/Admin/Public/GetImage.ashx?width=512&height=512&crop=5&image=" + Model.Area.Item.GetItem("Settings").GetFile("AppIcon").PathUrlEncoded,
+                        sizes = "512x512",
+                        type = "image/png"
+                    },
+                    new ManifestIcon {
+                        src = "/Admin/Public/GetImage.ashx?width=1024&height=1024&crop=5&image=" + Model.Area.Item.GetItem("Settings").GetFile("AppIcon").PathUrlEncoded,
+                        sizes = "1024x1024",
+                        type = "image/png"
+                    }
+                };
+
+                string manifestFilePath = HttpContext.Current.Request.MapPath("/Files/Templates/Designs/Rapido/manifest.json");
+                string manifestJSON = Newtonsoft.Json.JsonConvert.SerializeObject(manifest);
+                string currentManifest = File.ReadAllText(manifestFilePath);
+
+                if (manifestJSON != currentManifest)
+                {
+                    File.WriteAllText(manifestFilePath, manifestJSON);
+                }
+            }
+
+            <meta charset="utf-8" />
+            <title>@Model.Title</title>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <meta name="robots" content="index, follow">
+            <meta name="theme-color" content="@brandColorOne" />
+
+            @if (Model.MetaTags != null && !Model.MetaTags.Contains("og:image") && Model.PropertyItem != null && Model.PropertyItem.GetFile("OpenGraphImage") != null)
+            {
+                Pageview.Meta.AddTag("og:image", string.Format("{0}://{1}{2}", Dynamicweb.Context.Current.Request.Url.Scheme, HttpContext.Current.Request.Url.Host, Model.PropertyItem.GetFile("OpenGraphImage")));
+            }
+
+            @if (!Model.MetaTags.Contains("og:description") && !string.IsNullOrEmpty(Model.Description))
+            {
+                Pageview.Meta.AddTag("og:description", Model.Description);
+            }
+
+            @{ 
+                Pageview.Meta.AddTag("og:title", Model.Title);
+                Pageview.Meta.AddTag("og:site_name", Model.Name);
+                Pageview.Meta.AddTag("og:url", HttpContext.Current.Request.Url.ToString());
+                Pageview.Meta.AddTag("og:type", "Website");
+
+                if (!string.IsNullOrEmpty(Model.Area.Item.GetItem("Settings").GetString("FacebookAppID"))) {
+                    Pageview.Meta.AddTag("fb:app_id", Model.Area.Item.GetItem("Settings").GetString("FacebookAppID"));
+                }
+            }
+
+            @Model.MetaTags
+
+            @*Favicon*@
+            <link href="@favicon" rel="icon" type="image/png">
+
+            @*Rapido CSS (Incl. Bootsrap)*@
+            <link rel="stylesheet" href="/Files/Templates/Designs/Rapido4/Resources/css/rapido/rapido.min.css" type="text/css">
+
+            @*CSS from Website Settings*@
+            @*<link rel="stylesheet" id="WebsiteSettingsCSS" href="@autoCssLink" type="text/css">*@
+            @Include("DesignGuide.cshtml")
+
+            @*Custom CSS*@
+            <link rel="stylesheet" id="CustomCSS" type="text/css" href="/Files/Templates/Designs/Rapido4/Resources/css/custom/custom.css">
+
+            @*Font awesome*@
+            <link rel="stylesheet" href="@fontAwesomeCssLink" type="text/css">
+
+            @*Flag icon*@
+            @if (Model.Area.Languages.Count > 1) {
+                <link rel="stylesheet" href="/Files/Templates/Designs/Rapido4/Resources/css/flags/flag-icon.min.css" type="text/css">
+            }
+
+            @*Fonts*@
+            <link href="https://fonts.googleapis.com/css?family=@family" rel="stylesheet">
+
+            @{ 
+                PushPromise(favicon);
+                PushPromise(fontAwesomeCssLink);
+                PushPromise("/Files/Templates/Designs/Rapido4/Resources/css/rapido/rapido.min.css");
+                PushPromise(autoCssLink);
+                PushPromise("/Files/Images/placeholder.gif");
+                PushPromise("/Files/Templates/Designs/Rapido/css/fonts/flag-icon.min.css");
+            }   
+        
+            @if (!string.IsNullOrEmpty(Model.Area.Item.GetItem("Settings").GetString("AppName")))
+            {
+                <link rel="manifest" href="/Files/Templates/Designs/Rapido/manifest.json">
+                PushPromise("/Files/Templates/Designs/Rapido/manifest.json");
+            }
+        </head>
+
+        <body class="item-id:@Model.Area.ItemType" id="Area_@(Model.Area.ID)">
+            <nav class="navbar navbar-light navbar-expand-lg p-0 @stickyTop @headerShadow" role="navigation" id="Top">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="container-fluid p-0">
+                        @if (Pageview.Device.ToString() != "Mobile") {
+                            @RenderGrid(GetPageIdByNavigationTag("MasterHeaderDesktopLayout"))
+                        } else {
+                            @RenderGrid(GetPageIdByNavigationTag("MasterHeaderMobileLayout"))
+                        }
+                    </div>
+                </div>
+            </nav>
+
+            <main class="text">
+                <div class="@pagePos">
+                    <div id="content">
+                        @RenderPageContent()
+                    </div>
+                </div>
+            </main>
+
+            <footer>
+                @if (Pageview.Device.ToString() != "Mobile") {
+                    @RenderGrid(GetPageIdByNavigationTag("MasterFooterDesktopLayout"))
+                } else {
+                    @RenderGrid(GetPageIdByNavigationTag("MasterFooterMobileLayout"))
+                }
+            </footer>
+
+            <script src="/Files/Templates/Designs/Rapido4/Resources/js/bootstrap/bootstrap.bundle.min.js"></script>
+            <script src="/Files/Templates/Designs/Rapido4/Resources/js/rapido/rapido.js"></script>
+
+            @{ 
+                PushPromise("/Files/Templates/Designs/Rapido4/Resources/js/bootstrap/bootstrap.min.js");
+            }
+
+            @if (Pageview.Device != Dynamicweb.Frontend.Devices.DeviceType.Tablet && Pageview.Platform != Dynamicweb.Frontend.Devices.PlatformType.Ios)
+            {
+                <script>
+                    let isIpadIOS = (/iPad/.test(navigator.platform) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1)) && !window.MSStream;
+                    if (isIpadIOS) {
+                        var separator = (window.location.href.indexOf("?") === -1) ? "?" : "&";
+                        window.location.href = window.location.href + separator + "DeviceType=Tablet&PlatformType=Ios";
+                    }
+                </script>
+            }
+
+            @* Cart quantity fix *@
+            <script>
+                var totalQuantity = @(cartTotalProducts);
+
+                document.querySelectorAll(".js-cart-qty").forEach(function (el) {
+                    el.innerHTML = totalQuantity;
+                })
+            </script>
+        </body>
+    </html>
+} else {
+    @RenderPageContent()
+}
+
+@*Hack due to weird, limiting error*@
+@helper RenderPageContent() { 
+    <text>
+        @ContentPlaceholder()
+    </text>  
+}
+

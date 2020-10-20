@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 19.2.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<svg version="1.1" id="Lag_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 448 512" style="enable-background:new 0 0 448 512;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:#0089E0;}
+	.st1{fill:#FFFFFF;}
+	.st2{font-family:'WorkSans-Regular';}
+	.st3{font-size:90.75px;}
+</style>
+<path d="M352,128C352,57.4,294.6,0,224,0C153.4,0,96,57.4,96,128H0v304c0,44.2,35.8,80,80,80h288c44.2,0,80-35.8,80-80V128H352z
+	 M224,32c52.9,0,96,43.1,96,96H128C128,75.1,171.1,32,224,32z M416,432c0,26.5-21.5,48-48,48H80c-26.5,0-48-21.5-48-48V160h64v48
+	c0,8.8,7.2,16,16,16s16-7.2,16-16v-48h192v48c0,8.8,7.2,16,16,16s16-7.2,16-16v-48h64V432z"/>
+<g>
+	<path class="st0" d="M428.9,146.7H241.7c-10.6,0-19.1-8.6-19.1-19.1V52.1c0-10.6,8.6-19.1,19.1-19.1h187.2
+		c10.6,0,19.1,8.6,19.1,19.1v75.4C448,138.1,439.4,146.7,428.9,146.7z"/>
+	<text transform="matrix(1 0 0 1 243.7359 119.4169)" class="st1 st2 st3">PRO</text>
+</g>
+</svg>

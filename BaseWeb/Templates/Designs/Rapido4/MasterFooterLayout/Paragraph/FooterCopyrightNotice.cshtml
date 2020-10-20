@@ -1,0 +1,11 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+@{ 
+    string year = DateTime.Now.Year.ToString();
+}
+
+@if (!string.IsNullOrEmpty(Model.Item.GetString("Title"))) {
+    <div>© @year @Model.Item.GetString("Title") - @Translate("All rights reserved")</div> 
+}
+

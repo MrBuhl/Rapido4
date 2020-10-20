@@ -1,0 +1,23 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    string layout = GetViewParameterString("layout") != null ? GetViewParameterString("layout") : "";
+}
+
+<div>
+	<div class="d-inline-block">
+		<i class="fa fa-star rating active"></i>
+        <i class="fa fa-star rating active"></i>
+		<i class="fa fa-star rating active"></i>
+        <i class="fa fa-star rating active"></i>
+		<i class="fa fa-star rating"></i>
+	</div>
+	@if (layout != "compact") {
+		<small class="text-muted d-inline-block">132 reviews</small>
+    } else {
+	<small class="text-muted d-inline-block">132</small>
+    }
+</div>

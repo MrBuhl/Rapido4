@@ -1,0 +1,42 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+
+@if (Model.Nodes.Count() > 0) {
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            @RenderNodes(Model.Nodes)
+        </ol>
+    </nav>
+}
+
+
+@helper RenderNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        <li class="breadcrumb-item @(node.IsActive ? "active" : "")" @(node.IsActive ? "aria-current=\"page\"" : "")>
+            <a href="@node.Link" title="@node.Name" class="breadcrumb-link">@node.Name</a>
+        </li>
+        @RenderNodes(node.Nodes)
+    }
+}
+
+@helper RenderSchemaItem(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes, int position)
+{
+    foreach (var node in nodes)
+    {
+        <text>{
+          "@@type": "ListItem",
+          "position": @position,
+          "name": "@node.Name",
+          "item": "@(Dynamicweb.Context.Current.Request.Url.Scheme + "://" + Dynamicweb.Context.Current.Request.Url.Host +  node.Link)"
+        }@(node.Nodes.Count() > 0 ? "," : "")</text>
+        @RenderSchemaItem(node.Nodes, position + 1)
+    }
+}
+<script type="application/ld+json">
+    {
+      "@@context": "https://schema.org",
+      "@@type": "BreadcrumbList",
+      "itemListElement": [@RenderSchemaItem(Model.Nodes, 1)]
+    }
+</script>

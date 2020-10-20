@@ -1,0 +1,127 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend.Navigation
+@using System.Web
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductListViewModel productList = new ProductListViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductList"))
+    {
+        productList = (ProductListViewModel)System.Web.HttpContext.Current.Items["ProductList"];
+    }
+
+    bool facetsFound = false;
+
+    if (productList.FacetGroups != null) {
+        facetsFound = productList.FacetGroups.Count() > 0 ? true : false;
+    }
+
+    string url = HttpContext.Current.Request.RawUrl;
+    if (!url.Contains("removeMasterLayout")) {
+        url += url.Contains("?") ? "&removeMasterLayout=true" : "?removeMasterLayout=true";
+    }
+}
+
+@if (facetsFound || Model.Item.GetBoolean("EnableGroupNavigation")) {
+    <form method="post" action="@url" data-response-target-element="content">
+        <input type="hidden" name="PageSize" value="9" />
+
+        @if (Model.Item.GetBoolean("EnableGroupNavigation")) {
+            var navigationSettings = new NavigationSettings();
+            navigationSettings.StartLevel = 1;
+            navigationSettings.StopLevel = 10;
+            navigationSettings.ExpandMode = ExpandMode.All;
+
+            <div class="card mb-3">
+                <div class="card-header bg-white">
+                    <h6 class="card-title m-0 my-auto">@Translate("Navigation")</h6>
+                </div>
+                <div class="card-body">
+                    @Navigation.RenderNavigation("Navigation/ProductGroupTreeNavigation.cshtml", navigationSettings)
+                </div>
+            </div>
+        }
+
+        @foreach (FacetGroupViewModel facetGroup in productList.FacetGroups) {
+            foreach (FacetViewModel facet in facetGroup.Facets) {
+                if (facet.Options.Count() > 0) {
+                    <div class="card mb-3">
+                        <div class="card-header bg-white">
+                            <div data-toggle="collapse" data-target="#FacetGroup_@facet.Name.Replace(" ", "")" class="d-flex" role="button" aria-expanded="true" aria-controls="FacetGroup_@facet.Name.Replace(" ", "")">
+			                    <h6 class="card-title m-0 my-auto flex-fill">@facet.Name</h6>
+                                <i class="fa fa-chevron-down my-auto"></i>
+		                    </div>
+                        </div>
+                        <div class="collapse show" id="FacetGroup_@facet.Name.Replace(" ", "")">
+                            <div class="card-body">
+			                    @foreach (FacetOptionViewModel facetOption in facet.Options) {
+                                    string renderType = facet.RenderType;
+
+                                    if (renderType == "Colors") {
+                                        @RenderColorOption(facet, facetOption)
+                                    } else {
+                                        @RenderCheckboxOption(facet, facetOption)
+                                    }
+                                }
+		                    </div>
+                        </div>
+	                </div>
+                }
+            }
+        }
+    </form>
+} else if (isVisualEditor) {
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Facets: The facets will be shown here, if any")</span>
+    </div>
+}
+
+
+@helper RenderCheckboxOption(FacetViewModel facet, FacetOptionViewModel facetOption) { 
+    string facetLabel = facetOption.Name;
+    string disabled = facetOption.Count <= 0 ? "disabled" : "";
+    string selected = facetOption.Selected ? "checked" : "";
+
+    if (facetLabel.ToLower() == "true")
+    {
+        facetLabel = Translate("Yes");
+    }
+
+    if (facetLabel.ToLower() == "false")
+    {
+        facetLabel = Translate("No");
+    }
+
+    <label class="form-check" @disabled>
+		<input type="checkbox" onclick="ProductList.Update(event)" class="form-check-input" name="@facet.QueryParameter" value="[@facetOption.Value]" data-filter-value="@facetLabel" @selected>
+		<div class="form-check-label">@facetLabel <b class="badge rounded-pill text-dark bg-gray-light float-right">@facetOption.Count</b></div>
+	</label>
+}
+
+@helper RenderColorOption(FacetViewModel facet, FacetOptionViewModel facetOption) { 
+    string facetLabel = facetOption.Name;
+    string disabled = facetOption.Count <= 0 ? "disabled" : "";
+    string selected = facetOption.Selected ? "checked" : "";
+
+    string colorCode = facetOption.Value;
+
+    if (!facetOption.Value.Contains("#")) {
+        var variantOption = Dynamicweb.Ecommerce.Services.VariantOptions.GetVariantOption(facetOption.Value.ToString(), Dynamicweb.Ecommerce.Common.Context.LanguageID);
+        if (variantOption != null) {
+            colorCode = variantOption.LargeImage;
+        }
+    }
+
+    <div class="colorbox">
+        <input type="checkbox" onclick="ProductList.Update(event)" class="@disabled @selected" name="@facet.QueryParameter" value="[@facetOption.Value]" data-filter-value="@facetLabel" @selected title="@facetOption.Label"></input>
+        @if (facetOption.Value.Contains("#")) {
+            <span class="colorbox-background" style="background-color: @facetOption.Value"></span>
+        } else {
+            <img class="colorbox-background" src="/Admin/Public/GetImage.ashx?width=25&height=25&image=@colorCode"/>
+        }
+    </div>
+}

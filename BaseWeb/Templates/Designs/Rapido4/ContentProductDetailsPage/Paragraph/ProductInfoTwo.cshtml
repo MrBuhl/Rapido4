@@ -1,0 +1,172 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using System.Web
+@using System.IO;
+@using Dynamicweb.Imaging
+@using System.Drawing
+
+@Include("ParagraphBase.cshtml")
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+
+    string headingStyle = Model.Item.GetString("HeadingStyle") != null ? Model.Item.GetList("HeadingStyle").SelectedValue : "h2";
+    string headingElementTagOpen = Model.Item.GetString("HeadingHTMLElement") != null ? "<" + Model.Item.GetList("HeadingHTMLElement").SelectedValue + " class=\"" + headingStyle + "\">" : "<h2 style=\"" + headingStyle + "\">";
+    string headingElementTagClose = headingElementTagOpen.Replace("<", "</");
+
+    string discountStickerLabel = product.Discount.Price != 0 ? Math.Round((product.PriceBeforeDiscount.Price - product.Price.Price) * (product.PriceBeforeDiscount.Price/100), 0) + "%" : "";
+    string newsStickerLabel = Translate("New");
+    string customStickerLabel = "";
+    string customStickerTwoLabel = "";
+
+    if (product.ProductFields.ContainsKey("StickerOne")) {
+        customStickerLabel = product.ProductFields["StickerOne"].Value.ToString();
+    }
+
+    if (product.ProductFields.ContainsKey("StickerTwo")) {
+        customStickerTwoLabel = product.ProductFields["StickerTwo"].Value.ToString();
+    }
+
+    Dictionary<string, string> stickersCollection = new Dictionary<string, string>();
+
+    if (!Model.Item.GetBoolean("HideDiscountSticker") && product.Discount.Price != 0 && product.PriceBeforeDiscount.Price != product.Price.Price) {
+        string cssClassName = Model.Item.GetList("DiscountStickerLayout") != null ? Model.Item.GetList("DiscountStickerLayout").SelectedValue : "";
+        stickersCollection.Add(cssClassName, discountStickerLabel);
+    }
+
+    if (!Model.Item.GetBoolean("HideNewsSticker") && product.Created.Value.AddDays(7.0) > DateTime.Now) {
+        string cssClassName = Model.Item.GetList("NewsStickerLayout") != null ? Model.Item.GetList("NewsStickerLayout").SelectedValue : "";
+        stickersCollection.Add(cssClassName, newsStickerLabel);
+    }
+
+    if (!Model.Item.GetBoolean("HideCustomSticker") && !string.IsNullOrEmpty(customStickerLabel)) {
+        string cssClassName = Model.Item.GetList("CustomStickerLayout") != null ? Model.Item.GetList("CustomStickerLayout").SelectedValue : "";
+        stickersCollection.Add(cssClassName, customStickerLabel);
+    }
+
+    if (!Model.Item.GetBoolean("HideCustomSticker") && !string.IsNullOrEmpty(customStickerTwoLabel)) {
+        string cssClassName = Model.Item.GetList("CustomStickerLayout") != null ? Model.Item.GetList("CustomStickerLayout").SelectedValue : "";
+        stickersCollection.Add(cssClassName + "-2", customStickerTwoLabel);
+    }
+}
+
+<div class="d-flex flex-column h-100">
+    <div class="flex-fill">
+        @if (stickersCollection.Count > 0) { 
+            <div class="mb-2">
+                @foreach (var sticker in stickersCollection) {
+                    <span class="sticker @sticker.Key.Replace("-2", "")">@sticker.Value</span>   
+                }
+            </div>
+        }
+
+        @if (!Model.Item.GetBoolean("HideProductNumber")){
+            <div class="product-number">@product.Number</div>
+        }
+
+        @if (!Model.Item.GetBoolean("HideTitle"))
+        {
+            <div class="mb-3">
+                @if (!Model.Item.GetBoolean("HideTitle"))
+                {
+                        @headingElementTagOpen@product.Name@headingElementTagClose
+                }
+            </div>
+        }
+
+        @if (!Model.Item.GetBoolean("HideRating")) {
+            <div class="my-2">
+                @RenderPartial("Components/Ecommerce/Ratings.cshtml", product)  
+            </div>
+        }
+
+        @if (!string.IsNullOrEmpty(product.ShortDescription) && !Model.Item.GetBoolean("HideShortDescription"))
+        {
+            <div class="separation-line mb-2"></div>
+
+            <div class="mb-2">
+                @product.ShortDescription
+            </div>
+        }  
+
+        @if (!string.IsNullOrEmpty(product.ShortDescription) && !Model.Item.GetBoolean("HideLongDescription"))
+        {
+            <div class="separation-line mb-2"></div>
+
+            <div class="mb-3">
+                @product.LongDescription
+            </div>
+        } 
+
+        @if (!Model.Item.GetBoolean("HideDetailsFields"))
+        {
+            if (product.ProductFields != null) { 
+                <div class="separation-line mb-2"></div>
+
+                <div class="mb-2">
+                    @RenderPartial("Components/Ecommerce/ProductDetailsFields.cshtml", product)   
+                </div>
+            } else if (isVisualEditor) {
+                <div class="separation-line mb-2"></div>
+                
+                <div class="alert alert-dark" role="alert">
+                    <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Product detail fields: The fields will be rendered here, if any")</span>
+                </div>
+            }
+        }
+
+        @if (product.VariantInfo != null && !Model.Item.GetBoolean("HideAddToCart")) {
+            if (product.VariantInfo.VariantInfo != null && !Model.Item.GetBoolean("HideAddToCart")) {
+                @RenderPartial("Components/Ecommerce/VariantSelector.cshtml", product) 
+            }
+        }
+
+        @if (!Model.Item.GetBoolean("HidePrice"))
+        {
+            string priceLayout = Model.Item.GetString("PriceLayout") != null ? Model.Item.GetList("PriceLayout").SelectedValue : "";
+            Dictionary<string, object> priceSettings = new Dictionary<string, object>();
+			priceSettings.Add("PriceLayout", priceLayout);
+
+            <div class="separation-line mb-2"></div>
+
+            <div class="mb-2">
+                @RenderPartial("Components/Ecommerce/Price.cshtml", product, priceSettings)   
+            </div>
+        }
+    </div>
+
+    @if (!Model.Item.GetBoolean("HideAddToCart"))
+    {
+        <div>
+            <div class="separation-line mb-3"></div>
+
+            @if (!Model.Item.GetBoolean("HideStock") || !Model.Item.GetBoolean("HideShipping")) {
+                <div class="mb-3">
+                    @if (!Model.Item.GetBoolean("HideStock"))
+                    {
+                        @RenderPartial("Components/Ecommerce/StockInfo.cshtml", product);
+                    }
+                    @if (!Model.Item.GetBoolean("HideShipping"))
+                    {
+                        @RenderPartial("Components/Ecommerce/ShippingInfo.cshtml", product);
+                    }
+                </div>
+            }
+
+            <div class="mb-2">
+                @RenderPartial("Components/Ecommerce/AddToCart.cshtml", product, new Dictionary<string, object> { { "layout", "stretch"}, { "hideQuantity", Model.Item.GetBoolean("HideQuantity") }, { "hideUnits", Model.Item.GetBoolean("HideUnits") } })  
+            </div>
+        </div>
+    }
+</div>
+
+

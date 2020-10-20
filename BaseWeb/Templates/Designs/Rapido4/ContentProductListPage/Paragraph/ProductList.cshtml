@@ -1,0 +1,38 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@{ 
+    ProductListViewModel productList = new ProductListViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductList"))
+    {
+        productList = (ProductListViewModel)System.Web.HttpContext.Current.Items["ProductList"];
+    }
+}
+
+@switch (Model.Item.GetList("Layout").SelectedValue) {
+    case "list":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/List.cshtml", productList)   
+    break;
+
+    case "list-compact":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/ListCompact.cshtml", productList)   
+    break;
+
+    case "grid":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/Grid.cshtml", productList)   
+    break;
+
+    case "grid-compact":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/GridCompact.cshtml", productList)   
+    break;
+
+    case "grid-ultra-compact":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/GridUltraCompact.cshtml", productList)   
+    break;
+
+    case "details":
+        @RenderPartial("ContentProductListPage/Paragraph/Views/Details.cshtml", productList)   
+    break;
+}

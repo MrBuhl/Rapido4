@@ -1,0 +1,87 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Collections.Generic
+@using Dynamicweb.Rapido.Blocks
+@functions {
+    BlocksPage oneStepCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+}
+@{
+    Block checkoutPage = new Block
+    {
+        Id = "CheckoutPage",
+        SortId = 20,
+        Template = RenderPaymentProviderPage(),
+        SkipRenderBlocksList = true,
+        BlocksList = new List<Block>
+        {
+            new Block
+            {
+                Id = "PaymentSection",
+                SortId = 20,
+                Design = new Design
+                {
+                    RenderType = RenderType.Column,
+                    Size = "auto",
+                    HidePadding = true
+                },
+                BlocksList = new List<Block>
+                {
+                    new Block
+                    {
+                        Id = "PaymentSectionRow",
+                        SortId = 10,
+                        Design = new Design {RenderType = RenderType.Row},
+                        BlocksList = new List<Block>
+                        {
+                            new Block
+                            {
+                                Id = "PaymentDetails",
+                                SortId = 10,
+                                Design = new Design {Size = "12", RenderType = RenderType.Column}
+                            }
+                        }
+                    }
+                }
+            },
+            new Block
+            {
+                Id = "PaymentInformationContainer",
+                SortId = 10,
+                Design = new Design
+                {
+                    RenderType = RenderType.Column,
+                    Size = "4",
+                    HidePadding = true
+                },
+                BlocksList = new List<Block>
+                {
+                    new Block
+                    {
+                        Id = "PaymentInformationRow",
+                        SortId = 10,
+                        Design = new Design
+                        {
+                            RenderType = RenderType.Row
+                        }
+                    }
+                }
+            }
+        }
+    };
+    
+    oneStepCheckoutPage.Add(checkoutPage);
+}
+
+@helper RenderPaymentProviderPage()
+{
+    List<Block> subBlocks = oneStepCheckoutPage.GetBlockListById("CheckoutPage").OrderBy(item => item.SortId).ToList();
+
+    <section class="multiple-paragraphs-container u-color-light-gray--bg paragraph-container--full-width">
+        <div class="center-container center-container--with-background-image dw-mod">
+            <div class="paragraph-container u-padding">
+                <div class="grid">
+                    @RenderBlockList(subBlocks)
+                </div>
+            </div>
+        </div>
+    </section>
+}

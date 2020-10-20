@@ -1,0 +1,22 @@
+
+.price {
+    font-weight: 600;
+    line-height: 1;
+    letter-spacing: -0.7px;
+    display: inline-block;
+}
+
+.before-price {
+    color: $gray-300;
+    text-decoration: line-through;
+    font-style: italic;
+    line-height: 1;
+    letter-spacing: -0.7px;
+    display: inline-block;
+}
+
+.point-price {
+    color: $blue;
+    letter-spacing: -0.7px;
+    display: inline-block;
+}

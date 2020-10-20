@@ -1,0 +1,15 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    string layout = GetViewParameterString("layout") != null ? GetViewParameterString("layout") : "";
+}
+
+<span class="stock-icon in-stock mr-1" title="@Translate("In stock")"></span> 
+
+@if (layout != "compact") {
+    <span class="in-stock mr-1"> @Translate("In stock")</span>
+}
+

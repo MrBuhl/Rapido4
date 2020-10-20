@@ -1,0 +1,87 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+@using Dynamicweb
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@helper RenderRow(GridRowViewModel row, string size) { 
+    var colorService = new ColorSwatchService();
+    string containerLayout = row.Item.GetList("Width").SelectedValue  != "stretch" ? "container" : "container-fluid"; 
+    containerLayout = row.Item.GetList("Width").SelectedValue  == "compressed" ? "container container-compressed" : containerLayout; 
+    string height = row.Item.GetList("Height") != null ? "row-height-" + row.Item.GetList("Height").SelectedValue : "";
+    string spacing;
+    
+    if (row.Item.GetList("SpacingPosition").SelectedValue != "top-bottom") {
+        spacing = "p" + row.Item.GetList("SpacingPosition").SelectedValue + "-" + row.Item.GetList("Spacing").SelectedValue;
+    } else {
+        spacing = "py-" + row.Item.GetList("Spacing").SelectedValue;
+    }
+
+    string columnGap = row.Item.GetList("ColumnGap") != null ? "gx-" + row.Item.GetList("ColumnGap").SelectedValue : "gx-sm";
+    string backgroundColor = !string.IsNullOrWhiteSpace(row.Item.GetString("BackgroundColor")) && row.Item.GetString("BackgroundColor") != "transparent" ? row.Item.GetString("BackgroundColor") : "";
+    if (row.Item.GetString("BackgroundColor") != "transparent") {
+        backgroundColor = !backgroundColor.Contains("#") ? "style=\"background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "\"" : "style=\"background-color: " + backgroundColor + "\"";
+    }
+
+    string filterPrimary = !string.IsNullOrEmpty(Model.Item.GetString("ImageFilterPrimary")) ? Model.Item.GetList("ImageFilterPrimary").SelectedValue : "";
+    string filterSecondary = !string.IsNullOrEmpty(Model.Item.GetString("ImageFilterSecondary")) ? Model.Item.GetList("ImageFilterSecondary").SelectedValue : "";
+    string filterColor = "";
+
+    if (!string.IsNullOrEmpty(Model.Item.GetString("ColorForTheFilter"))) {
+        filterColor = Model.Item.GetString("ColorForTheFilter").StartsWith("#") ? "style=\"background-color: " + GenerateRgba(Model.Item.GetString("ColorForTheFilter"), "0.3") + "\"" : "";
+    }
+
+    int columnSize = 12 / row.Columns.Count();
+
+    bool contentFound = false;
+    foreach (var column in row.Columns) {
+        if (!string.IsNullOrEmpty(column.Output())) {
+            contentFound = true;
+        }
+    }
+    
+    if (contentFound == true) {
+        <div class="item-type:@row.Definition.ItemType" @backgroundColor>
+            <div class="@containerLayout @spacing @height position-relative">
+                @if (!string.IsNullOrEmpty(Model.Item.GetString("Image")))
+                {
+                    int cropMode = 0;
+                    string imagePath = Model.Item.GetFile("Image") != null ? Model.Item.GetFile("Image").Path : "";
+                    string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + imagePath;
+                    image += Model.Item.GetFile("Image") != null ? "&" + Model.Item.GetFile("Image").GetFocalPointParameters() : ""; 
+
+                    <div class="background-image dw-mod">
+                        <div class="background-image__wrapper dw-mod">
+                            <div class="image-filter image-filter--@filterPrimary" @filterColor>
+                                <div class="image-filter image-filter--@filterSecondary">
+                                    <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@imagePath" />
+                                </div>
+                            </div>
+                        </div> 
+                    </div>
+                }
+
+                <div class="row @columnGap card-group" id="Row-@(row.Id)" >
+                    @foreach (var column in row.Columns)
+                    {
+                        @RenderColumn(column, columnSize)
+                    }
+                </div>
+            </div>
+        </div>
+    }
+}
+
+@Include("ColumnBase.cshtml")

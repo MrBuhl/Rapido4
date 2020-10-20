@@ -1,0 +1,93 @@
+﻿
+@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+@using System.Text.RegularExpressions
+
+@{ 
+    string languageViewType = !string.IsNullOrEmpty(Model.Item.GetString("DropdownItemsLayout")) ? Model.Item.GetList("DropdownItemsLayout").SelectedValue : "flag-culture";
+    string icon = !string.IsNullOrEmpty(Model.Item.GetString("Icon")) ? Model.Item.GetString("Icon") : "fas fa-flag";
+    string countryCode = Dynamicweb.Services.Areas.GetArea(Pageview.AreaID).EcomCountryCode.ToLower();
+    var ecommerceCountries = Dynamicweb.Ecommerce.Services.Countries.GetCountries();
+}
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <div class="d-inline-block mr-1">@Model.Item.GetString("Title")</div>
+    }
+
+    @if (ecommerceCountries.Count > 0) {
+        <button type="button" class="btn btn-clean" data-toggle="modal" data-target="#EcomCountryModal_@Model.ID">
+            @Pageview.Area.EcomCurrencyId
+        </button>
+    }
+
+    @if (Pageview.Area.Languages.Count > 0) {
+        <button type="button" class="btn btn-clean" data-toggle="modal" data-target="#LanguageModal_@Model.ID">
+            <i class="flag-icon flag-icon-@countryCode"></i>
+        </button>
+    }
+
+    <!-- Modal -->
+    <div class="modal fade" id="LanguageModal_@Model.ID" tabindex="-1" aria-labelledby="LanguageModalLabel_@Model.ID" aria-hidden="true">
+        <form action="/Default.aspx">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="LanguageModelLabel_@Model.ID">@Translate("Select language")</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                            <label for="AreaID" class="form-label">@Translate("Select language")</label>
+                            <select class="form-select" name="AreaID" aria-label="@Translate("Select language")">
+                                @foreach (var lang in Pageview.Area.Languages)
+                                {
+                                    string cultureName = Regex.Replace(Dynamicweb.Services.Areas.GetArea(lang.ID).CultureInfo.NativeName, @" ?\(.*?\)", string.Empty);
+                                    cultureName = char.ToUpper(cultureName[0]) + cultureName.Substring(1);
+                                    int areaId = lang.ID;
+
+                                    <option value="@areaId">@cultureName</option>
+                                }
+                            </select>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">@Translate("OK")</button>
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="EcomCountryModal_@Model.ID" tabindex="-1" aria-labelledby="EcomCountryModalLabel_@Model.ID" aria-hidden="true">
+        <form action="/Default.aspx">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="LanguageModelLabel_@Model.ID">@Translate("Select currency")</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <div class="mb-3">
+                            <label for="DeliveryCountry" class="form-label">@Translate("Select delivery country")</label>
+                            <select class="form-select" name="CountryCode" aria-label="@Translate("Select delivery country")">
+                                @foreach (var lang in ecommerceCountries)
+                                {
+                                    <option value="@lang.Code2">@lang.Name - @lang.CurrencyCode</option>
+                                }
+                            </select>
+                      </div>
+                  </div>
+                  <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">@Translate("OK")</button>
+                  </div>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

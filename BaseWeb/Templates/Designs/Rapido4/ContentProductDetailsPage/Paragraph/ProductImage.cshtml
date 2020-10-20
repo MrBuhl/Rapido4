@@ -1,0 +1,158 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend
+@using Dynamicweb.Rapido.Blocks.Components
+@using Dynamicweb.Rapido.Blocks.Components.General
+@using System.Web
+
+@Include("ParagraphBase.cshtml")
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    ProductViewModel product = new ProductViewModel();
+
+    if (System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        product = (ProductViewModel)System.Web.HttpContext.Current.Items["ProductDetails"];
+    }
+
+    string thumbnailsPosition = Model.Item.GetString("ThumbnailsPosition") != null ? Model.Item.GetList("ThumbnailsPosition").SelectedValue : "bottom";
+    string flexDirection = thumbnailsPosition == "left" || thumbnailsPosition == "right" ? "flex-row" : "flex-column";
+    string verticalAlignment = Model.Item.GetString("VerticalAlignment") != null ? Model.Item.GetList("VerticalAlignment").SelectedValue : "start";
+
+    string imageAspectRatio = Pageview.CurrentParagraph.Item["ImageAspectRatio"] != null ? Pageview.CurrentParagraph.Item["ImageAspectRatio"].ToString() : "1-1";
+    string imageSize = "width=650&height=650";
+    imageSize = imageAspectRatio == "16-9" ? "width=650&height=366" : imageSize;
+    imageSize = imageAspectRatio == "9-16" ? "width=650&height=1156" : imageSize;
+    imageSize = imageAspectRatio == "4-3" ? "width=650&height=488" : imageSize;
+    imageSize = imageAspectRatio == "3-4" ? "width=650&height=867" : imageSize;
+    string fillCanvas = "";
+
+    if (Pageview.CurrentParagraph.Item["KeepAspectRatio"] != null) {
+        fillCanvas = Convert.ToBoolean(Pageview.CurrentParagraph.Item["KeepAspectRatio"]) ? "&fillcanvas=true" : "";
+    }
+
+    int totalImages = 0;
+    var selectedImageCategories = Model.Item.GetList("ImageAssets").SelectedValues;
+    var imageCategories = product.AssetCategories.Where(x => selectedImageCategories.Contains(x.SystemName));
+
+    if (Model.Item.GetList("ImageAssets").SelectedValues.Count() > 0) {
+        foreach (AssetCategoryViewModel group in imageCategories) {
+            foreach (MediaViewModel asset in group.Assets) {
+                if (asset.Value.ToLower().Contains(".jpeg") || asset.Value.ToLower().Contains(".jpg") || asset.Value.ToLower().Contains(".png") || asset.Value.ToLower().Contains(".gif")) {
+                    totalImages++;
+                }
+            }
+        }
+    } else {
+        foreach (AssetCategoryViewModel group in product.AssetCategories) {
+            foreach (MediaViewModel asset in group.Assets) {
+                if (asset.Value.ToLower().Contains(".jpeg") || asset.Value.ToLower().Contains(".jpg") || asset.Value.ToLower().Contains(".png") || asset.Value.ToLower().Contains(".gif")) {
+                    totalImages++;
+                }
+            }
+        }
+    }
+
+    foreach (var image in product.ImagePatternImages) {
+        totalImages++;
+    }
+ }
+
+@if (!string.IsNullOrEmpty(product.DefaultImage.Value)) {
+    <div class="position-relative w-100 h-100">
+        <div class="d-flex @flexDirection w-100 h-100">
+        @{ 
+            Dictionary<string, object> stickersSettings = new Dictionary<string, object>();
+            stickersSettings.Add("DiscountStickerLayout", Pageview.CurrentParagraph.Item["DiscountStickerLayout"]);
+			stickersSettings.Add("NewsStickerLayout", Pageview.CurrentParagraph.Item["NewsStickerLayout"]);
+			stickersSettings.Add("CustomStickerLayout", Pageview.CurrentParagraph.Item["CustomStickerLayout"]);
+            stickersSettings.Add("DiscountStickerPosition", Model.Item.GetList("DiscountStickerPosition").SelectedValue);
+            stickersSettings.Add("NewsStickerPosition", Model.Item.GetList("NewsStickerPosition").SelectedValue);
+            stickersSettings.Add("CustomStickerPosition", Model.Item.GetList("CustomStickerPosition").SelectedValue);
+        }
+
+        @if (totalImages > 1) {
+            if (thumbnailsPosition == "left") {
+                <div class="d-flex flex-column justify-content-@verticalAlignment mr-3">
+                    @RenderImageAssets(product, "mb-1", isVisualEditor)
+                </div>
+            }
+
+            if (thumbnailsPosition == "top") {
+                <div class="mb-3">
+                    @RenderImageAssets(product, "mr-1", isVisualEditor)
+                </div>
+            }
+        }
+
+        <div class="flex-fill position-relative"> 
+            <img class="b-lazy img-fluid" src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?@imageSize&crop=5@(fillCanvas)&image=@product.DefaultImage.Value" />
+        </div>
+
+        @if (totalImages > 1) {
+            if (thumbnailsPosition == "right") {
+                <div class="d-flex flex-column justify-content-@verticalAlignment ml-3">
+                    @RenderImageAssets(product, "mb-1", isVisualEditor)
+                </div>
+            }
+
+            if (thumbnailsPosition == "bottom") {
+                <div class="mt-3">
+                    @RenderImageAssets(product, "mr-1", isVisualEditor)
+                </div>
+            }
+        }
+
+        @RenderPartial("Components/Ecommerce/StickersPositioned.cshtml", product, stickersSettings) 
+    </div>
+    </div>
+    
+} else if (isVisualEditor) {
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Product image: The image will be shown here, if any")</span>
+    </div>
+}
+
+
+
+@helper RenderImageAssets(ProductViewModel product, string cssClass, bool isVisualEditor) { 
+    var selectedImageCategories = Model.Item.GetList("ImageAssets").SelectedValues;
+    var imageCategories = product.AssetCategories.Where(x => selectedImageCategories.Contains(x.SystemName));
+    var imagesCount = 0;
+
+    if (Model.Item.GetList("ImageAssets").SelectedValues.Count() > 0) {
+        foreach (AssetCategoryViewModel group in imageCategories) {
+            foreach (MediaViewModel asset in group.Assets) {
+                if (asset.Value.ToLower().Contains(".jpeg") || asset.Value.ToLower().Contains(".jpg") || asset.Value.ToLower().Contains(".png") || asset.Value.ToLower().Contains(".gif")) {
+                    <img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&FillCanvas=true&image=@asset.Value" class="img-thumbnail @cssClass" alt="@asset.Name">
+                    imagesCount++;
+                }
+            }
+        }
+    } else {
+        foreach (AssetCategoryViewModel group in product.AssetCategories) {
+            foreach (MediaViewModel asset in group.Assets) {
+                if (asset.Value.ToLower().Contains(".jpeg") || asset.Value.ToLower().Contains(".jpg") || asset.Value.ToLower().Contains(".png") || asset.Value.ToLower().Contains(".gif")) {
+                    <img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&FillCanvas=true&image=@asset.Value" class="img-thumbnail @cssClass" alt="@asset.Name">
+                    imagesCount++;
+                }
+            }
+        }
+    }
+
+    if (imagesCount == 0) {
+        foreach (var image in product.ImagePatternImages) {
+            <img src="/Admin/Public/GetImage.ashx?width=60&height=60&crop=5&FillCanvas=true&image=@image.Value" class="img-thumbnail @cssClass" alt="@image.Name">
+            imagesCount++;
+        }
+    }
+
+    if (imagesCount == 0 && isVisualEditor) {
+        <div class="alert alert-dark m-0" role="alert">
+            <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Thumbnails will be shown here, if multiple images are available")</span>
+        </div>
+    }
+}

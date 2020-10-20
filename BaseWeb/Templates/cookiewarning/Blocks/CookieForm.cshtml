@@ -1,0 +1,48 @@
+﻿@using Dynamicweb.Rapido.Blocks.Components.General
+
+@helper RenderCookieForm()
+{
+    Form form = new Form { Action = "/admin/public/CookieOptInLevelConfig.aspx?cmd=SetCookieOptInLevel", Method = FormMethod.Get, CssClass = "u-no-margin" };
+
+    form.Add(new Text { Content = "<p>" + Translate("This website uses cookies to track your behavior and to improve your experience on the site") + "</p>" });
+    form.Add(new Text { Content = "<p>" + Translate("You can always delete saved cookies by visiting the advanced settings of your browser") + "</p>" });
+
+    RadioButtonListField radioButtonListField = new RadioButtonListField
+    {
+        Id = "OptInLevel",
+        Name = "OptInLevel",
+        Options = new List<RadioButtonField> {
+            new RadioButtonField { Label = Translate("Do not accept cookies"), Value = "0", Id = "OptInLevel0", OnChange = "setOptInCookie(0)"},
+            new RadioButtonField { Label = Translate("Only accept functional cookies"), Value = "1", Id = "OptInLevel1", OnChange = "setOptInCookie(1)"},
+            new RadioButtonField { Label = Translate("Accept all cookies"), Value = "2", Id = "OptInLevel2", OnChange = "setOptInCookie(2)" }
+        }
+    };
+
+    form.Add(radioButtonListField);
+
+    @Render(form)
+}
+
+@helper RenderCookieFormInline()
+{
+    Form form = new Form { Action = "/admin/public/CookieOptInLevelConfig.aspx?cmd=SetCookieOptInLevel", Method = FormMethod.Get, CssClass = "u-no-margin" };
+
+    form.Add(new Text { Content = "<p>" + Translate("This website uses cookies to track your behavior and to improve your experience on the site") + "</p>" });
+    form.Add(new Text { Content = "<p>" + Translate("You can always delete saved cookies by visiting the advanced settings of your browser") + "</p>" });
+
+    RadioButtonListField radioButtonListField = new RadioButtonListField
+    {
+        Id = "OptInLevel",
+        Name = "OptInLevel",
+        WrapperCssClass = "form__field-group--direction-row",
+        Options = new List<RadioButtonField> {
+            new RadioButtonField { Label = Translate("Do not accept cookies"), Value = "0", Id = "OptInLevel0", OnChange = "setOptInCookie(0)"},
+            new RadioButtonField { Label = Translate("Only accept functional cookies"), Value = "1", Id = "OptInLevel1", OnChange = "setOptInCookie(1)"},
+            new RadioButtonField { Label = Translate("Accept all cookies"), Value = "2", Id = "OptInLevel2", OnChange = "setOptInCookie(2)" }
+        }
+    };
+
+    form.Add(radioButtonListField);
+
+    @Render(form)
+}

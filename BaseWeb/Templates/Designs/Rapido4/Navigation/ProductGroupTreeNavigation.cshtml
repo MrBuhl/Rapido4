@@ -1,0 +1,53 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb.Rapido.Blocks.Components
+@using Dynamicweb.Rapido.Blocks.Components.General
+@using System.Web
+
+@GetNodes(Model.Nodes)
+
+
+@helper GetNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        <ul class="nav flex-column">
+            @RenderNodes(node.Nodes)
+        </ul>
+    }
+}
+
+@helper RenderNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    foreach (var node in nodes)
+    {
+        var hasChildren = node.Nodes.Count() > 0;
+        string groupId = HttpUtility.ParseQueryString(node.Link).Get("GroupID");
+        string groupImage = "/Files/images/missing_image.jpg";
+
+        if (!string.IsNullOrEmpty(groupId)) {
+            groupImage = !string.IsNullOrEmpty(Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(groupId).LargeImage) ? "/Files" + Dynamicweb.Ecommerce.Services.ProductGroups.GetGroup(groupId).LargeImage : groupImage;
+        }
+
+        <li class="nav-item">
+            <div class="d-flex">
+                <a class="nav-link text-reset flex-fill" aria-current="page" href="@node.Link" title="@node.Name">@node.Name</a>
+
+                @if (hasChildren) { 
+                    string icon = !node.InPath ? "fa-chevron-right" : "fa-chevron-down";
+
+                    <div class="my-auto" data-toggle="collapse" data-target="#NavigationGroup_@node.GroupId" role="button" aria-expanded="true" aria-controls="NavigationGroup_@node.GroupId"><i class="fal @icon"></i></div>
+                 }
+            </div>
+            @if (hasChildren) {
+                string collapsed = node.InPath ? "show" : "";
+
+                <div class="ml-3 collapse @collapsed" id="NavigationGroup_@node.GroupId">
+                    <ul class="nav flex-column">
+                        @RenderNodes(node.Nodes)
+                    </ul>
+                </div>
+                
+            }
+        </li>
+    }
+}

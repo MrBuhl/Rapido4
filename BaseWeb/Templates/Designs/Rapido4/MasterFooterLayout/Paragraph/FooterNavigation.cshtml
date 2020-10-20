@@ -1,0 +1,30 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <h4>@Model.Item.GetString("Title")</h4>
+    }
+
+    <div class="footer-navigation">
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("NavigationRoot"))) {
+            int rootPageId = Convert.ToInt32(Model.Item.GetString("NavigationRoot").Substring(Model.Item.GetString("NavigationRoot").LastIndexOf('=') + 1));
+
+            @Navigation.RenderNavigation("Navigation/FooterMenu.cshtml", new Dynamicweb.Frontend.Navigation.NavigationSettings()
+            {
+                RootPageId = rootPageId,
+                StartLevel = 1,
+                StopLevel = 2,
+                ExpandMode = Dynamicweb.Frontend.Navigation.ExpandMode.All
+            });
+        } else {
+            @Navigation.RenderNavigation("Navigation/FooterMenu.cshtml", new Dynamicweb.Frontend.Navigation.NavigationSettings()
+            {
+                StartLevel = 1,
+                StopLevel = 2,
+                ExpandMode = Dynamicweb.Frontend.Navigation.ExpandMode.All
+            });
+        }
+        <p></p>
+    </div>
+</div>

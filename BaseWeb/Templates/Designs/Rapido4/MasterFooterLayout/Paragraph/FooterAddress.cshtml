@@ -1,0 +1,42 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <h4>@Model.Item.GetString("Title")</h4>
+    }
+
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Name"))) {
+        <div>@Model.Item.GetString("Name")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("StreetAddress"))) {
+        <div>@Model.Item.GetString("StreetAddress")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("PostalCode")) || !string.IsNullOrEmpty(Model.Item.GetString("City"))) {
+        <div>@Model.Item.GetString("PostalCode") @Model.Item.GetString("City")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Country"))) {
+        <div>@Model.Item.GetString("Country")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Region"))) {
+        <div>@Model.Item.GetString("Region")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("CVRNumber"))) {
+        <div>@Translate("CVR"): @Model.Item.GetString("CVRNumber")</div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("ContactFormLink"))) {
+        string buttonLayout = Model.Item.GetString("ContactFormLinkLayout") != null ? Model.Item.GetList("ContactFormLinkLayout").SelectedValue : "btn-primary";
+
+        <div class="mt-3">
+            <a href="@Model.Item.GetString("ContactFormLink")" class="btn @buttonLayout w-100">@Translate("Contact us")</a>
+        </div>
+    }
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("MapsLink"))) {
+        string buttonLayout = Model.Item.GetString("MapsLinkLayout") != null ? Model.Item.GetList("MapsLinkLayout").SelectedValue : "btn-secondary";
+
+        <div class="mt-3">
+            <a href="@Model.Item.GetString("MapsLink")" class="btn @buttonLayout w-100">@Translate("Our location")</a>
+        </div>
+    }
+</div>
+

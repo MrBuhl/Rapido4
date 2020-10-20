@@ -1,0 +1,45 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Collections.Generic
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@{
+    
+    if (string.IsNullOrWhiteSpace(GetString("Ecom:Order.IsEmpty")))
+    {
+        BlocksPage multiStepBarCheckoutPage = BlocksPage.GetBlockPage("CheckoutPage");
+        multiStepBarCheckoutPage.Add(new Block
+        {
+            Id = "StepNavigation",
+            SortId = 30,
+            Design = new Design { RenderType = RenderType.Column, Size = "12" },
+            BlocksList = new List<Block>
+            {
+                new Block
+                {
+                    Id = "StepNavigationContainer",
+                    Design = new Design { CssClass = "u-color-light--bg", RenderType = RenderType.CardBody },
+                    BlocksList = new List<Block>
+                    {
+                        new Block
+                        {
+                            Id = "BackButton",
+                            SortId = 10,
+                            Design = new Design { CssClass = "u-pull--left" },
+                            Component = new Link
+                            {
+                                ButtonLayout = ButtonLayout.Secondary,
+                                CssClass = "u-no-margin btn--condensed",
+                                Id = "CartV2.GotoStep2",
+                                Target = LinkTargetType.Self,
+                                Href = string.Concat("/Default.aspx?Id=", GetGlobalValue("Global:Page.ID"), "&amp;CartV2.GotoStep2=true"),
+                                Icon = new Icon {Prefix = "fas", Name = "fa-angle-left", LabelPosition = IconLabelPosition.After},
+                                Title = Translate("Back")
+                            }
+                        }
+                    }
+                }
+            }
+        });
+    }
+}

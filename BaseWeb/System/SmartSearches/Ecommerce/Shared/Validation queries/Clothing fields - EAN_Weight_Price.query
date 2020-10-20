@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="10eab5ae-9af3-425b-b11f-8f49ae136381" Name="Clothing fields - EAN_Weight_Price">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <SortOrder>
+    <Sort Field="Number" Direction="Ascending" />
+  </SortOrder>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal" Disabled="false">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ParentGroupNames" />
+        </Left>
+        <Right>
+          <TermExpression Value="clothing" DisplayValue="clothing" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP4" DisplayValue="PIM - Bikes &amp; Equipments" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="LessThanOrEqual" Disabled="false">
+          <Left>
+            <FieldExpression Field="Weight" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="0" Type="System.Double" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="LessThanOrEqual" Disabled="false">
+          <Left>
+            <FieldExpression Field="Price" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="0" Type="System.Double" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="EAN" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Brand" SystemName="" Source="CustomField_brand" Sort="3" />
+    <Field Name="Weight" SystemName="" Source="ProductWeight" Sort="4" />
+    <Field Name="Price" SystemName="" Source="ProductPrice" Sort="5" />
+  </ViewFields>
+  <ViewLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+  </ViewLanguages>
+  <CompletionRules />
+  <CompletionLanguages />
+</Query>

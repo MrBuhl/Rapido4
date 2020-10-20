@@ -1,0 +1,20 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@{ 
+    //Set default product data, if there is no app associated
+    ProductViewModelSettings productSetting = new ProductViewModelSettings { 
+        LanguageId = Dynamicweb.Ecommerce.Common.Context.LanguageID,
+        CurrencyCode = Dynamicweb.Ecommerce.Common.Context.Currency.Code,
+        CountryCode = Dynamicweb.Ecommerce.Common.Context.Country.Code2,
+        ShopId = Pageview.Area.EcomShopId
+    };
+
+    ProductViewModel dummyProduct = ViewModelFactory.CreateView(productSetting, "PROD7");
+
+    if (!System.Web.HttpContext.Current.Items.Contains("ProductDetails"))
+    {
+        System.Web.HttpContext.Current.Items.Add("ProductDetails", dummyProduct);
+    }
+}
+

@@ -1,0 +1,228 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System
+@using System.Web
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using Dynamicweb.Frontend.Navigation
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+
+@{ 
+    var colorService = new ColorSwatchService();
+
+    string signInPage = !string.IsNullOrEmpty(Model.Item.GetString("SignInPage")) ? Model.Item.GetString("SignInPage") : "";
+    string downloadCartPage = !string.IsNullOrEmpty(Model.Item.GetString("DownloadCartPage")) ? Model.Item.GetString("DownloadCartPage") : "";
+    string cartPage = !string.IsNullOrEmpty(Model.Item.GetString("CartPage")) ? Model.Item.GetString("CartPage") : "";
+
+    string spaceBetween = !string.IsNullOrEmpty(Model.Item.GetString("SpaceBetween")) ? "space-between--" + Model.Item.GetList("SpaceBetween").SelectedValue : "";
+
+    string textColor = Model.Item.GetString("TextColor") != null && Model.Item.GetString("TextColor") != "transparent" ? Model.Item.GetString("TextColor").ToString() : "";
+    if (textColor != "") {
+        textColor = !textColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, textColor) : textColor;
+    }
+
+    int borderWidth = Model.Item.GetInt32("BorderWidth");
+    int borderRadius = Model.Item.GetInt32("BorderRadius");
+    string borderColor = Model.Item.GetString("BorderColor") != null && Model.Item.GetString("BorderColor") != "transparent" ? Model.Item.GetString("BorderColor").ToString() : "";
+    if (borderColor != "") {
+        borderColor = !borderColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, borderColor) : borderColor;
+    }
+
+    var standardNavigationSettings = new NavigationSettings();
+    standardNavigationSettings.StartLevel = 1;
+    standardNavigationSettings.StopLevel = 3;
+    standardNavigationSettings.ExpandMode = ExpandMode.All;
+    standardNavigationSettings.Parameters.Add("IconSize", Model.Item.GetString("IconSize"));
+    standardNavigationSettings.Parameters.Add("TextSize", Model.Item.GetString("TextSize"));
+    standardNavigationSettings.Parameters.Add("Casing", Model.Item.GetList("Casing").SelectedValue);
+    standardNavigationSettings.Parameters.Add("TextPosition", Model.Item.GetList("TextPosition").SelectedValue);
+    standardNavigationSettings.Parameters.Add("HideTexts", Model.Item.GetBoolean("HideTexts"));
+    standardNavigationSettings.Parameters.Add("HideIcons", Model.Item.GetBoolean("TextPosition"));
+
+    if (!string.IsNullOrEmpty(Model.Item.GetString("StandardMenuRoot"))) {
+        int rootPageId = Convert.ToInt32(Model.Item.GetString("StandardMenuRoot").Substring(Model.Item.GetString("StandardMenuRoot").LastIndexOf('=') + 1));
+        standardNavigationSettings.RootPageId = rootPageId;
+    } 
+}
+
+@if (!string.IsNullOrEmpty(textColor)) { 
+    <style>
+        #column-id_@Model.ID .nav-link {
+            color: @textColor !important;
+            @if (borderWidth != 0) {
+                <text>
+                    border-width: @(borderWidth)px;
+                    border-color: @borderColor;
+                    border-radius: @(borderRadius)px;
+                    border-style: solid;
+                </text>
+            }
+            text-align: center;
+        }
+
+        @if (borderWidth != 0) {
+            <text>
+                #column-id_@Model.ID i {
+                    width: 25px;
+                }
+            </text>
+        }   
+    </style>
+}
+
+<div class="item-id:@Model.ItemType position-relative" id="column-id_@Model.ID">
+    <ul class="navbar-nav flex-row @spaceBetween dw-mod">
+        @RenderSignInLink(signInPage)
+        @Navigation.RenderNavigation("Navigation/UtilitiesMenu.cshtml", standardNavigationSettings)  
+        @RenderDownloadCartLink(downloadCartPage)
+        @RenderCartLink(cartPage)
+    </ul>
+</div>
+
+
+@helper RenderSignInLink(string pageLink) { 
+    if (!string.IsNullOrEmpty(pageLink)) {
+        var navigationSettings = new NavigationSettings();
+        navigationSettings.ExpandMode = ExpandMode.All;
+        navigationSettings.StartLevel = 3;
+        navigationSettings.Parameters.Add("OnlyNodes", "true");
+
+        if (pageLink.Contains("=")) {
+            int rootPageId = Convert.ToInt32(pageLink.Substring(pageLink.LastIndexOf('=') + 1));
+            navigationSettings.RootPageId = rootPageId;
+        }
+
+        string dropdownAlignment = Model.Item.GetList("HorizontalAlignment").SelectedValue.ToLower() == "right" ? "dropdown-menu-right" : "";
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#" title="@Translate("Customer center")" role="button" aria-expanded="false" id="SignInDropdownToggle">
+                @if (Pageview.User == null) {
+                    @RenderNavigationItem(pageLink, Translate("Sign in"), "fal fa-user") 
+                } else {
+                    string userInitials =  Dynamicweb.Rapido.Services.User.GetInitials(Pageview.User.Name, Pageview.User.FirstName, Pageview.User.LastName, Pageview.User.Email, Pageview.User.UserName);
+                    string iconSize = !string.IsNullOrEmpty(Model.Item.GetString("IconSize")) ? Model.Item.GetDecimal("IconSize") + "rem" : "1rem";
+                    string textSize = !string.IsNullOrEmpty(Model.Item.GetString("TextSize")) ? Model.Item.GetDecimal("TextSize") + "rem" : "1rem";
+                    string casing = !string.IsNullOrEmpty(Model.Item.GetString("Casing")) ? Model.Item.GetList("Casing").SelectedValue : "inherit";
+                    string textPosition = !string.IsNullOrEmpty(Model.Item.GetString("TextPosition")) ? Model.Item.GetList("TextPosition").SelectedValue : "bottom";
+
+                    if (Model.Item.GetBoolean("HideTexts")) {
+                        <div class="circle-icon">@userInitials.ToUpper()</div>
+                    } else {
+                        if (textPosition == "bottom") {
+                            <div class="d-flex flex-column align-items-center h-100">
+                                <div class="circle-icon" style="height: @(iconSize)">@userInitials.ToUpper()</div>
+                                <div class="mt-2" style="font-size: @textSize; text-transform: @casing">@Pageview.User.Name</div>
+                            </div>
+                        }
+                        if (textPosition == "left") {
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="mr-2" style="font-size: @textSize; text-transform: @casing">@Pageview.User.Name</div>
+                                <div class="circle-icon">@userInitials.ToUpper()</div>
+                            </div>
+                        }
+                        if (textPosition == "right") {
+                            <div class="d-flex flex-row align-items-center">
+                                <div class="circle-icon">@userInitials.ToUpper()</div>
+                                <div style="font-size: @textSize; text-transform: @casing">@Pageview.User.Name</div>
+                            </div>
+                        }
+                    }
+                }
+            </a>
+
+            <ul class="dropdown-menu @dropdownAlignment" aria-labelledby="SignInDropdownToggle">
+                @if (Pageview.User == null) {
+                    <li>
+                        <div class="dropdown-item">
+                            <a href="@pageLink" class="btn btn-primary w-100 m-0">@Translate("Sign in")</a>
+                        </div>
+                    </li>
+                }
+
+                @Navigation.RenderNavigation("Navigation/Dropdown.cshtml", navigationSettings)  
+
+                @if (Pageview.User != null) {
+                    <li>
+                        <div class="dropdown-item">
+                            <a href="/Admin/Public/ExtranetLogoff.aspx?ID=@Pageview.Page.ID" class="btn btn-primary m-0 w-100" onclick="RememberState.SetCookie('useAnotherAddress', false)">@Translate("Sign out")</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+        </li>
+    }    
+}
+
+@helper RenderDownloadCartLink(string pageLink) { 
+    if (!string.IsNullOrEmpty(pageLink)) {
+        <li class="nav-item">
+            <a href="@pageLink" class="nav-link" title="@Translate("Download cart")">
+                <span class="u-inline u-position-relative">
+                    @RenderNavigationItem(pageLink, Translate("Download cart"), "fal fa-cart-arrow-down") 
+                    <span class="mini-cart__counter u-hidden dw-mod js-download-cart-counter"></span>
+                </span>
+            </a> 
+        </li>
+    }    
+}
+
+@helper RenderCartLink(string pageLink) { 
+    if (!string.IsNullOrEmpty(pageLink)) {
+        string totalProducts = "0";
+        int miniCartFeedPageId = GetPageIdByNavigationTag("MiniCartFeed");
+
+        <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="#" href="@pageLink" title="@Translate("Cart")" role="button" aria-expanded="false">
+                <div class="u-inline u-position-relative">
+                    @RenderNavigationItem(pageLink, Translate("Cart"), "fal fa-shopping-cart")
+                    
+                    <div class="mini-cart-counter">
+                        <div class="mini-cart-counter-qty js-cart-qty">@totalProducts</div>
+                    </div>
+                </div>
+            </a>
+        </li>
+    }    
+}
+
+@helper RenderNavigationItem(string pageLink, string name, string icon) { 
+    string iconSize = !string.IsNullOrEmpty(Model.Item.GetString("IconSize")) ? Model.Item.GetDecimal("IconSize") + "rem" : "1rem";
+    string textSize = !string.IsNullOrEmpty(Model.Item.GetString("TextSize")) ? Model.Item.GetDecimal("TextSize") + "rem" : "1rem";
+    string casing = !string.IsNullOrEmpty(Model.Item.GetString("Casing")) ? Model.Item.GetList("Casing").SelectedValue : "inherit";
+    string textPosition = !string.IsNullOrEmpty(Model.Item.GetString("TextPosition")) ? Model.Item.GetList("TextPosition").SelectedValue : "bottom";
+
+    if (!string.IsNullOrEmpty(pageLink)) {
+        string fullLink = HttpContext.Current.Request.Url.Scheme + "://" + HttpContext.Current.Request.Url.Host + "/" + pageLink;
+        string pageId = HttpUtility.ParseQueryString(new Uri(fullLink).Query).Get("ID");
+        var page = Dynamicweb.Services.Pages.GetPage(Convert.ToInt32(pageId));
+
+        if (page != null) {
+            icon = page.PropertyItem["Icon"] != null ? page.PropertyItem["Icon"].ToString() : icon;
+            name = page.GetDisplayName() != null ? page.GetDisplayName() : name;
+        }
+    }
+
+    if (Model.Item.GetBoolean("HideTexts")) {
+        <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+    } else if (Model.Item.GetBoolean("HideIcons")) {
+        <div style="font-size: @textSize; text-transform: @casing">@name</div>
+    } else {
+        if (textPosition == "bottom") {
+            <div class="d-flex flex-column align-items-center">
+                <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+                <div class="mt-2" style="font-size: @textSize; text-transform: @casing">@name</div>
+            </div>
+        }
+        if (textPosition == "left") {
+            <div class="d-flex flex-row align-items-center">
+                <div class="mr-2" style="font-size: @textSize; text-transform: @casing">@name</div>
+                <i class="@icon" style="font-size: @iconSize" title="@name"></i> 
+            </div>
+        }
+        if (textPosition == "right") {
+            <div class="d-flex flex-row align-items-center">
+                <i class="@icon mr-2" style="font-size: @iconSize" title="@name"></i> 
+                <div style="font-size: @textSize; text-transform: @casing">@name</div>
+            </div>
+        }
+    }
+}

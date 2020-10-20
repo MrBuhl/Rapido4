@@ -1,0 +1,32 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System
+@using System.Web
+@using Dynamicweb.Frontend.Navigation
+
+@{ 
+    bool isVisualEditor = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("VisualEdit")) ? Convert.ToBoolean(HttpContext.Current.Request.QueryString.Get("VisualEdit")) : false;
+
+    var navigationSettings = new NavigationSettings();
+    navigationSettings.StartLevel = 2;
+    navigationSettings.ExpandMode = ExpandMode.Path;
+
+    if (!string.IsNullOrEmpty(Model.Item.GetString("NavigationRoot"))) {
+        int rootPageId = Convert.ToInt32(Model.Item.GetString("NavigationRoot").Substring(Model.Item.GetString("NavigationRoot").LastIndexOf('=') + 1));
+        navigationSettings.RootPageId = rootPageId;    
+    }
+
+    string breadcrumbContent = Navigation.RenderNavigation("Navigation/Breadcrumbs.cshtml", navigationSettings);
+}
+
+@if (!string.IsNullOrEmpty(breadcrumbContent)) {
+    <div class="w-100">
+        @breadcrumbContent
+    </div>
+} else if (isVisualEditor) {
+    <div class="alert alert-dark m-0" role="alert">
+        <span><i class="fas fa-info-circle mr-3"></i></span> <span>@Translate("Breadcrumb: The breadcrumb will be shown here if there is a path")</span>
+    </div>
+}
+
+
+

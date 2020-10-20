@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="5a34044e-3440-4323-8d0a-caecc9b955a4" Name="Ecommerce (Bikez) - validation">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <SortOrder>
+    <Sort Field="Number" Direction="Ascending" />
+  </SortOrder>
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="Equal" Disabled="false">
+        <Left>
+          <FieldExpression Field="Active" />
+        </Left>
+        <Right>
+          <TermExpression Value="True" DisplayValue="True" Type="System.Boolean" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="ShopIDs" />
+        </Left>
+        <Right>
+          <TermExpression Value="SHOP1" DisplayValue="Bikez" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <TermExpression Value="LANG1,LANG2" DisplayValue="English,Danish" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <GroupExpression Operator="Or">
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="Name" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="Number" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="ShortDescription" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="IsEmpty" Disabled="false">
+          <Left>
+            <FieldExpression Field="LongDescription" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="Empty" Type="System.String" />
+          </Right>
+        </BinaryExpression>
+        <BinaryExpression Operator="LessThanOrEqual" Disabled="false">
+          <Left>
+            <FieldExpression Field="Price" />
+          </Left>
+          <Right>
+            <ConstantExpression Value="0" Type="System.Double" />
+          </Right>
+        </BinaryExpression>
+      </GroupExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Active" SystemName="" Source="ProductActive" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="2" />
+    <Field Name="Price" SystemName="" Source="ProductPrice" Sort="3" />
+  </ViewFields>
+  <ViewLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+  </ViewLanguages>
+  <CompletionRules>
+    <Rule ID="1" />
+  </CompletionRules>
+  <CompletionLanguages>
+    <Language ID="LANG2" Name="Danish" SortOrder="0" />
+    <Language ID="LANG1" Name="English" SortOrder="1" />
+  </CompletionLanguages>
+</Query>

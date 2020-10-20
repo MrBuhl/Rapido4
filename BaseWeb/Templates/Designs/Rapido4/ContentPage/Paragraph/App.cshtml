@@ -1,0 +1,21 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+
+@{ 
+    string padding = Model.Item.GetList("Padding") != null ? " p" + Model.Item.GetList("PaddingPosition").SelectedValue.ToLower().Replace("around", "") + "-" + Model.Item.GetList("Padding").SelectedValue.ToLower() : "";
+    string margin = Model.Item.GetList("Margin") != null ? " m" + Model.Item.GetList("MarginPosition").SelectedValue.ToLower().Replace("around", "") + "-" + Model.Item.GetList("Margin").SelectedValue.ToLower() : "";
+    string style = Model.Item.GetBoolean("RenderAsCard") ? "background-color: #fff" : "";
+    string card = Model.Item.GetBoolean("RenderAsCard") ? "card" : ""; 
+}
+
+<div class="@padding @margin @card" style="@style">
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <div>
+            <h2>@Model.Item.GetString("Title")</h2>
+        </div>
+    }
+    @Model.GetModuleOutput()
+</div>
+
+
+

@@ -1,0 +1,14 @@
+﻿[
+  {
+    "outputFileName": "Templates/Designs/Rapido4/resources/js/rapido/rapido.js",
+    "inputFiles": [
+      "Templates/Designs/Rapido4/resources/js/rapido/*.js",
+      "!Templates/Designs/Rapido4/resources/js/rapido/rapido.js"
+    ],
+    "sourceMap": true,
+    "minify": {
+      "enabled": true,
+      "commentMode": "all"
+    }
+  }
+]

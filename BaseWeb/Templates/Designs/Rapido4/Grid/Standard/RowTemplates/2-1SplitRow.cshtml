@@ -1,0 +1,70 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+
+
+@Include("ColumnBase.cshtml")
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@{ 
+    var colorService = new ColorSwatchService();
+    string containerLayout = Model.Item.GetList("Width").SelectedValue  != "stretch" ? "container" : "container-fluid"; 
+    containerLayout = Model.Item.GetList("Width").SelectedValue  == "compressed" ? "container container-compressed" : containerLayout; 
+    string height = Model.Item.GetList("Height") != null ? "row-height-" + Model.Item.GetList("Height").SelectedValue : "";
+    string spacing;
+    
+    if (Model.Item.GetList("SpacingPosition").SelectedValue != "top-bottom") {
+        spacing = "m" + Model.Item.GetList("SpacingPosition").SelectedValue + "-" + Model.Item.GetList("Spacing").SelectedValue;
+    } else {
+        spacing = "my-" + Model.Item.GetList("Spacing").SelectedValue;
+    }
+
+    string columnGap = Model.Item.GetList("ColumnGap") != null ? "gx-" + Model.Item.GetList("ColumnGap").SelectedValue : "gx-sm";
+    string backgroundColor = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundColor")) && Model.Item.GetString("BackgroundColor") != "transparent" ? Model.Item.GetString("BackgroundColor") : "";
+    if (Model.Item.GetString("BackgroundColor") != "transparent") {
+        backgroundColor = !backgroundColor.Contains("#") ? "background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "; " : "background-color: " + backgroundColor + "; ";
+    }
+
+    string bottomBorderColor = "";
+    if (Model.Item.GetInt32("BottomBorderWidth") != 0) {
+        bottomBorderColor = !string.IsNullOrWhiteSpace(Model.Item.GetString("BottomBorderColor")) ? Model.Item.GetString("BottomBorderColor") : "";
+        if (Model.Item.GetString("BottomBorderColor") != "transparent") {
+            bottomBorderColor = !bottomBorderColor.Contains("#") ? "border-bottom: " + Model.Item.GetInt32("BottomBorderWidth") + "px solid " + colorService.GetHexColor(Pageview.AreaID, bottomBorderColor) + "; " : "border-bottom: " + Model.Item.GetInt32("BottomBorderWidth") + "px solid " + bottomBorderColor + "; ";
+        }
+    }
+}
+
+
+<div class="item-type:@Model.Definition.ItemType" style="@backgroundColor @bottomBorderColor">
+    <div class="@containerLayout @spacing @height position-relative">
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Image")))
+        {
+            int cropMode = 0;
+            string imagePath = Model.Item.GetFile("Image") != null ? Model.Item.GetFile("Image").Path : "";
+            string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + imagePath;
+
+            <div class="background-image dw-mod">
+                <div class="background-image__wrapper dw-mod">
+                    <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@imagePath" />
+                </div> 
+            </div>
+        }
+
+       <div class="row @columnGap" id="Row-@(Model.Id)">
+            @RenderColumn(Model.Column(1), 4)
+            @RenderColumn(Model.Column(2), 8)
+        </div>
+    </div>
+</div>

@@ -1,0 +1,170 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+@using Dynamicweb
+
+@functions {
+    public string GenerateRgba(string color, string opacity)
+    {
+        color = color.Replace("#", "");
+        if (color.Length == 6) {
+            return "rgba(" + Convert.ToInt32(color.Substring(0, 2), 16) + ", " + Convert.ToInt32(color.Substring(2, 2), 16) + ", " + Convert.ToInt32(color.Substring(4, 2), 16) + ", " + opacity + ");";
+        } else {
+            return Convert.ToInt16(color).ToString();
+        }
+    }
+}
+
+@{ 
+    List<ItemViewModel> slides = new List<ItemViewModel>();
+
+    if (Model.Item.GetItem("SlideOne") != null) {
+        if (!string.IsNullOrEmpty(Model.Item.GetItem("SlideOne").GetString("Image"))) {
+            slides.Add(Model.Item.GetItem("SlideOne"));
+        }
+    }
+
+    if (Model.Item.GetItem("SlideTwo") != null) {
+        if (!string.IsNullOrEmpty(Model.Item.GetItem("SlideTwo").GetString("Image"))) {
+            slides.Add(Model.Item.GetItem("SlideTwo"));
+        }
+    }
+
+    if (Model.Item.GetItem("SlideThree") != null) {
+        if (!string.IsNullOrEmpty(Model.Item.GetItem("SlideThree").GetString("Image"))) {
+            slides.Add(Model.Item.GetItem("SlideThree"));
+        }
+    }
+
+    if (Model.Item.GetItem("SlideFour") != null) {
+        if (!string.IsNullOrEmpty(Model.Item.GetItem("SlideFour").GetString("Image"))) {
+            slides.Add(Model.Item.GetItem("SlideFour"));
+        }
+    }
+
+    if (Model.Item.GetItem("SlideFive") != null) {
+        if (!string.IsNullOrEmpty(Model.Item.GetItem("SlideFive").GetString("Image"))) {
+            slides.Add(Model.Item.GetItem("SlideFive"));
+        }
+    }
+
+    int slideTime = Model.Item.GetInt32("SlideTime") == 0 ? 50000 : Model.Item.GetInt32("SlideTime") * 1000;
+    int slidesCount = 0;
+}
+
+@if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+    <h2>@Model.Item.GetString("Title")</h2>
+}
+
+<div class="carousel slide overflow-hidden" data-ride="carousel" id="Paragraph_@(Model.ID)">
+    @if (!Model.Item.GetBoolean("HideDots")) {
+        var dotCount = 0;
+
+        <ol class="carousel-indicators">
+            @foreach (var slide in slides)
+            {
+                string active = dotCount == 0 ? "active" : "";
+
+                <li data-target="#Paragraph_@(Model.ID)" data-slide-to="@dotCount" class="@active"></li>
+
+                dotCount++;
+            }
+        </ol>
+    }
+
+    <div class="carousel-inner">
+        @foreach (ItemViewModel slide in slides)
+        {
+            string active = slidesCount == 0 ? "active" : "";
+
+            <div class="carousel-item @active" id="Slide@(slide.Id)" data-interval="@slideTime">
+                @RenderTheSlide(slide)
+            </div>
+
+            slidesCount++;
+        }
+    </div>
+
+    @if (!Model.Item.GetBoolean("HideArrows")) {
+        <a class="carousel-control-prev" href="#Paragraph_@(Model.ID)" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">@Translate("Previous")</span>
+        </a>
+        <a class="carousel-control-next" href="#Paragraph_@(Model.ID)" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">@Translate("Next")</span>
+        </a>
+    }
+</div>
+
+@helper RenderTheSlide(ItemViewModel slide) { 
+    var colorService = new ColorSwatchService();
+    string backgroundColor = slide.GetString("BackgroundColor") != null && slide.GetString("BackgroundColor") != "transparent" ? slide.GetString("BackgroundColor") : "";
+    if (backgroundColor != "") {
+        backgroundColor = !backgroundColor.Contains("#") ? "background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "; " : "background-color: " + backgroundColor +  "; ";
+    }
+    string textColor = slide.GetString("TextColor") != null && slide.GetString("TextColor") != "transparent" ? slide.GetString("TextColor") : "";
+    if (textColor != "") {
+        textColor = !textColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, textColor) : textColor;
+    }
+    string styles = "style=\"" + backgroundColor + textColor + "\"";
+
+    string horizontalAlign = slide.GetString("HorizontalAlignment") != null ? "justify-content-" + slide.GetList("HorizontalAlignment").SelectedValue.ToLower() + " text-" + slide.GetList("HorizontalAlignment").SelectedValue.ToLower() : "";
+    horizontalAlign = horizontalAlign.Replace("right", "end");
+    string verticalAlign = slide.GetString("VerticalAlignment") != null ? "align-items-" + slide.GetList("VerticalAlignment").SelectedValue.ToLower() : "";
+    string alignmentCssClasses = horizontalAlign + " " + verticalAlign;
+
+    if (!string.IsNullOrEmpty(textColor)) {
+        <style>
+            #Slide@(slide.Id) p, #Slide@(slide.Id) h1, #Slide@(slide.Id) h2, #Slide@(slide.Id) h3, #Slide@(slide.Id) h4, #Slide@(slide.Id) h5, #Slide@(slide.Id) h6 {
+                color: @textColor;
+            }
+        </style>
+    } 
+
+    string filterPrimary = !string.IsNullOrEmpty(slide.GetString("ImageFilterPrimary")) ? slide.GetList("ImageFilterPrimary").SelectedValue : "";
+    string filterSecondary = !string.IsNullOrEmpty(slide.GetString("ImageFilterSecondary")) ? slide.GetList("ImageFilterSecondary").SelectedValue : "";
+    string filterColor = "";
+
+    if (!string.IsNullOrEmpty(slide.GetString("ColorForTheFilter"))) {
+        filterColor = slide.GetString("ColorForTheFilter").StartsWith("#") ? "style=\"background-color: " + GenerateRgba(slide.GetString("ColorForTheFilter"), "0.3") + "\"" : "";
+    }
+
+    string link = !string.IsNullOrEmpty(slide.GetString("Link")) ? slide.GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self";
+
+    <div class="image-filter image-filter--@filterPrimary u-position-relative dw-mod" @filterColor>
+        <div class="image-filter image-filter--@filterSecondary dw-mod">
+            <img src="@slide.GetFile("Image").Path" class="d-block w-100" alt="@slide.GetString("Title")">
+        </div>
+    </div>
+
+    <div class="position-absolute w-100 h-100 p-5">
+        <div class="d-flex h-100 @alignmentCssClasses">
+            <div>
+                @if (!string.IsNullOrEmpty(slide.GetString("Title")) || !string.IsNullOrEmpty(slide.GetString("Text"))) {
+                    <h2>@slide.GetString("Title")</h2>
+                    <div>@slide.GetString("Text")</div>
+                }
+
+                @if (!string.IsNullOrEmpty(slide.GetItem("ButtonOne").GetString("Title")) || !string.IsNullOrEmpty(slide.GetItem("ButtonTwo").GetString("Title"))) {
+                    <div>
+                        @ParagraphButton(slide.GetItem("ButtonOne")) 
+                        @ParagraphButton(slide.GetItem("ButtonTwo")) 
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}
+
+@helper ParagraphButton(ItemViewModel item) { 
+    if (item != null) {
+        if (!string.IsNullOrEmpty(item.GetString("Title"))) {
+            string buttonDesign = !string.IsNullOrEmpty(item.GetString("Design")) ? item.GetList("Design").SelectedValue : "btn-primary";
+
+            <a href="@item.GetString("Link")" type="button" class="btn @buttonDesign">@item.GetString("Title")</a>
+        }    
+    }
+}

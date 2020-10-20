@@ -1,0 +1,22 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+
+<div class="column-id:@Model.ID item-id:@Model.ItemType">
+    @ParagraphButton(Model.Item.GetItem("One")) 
+    @ParagraphButton(Model.Item.GetItem("Two")) 
+    @ParagraphButton(Model.Item.GetItem("Three")) 
+</div>
+
+
+@helper ParagraphButton(ItemViewModel item) { 
+    if (item != null) {
+        if (!string.IsNullOrEmpty(item.GetString("Title"))) {
+            <button href="@item.GetString("Link")" type="button" class="btn @item.GetList("Design").SelectedValue">@item.GetString("Title")</button>
+        }    
+    }
+}
+
+
+
+
+

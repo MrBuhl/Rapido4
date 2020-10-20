@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-16" standalone="yes"?>
+<items>
+  <item category="Content/ContentPage" name="Standard paragraph one" systemName="StandardParagraphOne" description="For text and image" icon="FileTextO" iconColor="None" image="../Templates/Designs/Rapido/Images/ItemTypes/DW_Column-Standard-paragraph-three.jpg" includeInUrlIndex="False" pageDefaultView="item" fieldForTitle="Title" title="" inherits="" useCache="False">
+    <fields>
+      <field name="Heading" systemName="Title" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.TextEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.TextEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Heading style" systemName="HeadingStyle" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="h2">
+        <editor type="Dynamicweb.Content.Items.Editors.DropDownListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="RemoveNothingSelected" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="H1" value="h1" icon="" />
+            <option name="H2" value="h2" icon="" />
+            <option name="H3" value="h3" icon="" />
+            <option name="H4" value="h4" icon="" />
+            <option name="H5" value="H5" icon="" />
+          </Static>
+        </options>
+      </field>
+      <field name="Heading HTML element" systemName="HeadingHTMLElement" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="h2">
+        <editor type="Dynamicweb.Content.Items.Editors.DropDownListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.DropDownListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="RemoveNothingSelected" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="H1 tag" value="h1" icon="" />
+            <option name="H2 tag" value="h2" icon="" />
+            <option name="H3 tag" value="h3" icon="" />
+            <option name="H4 tag" value="h4" icon="" />
+            <option name="H5 tag" value="h5" icon="" />
+            <option name="Div tag" value="div" icon="" />
+          </Static>
+        </options>
+      </field>
+      <field name="Hide heading" systemName="HideTitle" description="" type="System.Boolean, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="False">
+        <editor type="Dynamicweb.Content.Items.Editors.CheckboxEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.CheckboxEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Text" systemName="Text" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.RichTextEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RichTextEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.RichTextEditor" name="SelectConfgurationId" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Layout" systemName="Layout" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="image-top">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Image top" value="image-top" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/ParagraphImageTop.svg" />
+            <option name="Title top" value="title-top" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/ParagraphTitleTop.svg" />
+            <option name="Image left" value="image-left" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/ParagraphImageLeft.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Image" systemName="Image" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.FileEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.FileEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Base directory" value="/Images" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Extensions" value="" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Show as image selector" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Use focal point selector for images" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Allow file upload from frontend" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.FileEditor" name="Max files to add" value="" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Image width" systemName="ImageWidth" description="" type="System.Int32, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="650">
+        <editor type="Dynamicweb.Content.Items.Editors.IntegerEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.IntegerEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Image aspect ratio" systemName="ImageAspectRatio" description="Default is 1:1" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="0">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Original" value="0" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_original.svg" />
+            <option name="1:1" value="1-1" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_1-1.svg" />
+            <option name="16:9" value="16-9" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_16-9.svg" />
+            <option name="9:16" value="9-16" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_9-16.svg" />
+            <option name="4:3" value="4-3" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_4-3.svg" />
+            <option name="3:4" value="3-4" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_3-4.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Keep aspect ratio" systemName="KeepAspectRatio" description="Keep aspect ratio when cropping. Render white in the areas where there is no image data." type="System.Boolean, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="True">
+        <editor type="Dynamicweb.Content.Items.Editors.CheckboxEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.CheckboxEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Image crop style" systemName="ImageCropStyle" description="Aspect will be set to 1:1" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="none">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="None" value="none" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Aspect_original.svg" />
+            <option name="Ball" value="ball" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Crop_Ball.svg" />
+            <option name="Triangle" value="triangle" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/Crop_Triangle.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Image margin" systemName="ImageMargin" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="0">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Extra Small" value="1" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingXS.svg" />
+            <option name="Small" value="2" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingSM.svg" />
+            <option name="Medium" value="3" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingMD.svg" />
+            <option name="Large" value="4" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingLG.svg" />
+            <option name="Extra large" value="5" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingXL.svg" />
+            <option name="None" value="0" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingNONE.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Image margin position" systemName="ImageMarginPosition" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="around">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Around" value="around" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-around.svg" />
+            <option name="Top + bottom" value="y" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-top-bottom.svg" />
+            <option name="Left + right" value="x" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-left-right.svg" />
+            <option name="Top" value="t" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-top.svg" />
+            <option name="Right" value="r" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-right.svg" />
+            <option name="Bottom" value="b" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-bottom.svg" />
+            <option name="Left" value="l" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-left.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Card design" systemName="CardDesign" description="" type="System.Boolean, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="False">
+        <editor type="Dynamicweb.Content.Items.Editors.CheckboxEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.CheckboxEditor" /></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Padding" systemName="Padding" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="3">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="False" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Extra Small" value="1" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingXS.svg" />
+            <option name="Small" value="2" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingSM.svg" />
+            <option name="Medium" value="3" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingMD.svg" />
+            <option name="Large" value="4" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingLG.svg" />
+            <option name="Extra large" value="5" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingXL.svg" />
+            <option name="None" value="0" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/PaddingNONE.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Padding position" systemName="PaddingPosition" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="around">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Around" value="around" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-around.svg" />
+            <option name="Top + bottom" value="y" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-top-bottom.svg" />
+            <option name="Left + right" value="x" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-left-right.svg" />
+            <option name="Top" value="t" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-top.svg" />
+            <option name="Right" value="r" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-right.svg" />
+            <option name="Bottom" value="b" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-bottom.svg" />
+            <option name="Left" value="l" icon="/Templates/Designs/Rapido4/Images/VectorItemTypes/DW_column-padding-left.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Horizontal alignment" systemName="HorizontalAlignment" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="left">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Left" value="left" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_TextLeft.svg" />
+            <option name="Center" value="center" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_TextCenter.svg" />
+            <option name="Right" value="right" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_TextRight.svg" />
+            <option name="Full" value="full" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_TextFull.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Vertical alignment" systemName="VerticalAlignment" description="" type="System.String, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="start">
+        <editor type="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]"><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="LabelPosition" value="0" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconPosition" value="10" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxWidth" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="IconMaxHeight" value="50" /><Parameter addin="Dynamicweb.Content.Items.Editors.RadioButtonListEditor`1[[System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089]]" name="EncodeValues" value="True" /></Parameters></editorConfuguration>
+        </editor>
+        <options sourceType="Static">
+          <Static>
+            <option name="Start" value="start" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_VerticalAlignTop.svg" />
+            <option name="Center" value="center" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_VerticalAlignMiddle.svg" />
+            <option name="End" value="end" icon="Templates/Designs/Rapido4/Images/VectorItemTypes/DW_VerticalAlignBottom.svg" />
+          </Static>
+        </options>
+      </field>
+      <field name="Background color" systemName="BackgroundColor" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Text color" systemName="TextColor" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ColorSwatchEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ColorSwatchEditor" name="EditColorSwatch" value="0" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Link" systemName="Link" description="The whole area will be clickable (Overrules the button)" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.LinkEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.LinkEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnablePageSelection" value="True" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnableParagraphSelection" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="SelectOnlyID" value="False" /><Parameter addin="Dynamicweb.Content.Items.Editors.LinkEditor" name="EnableFileSelection" value="True" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Button" systemName="ButtonOne" description="" type="System.String, mscorlib" excludeFromSearch="False">
+        <editor type="Dynamicweb.Content.Items.Editors.ItemTypeEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.ItemTypeEditor"><Parameter addin="Dynamicweb.Content.Items.Editors.ItemTypeEditor" name="Item type" value="ButtonComponent" /><Parameter addin="Dynamicweb.Content.Items.Editors.ItemTypeEditor" name="Enable presets" value="False" /></Parameters></editorConfuguration>
+        </editor>
+      </field>
+      <field name="Move body inside" systemName="MoveBodyInside" description="" type="System.Boolean, mscorlib" excludeFromSearch="False" defaultValueCulture="" defaultValue="True">
+        <editor type="Dynamicweb.Content.Items.Editors.CheckboxEditor, Dynamicweb">
+          <editorConfuguration><Parameters addin="Dynamicweb.Content.Items.Editors.CheckboxEditor" /></editorConfuguration>
+        </editor>
+      </field>
+    </fields>
+    <rules>
+      <rule name="Allow in websites" type="Dynamicweb.Content.Items.Activation.AreaRestrictionRule, Dynamicweb" value="*" />
+      <rule name="" type="Dynamicweb.Content.Items.Activation.ModuleAttachmentRestrictionRule, Dynamicweb" value="Nothing" />
+      <rule name="Allowed parents" type="Dynamicweb.Content.Items.Activation.ParentRestrictionRule, Dynamicweb" value="RootOfWebsite" />
+      <rule name="Enable item type for" type="Dynamicweb.Content.Items.Activation.StructureRestrictionRule, Dynamicweb" value="Paragraphs" />
+    </rules>
+    <layout>
+      <groups>
+        <group name="Content" systemName="Content" collapsibleState="None" visibilityField="" visibilityCondition="" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="Title" />
+            <field systemName="HeadingStyle" />
+            <field systemName="HeadingHTMLElement" />
+            <field systemName="HideTitle" />
+            <field systemName="Text" />
+            <field systemName="Layout" />
+          </fields>
+        </group>
+        <group name="Image" systemName="Image" collapsibleState="Expanded" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="Image" />
+            <field systemName="ImageWidth" />
+            <field systemName="ImageAspectRatio" />
+            <field systemName="KeepAspectRatio" />
+            <field systemName="ImageCropStyle" />
+            <field systemName="ImageMargin" />
+            <field systemName="ImageMarginPosition" />
+          </fields>
+        </group>
+        <group name="Style" systemName="Style" collapsibleState="Expanded" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="CardDesign" />
+            <field systemName="Padding" />
+            <field systemName="PaddingPosition" />
+            <field systemName="HorizontalAlignment" />
+            <field systemName="VerticalAlignment" />
+            <field systemName="BackgroundColor" />
+            <field systemName="TextColor" />
+          </fields>
+        </group>
+        <group name="Links" systemName="Links" collapsibleState="Expanded" visibilityField="" visibilityCondition="0" visibilityConditionValueType="" visibilityConditionValue="">
+          <fields>
+            <field systemName="Link" />
+            <field systemName="ButtonOne" />
+          </fields>
+        </group>
+        <group name="Hidden fields" systemName="HiddenFields" collapsibleState="Collapsed" visibilityField="Title" visibilityCondition="0" visibilityConditionValueType="0" visibilityConditionValue="-----">
+          <fields>
+            <field systemName="MoveBodyInside" />
+          </fields>
+        </group>
+      </groups>
+    </layout>
+  </item>
+</items>

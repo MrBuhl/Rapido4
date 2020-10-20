@@ -1,0 +1,51 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using System.IO
+@using System.Web
+
+@{ 
+    string link = !string.IsNullOrEmpty(Model.Item.GetString("Link")) ? Model.Item.GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self";   
+}
+
+<div>
+    @if (!string.IsNullOrEmpty(link)) {
+        <a href="@link" target="@linkTarget" class="text-reset">
+            @RenderLogo()
+        </a>
+    } else {
+        @RenderLogo()
+    }
+</div>
+
+
+@helper RenderLogo() { 
+    int logoParagraphId = Convert.ToInt32(Model.Item.GetList("Logo").SelectedValue);
+    var logoParagraph = Dynamicweb.Services.Paragraphs.GetParagraph(logoParagraphId);
+
+    string cssClassName = logoParagraph.Item["CssClassName"] != null ? logoParagraph.Item["CssClassName"].ToString() : "logo";
+    string logoType = logoParagraph.Item["LogoType"] != null ? logoParagraph.Item["LogoType"].ToString() : "image";
+
+    if (logoType == "image") {
+        string logoImage = "";
+        string width = "";
+
+        if (logoParagraph.Item["Image"] != null) {
+            logoImage = logoParagraph.Item["Image"].ToString();
+            width = Path.GetExtension(logoImage).ToLower() == ".svg" ? Model.Item.GetString("ImageWidth") : "120"; 
+        }
+
+        if (Path.GetExtension(logoImage).ToLower() == ".svg") {
+            <div style="width: @(width)px;">
+                 @System.IO.File.ReadAllText(HttpContext.Current.Server.MapPath(logoImage))   
+            </div>
+        } else {
+            <img src="@logoImage" style="width: @(width)px;" />
+        }
+        
+    }
+
+    if (logoType == "font") {
+        <div class="@cssClassName">@logoParagraph.Item["Text"]</div>
+    }
+}

@@ -1,0 +1,34 @@
+﻿@inherits ViewModelTemplate<ProductListViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+@{ 
+    string groupId = Dynamicweb.Context.Current.Request["GroupID"] ?? string.Empty;
+    string groupIdQueryParameter = string.IsNullOrEmpty(groupId)
+        ? string.Empty
+        : "&amp;GroupID=" + groupId;
+    string currentPageLink = "/Default.aspx?ID=" + Pageview.Page.ID + groupIdQueryParameter;
+}
+
+ <nav>
+    <ul class="pagination">
+        <li class="page-item @(Model.CurrentPage == 1 ? "disabled" : "")">
+            <a class="page-link" href="@(currentPageLink)&PageNum=@(Model.CurrentPage-1)&PageSize=@(Model.PageSize)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+            </a>
+        </li>
+        @for (int i = 1; i <= Model.PageCount; i++)
+        {
+            var css = i == Model.CurrentPage ? "active" : "";
+            <li class="page-item @css">
+                <a class="page-link" href="@(currentPageLink)&PageNum=@(i)&PageSize=@(Model.PageSize)">@i</a>
+            </li>
+        }
+        <li class="page-item @(Model.CurrentPage == Model.PageCount ? "disabled" : "")">
+            <a class="page-link" href="@(currentPageLink)&PageNum=@(Model.CurrentPage+1)&PageSize=@(Model.PageSize)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+            </a>
+        </li>
+    </ul>
+</nav>  

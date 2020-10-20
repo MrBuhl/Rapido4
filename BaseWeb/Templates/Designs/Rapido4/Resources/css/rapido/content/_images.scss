@@ -1,0 +1,102 @@
+
+//Background images
+.background-image {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+}
+
+.background-image:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: inherit;
+}
+
+.background-image__wrapper {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+}
+
+.background-image__cover {
+    height: 100%;
+    -o-object-fit: cover;
+    object-fit: cover;
+    display: block;
+    max-width: 100%;
+    width: 100%;
+
+    @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none) {
+        & {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            height: auto;
+            width: auto;
+            max-width: none;
+            max-height: none;
+            min-width: 100%;
+            min-height: 100%;
+        }
+    }
+}
+
+
+//Filters
+.image-filter {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    overflow: hidden;
+
+    &.image-filter--blur {
+        filter: blur(5px);
+        transform: scale(1.2);
+    }
+
+    &.image-filter--lighten {
+        background-color: rgba(255,255,255,0.2);
+    }
+
+    &.image-filter--darken {
+        background-color: rgba(0,0,0,0.3);
+    }
+
+    &.image-filter--grayscale {
+        filter: grayscale(100%);
+    }
+
+    &.image-filter--sepia {
+        filter: sepia(1);
+    }
+
+    &.image-filter--overexposure {
+        filter: brightness(1.2);
+    }
+
+    &.image-filter--ball {
+        border-radius: 1000px;
+    }
+
+    &:after {
+        content: "";
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background-color: inherit;
+    }
+}

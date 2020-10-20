@@ -1,0 +1,34 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+@using Dynamicweb.Frontend
+
+<div>
+    @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+        <h4>@Model.Item.GetString("Title")</h4>
+    }
+
+
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+            <p>@Model.Item.GetString("Text")</p> 
+        }
+
+        <div class="collection dw-mod">
+            @foreach (var payment in Model.Item.GetItems("PaymentMethods"))
+            {
+                var paymentItem = payment.GetValue("CardTypeOrVerifiedPayment") as Dynamicweb.Frontend.ListViewModel;
+                string paymentImage = null;
+                string paymentTitle = paymentItem.SelectedName;
+                ListOptionViewModel selected = paymentItem.SelectedOptions.FirstOrDefault();
+                if (selected != null)
+                {
+                    paymentImage = selected.Icon;
+                }
+
+                <img class="b-lazy" src="/Files/Images/placeholder.gif" data-src="/Admin/Public/GetImage.ashx?width=60&Compression=75&image=@paymentImage" alt="@paymentTitle" title="@paymentTitle" />
+            }
+        </div>
+    </div>
+</div>
+
+

@@ -1,0 +1,22 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content.Items
+
+@{ 
+    var colorService = new ColorSwatchService();
+    string color = Model.Item.GetString("Color") != null ? Model.Item.GetString("Color") : "";
+    color = !color.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, color) : color;
+
+    string cssClasses = "separation-line--weight-" + Model.Item.GetList("Weight").SelectedValue;
+    cssClasses += " separation-line--width-" + Model.Item.GetList("Width").SelectedValue;
+
+    string horizontalAlign = Model.Item.GetList("HorizontalAlignment") != null ? "separation-line-container--align-" + Model.Item.GetList("HorizontalAlignment").SelectedValue : "";
+}
+
+<div class="separation-line-container @horizontalAlign">
+    <div class="separation-line @cssClasses" style="border-color: @color"></div>
+</div>
+
+
+
+

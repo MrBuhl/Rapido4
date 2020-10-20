@@ -1,0 +1,113 @@
+//Content
+
+#content {
+    min-height: 600px;
+}
+
+
+//Containers
+
+.container-fluid {
+    
+}
+
+.container-compressed {
+    max-width: 950px;
+}
+
+//Text reset for links
+.text-reset {
+    text-decoration: inherit !important;
+}
+
+
+//Make use of CSS variables
+.page-link {
+    color: var(--bs-primary);
+}
+
+.page-item.active .page-link {
+    background-color: var(--bs-primary);
+    border-color: var(--bs-primary);
+}
+
+
+//Card design
+.card-border-top-0 {
+    border-top-width: 0;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+}
+
+.card-border-right-0 {
+    border-right-width: 0;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+.card-border-left-0 {
+    border-left-width: 0;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+
+//Tables
+.table tr:last-child > td {
+    border-bottom: 0;
+}
+
+//Breadcrmbs
+.breadcrumb {
+    padding: 0;
+    background-color: transparent;
+    margin: 0;
+    color: $gray-600;
+}
+
+.breadcrumb-link {
+    text-decoration: none;
+    color: inherit;
+}
+
+
+//Dropdowns
+.dropdown-item.active, .dropdown-item:active {
+   background-color: rgba(0,0,0,0.1);
+}
+
+.dropdown-toggle-no-arrow::after {
+    display: none;
+}
+
+
+//Forms
+.input-group .form-select {
+    height: inherit;
+}
+
+
+//Tabs
+.nav-tabs .nav-link {
+    top: 1px;
+    left: 1px;
+    position: relative;
+    z-index: 2;
+    color: inherit;
+}
+
+
+
+//Search
+.search-icon {
+    position: absolute;
+    right: 1em;
+    line-height: 38px;
+    z-index: 3;
+}
+
+
+//Footer
+.footer-navigation .nav-link {
+    margin: 0.25em 0;
+}

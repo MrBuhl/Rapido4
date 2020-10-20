@@ -1,0 +1,1497 @@
+﻿
+<Root>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD107</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Mongoose Ritual Street (#2)</Name_Value>
+        <Number_Value name="Number">10096</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;If you want baptism by air, here&amp;rsquo;s your ride. Not only does this bike clear big jumps with ease, its tough, chromoly frame feels nearly weightless when you&amp;rsquo;re off the ground! Add on 100mm of front suspension to cushion the drops and 3-piece cranks for that sweet barspin.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Heavy-duty chromoly frame provides extra strength for jumps at the park&lt;/li&gt;
+	&lt;li&gt;RST Space Jump offers 100mm of plush suspension for those hard hits&lt;/li&gt;
+	&lt;li&gt;Heat treated, tubular chromoly 3-piece cranks guarantee a stiff and durable ride&lt;/li&gt;
+	&lt;li&gt;Conical washers let you covert this single speed ride to an 8/9 speed bike&lt;/li&gt;
+	&lt;li&gt;Hayes MX4 mechanical disc brakes deliver low maintenance, all-weather stopping power&lt;/li&gt;
+	&lt;li&gt;Kenda K-Rad and Kenda Kiniption tires are designed for aggressive street jumping&lt;/li&gt;
+	&lt;li&gt;Sun Ditch Witch rims with Mongoose rear disc hubs are built to withstand those tough landings on the pavement&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">6.691,74 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Mongoose</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material">Chromoly</Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <equipment>
+        <Labels>
+          <Frame_Label name="Frame">Frame</Frame_Label>
+          <Fork_Label name="Fork">Fork</Fork_Label>
+          <Wheel_Label name="Wheel">Wheel</Wheel_Label>
+          <Deck_Label name="Deck">Deck</Deck_Label>
+          <Crankset_Label name="Crankset">Crankset</Crankset_Label>
+          <Breaks_Label name="Breaks">Breaks</Breaks_Label>
+          <Gear_Label name="Gear">Gear</Gear_Label>
+          <Shifter_Label name="Shifter">Shifter</Shifter_Label>
+          <Front_derailleur_Label name="Front_derailleur">Front derailleur</Front_derailleur_Label>
+          <Back_derailleur_Label name="Back_derailleur">Back derailleur</Back_derailleur_Label>
+          <Cassette_Label name="Cassette">Cassette</Cassette_Label>
+          <Lock_Label name="Lock">Lock</Lock_Label>
+          <Light_Label name="Light">Light</Light_Label>
+          <Monitor_Label name="Monitor">Monitor</Monitor_Label>
+          <External_reviews_Label name="External_reviews">External reviews</External_reviews_Label>
+        </Labels>
+        <Values>
+          <Frame_Value name="Frame">Synapse BallisTec Carbon </Frame_Value>
+          <Fork_Value name="Fork">Suntour XCR-RL</Fork_Value>
+          <Wheel_Value name="Wheel">Syncros X-20</Wheel_Value>
+          <Deck_Value name="Deck">Kenda Slant 6</Deck_Value>
+          <Crankset_Value name="Crankset">Shimano Alivio FC-M4000</Crankset_Value>
+          <Breaks_Value name="Breaks">Shimano BR-M315 hydraulisk breaks</Breaks_Value>
+          <Gear_Value name="Gear">27</Gear_Value>
+          <Shifter_Value name="Shifter">Shimano Altus SL-M370-9R</Shifter_Value>
+          <Front_derailleur_Value name="Front_derailleur">Shimano Acera FD-M3000</Front_derailleur_Value>
+          <Back_derailleur_Value name="Back_derailleur">Shimano Deore RD-M592</Back_derailleur_Value>
+          <Cassette_Value name="Cassette">Shimano Acera CS-HG200-9 - 11-34T</Cassette_Value>
+          <Lock_Value name="Lock">True</Lock_Value>
+          <Light_Value name="Light">False</Light_Value>
+          <Monitor_Value name="Monitor">True</Monitor_Value>
+          <External_reviews_Value name="External_reviews"></External_reviews_Value>
+        </Values>
+      </equipment>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD127</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Wald Lift-Off Basket</Name_Value>
+        <Number_Value name="Number">10116</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;A-tisket, A-tasket, A-convenient lift-off basket!&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Just place the mounting holder over your handlebar, insert the basket and Walla - you&amp;rsquo;ve got a place to stash all your extra items!&lt;/li&gt;
+	&lt;li&gt;Basket easily lifts off the holder&lt;/li&gt;
+	&lt;li&gt;Features a handle for carrying convenience&lt;/li&gt;
+	&lt;li&gt;Built tough with a rust resistant finish for years of durable use&lt;/li&gt;
+	&lt;li&gt;Easy, tool-free installation&lt;/li&gt;
+	&lt;li&gt;Compatible with most handlebars&lt;/li&gt;
+	&lt;li&gt;Not compatible with racing-style handlebars&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">22,31 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Wald</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material">Metal</Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields />
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD130</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Blackburn EX-1 Expedition Rack</Name_Value>
+        <Number_Value name="Number">10119</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Blackburn’s strongest rack is built for extended tours, off-road rides and long distance commutes. And it even holds a child seat for safe transport of your little one!&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Welded, oversized aluminum construction with a reinforced frame and powder coated finish delivers bombproof performance&lt;/li&gt;
+	&lt;li&gt;3/8&amp;rdquo; center strut stabilizes your load and maximizes strength&lt;/li&gt;
+	&lt;li&gt;Accommodates panniers or a child seat&lt;/li&gt;
+	&lt;li&gt;40lb. capacity&lt;/li&gt;
+	&lt;li&gt;Braze-on design&lt;/li&gt;
+	&lt;li&gt;Fits most bikes&lt;/li&gt;
+	&lt;li&gt;Mounting hardware included&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">40,18 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Blackburn</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields />
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD149</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Nirve Classic Single Speed Bike</Name_Value>
+        <Number_Value name="Number">10138</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;From the local car show at the corner donut shop to the big time car meet in Carlisle, PA; the Classic and Kustom car culture is pure Americana. Drawing its influence from this popular lifestyle that fascinates enthusiasts worldwide, the Nirve Classic rolls into town with a vintage look and subtle appeal that&amp;rsquo;ll take you right back to the good ole&amp;rsquo; days.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Durable, steel frame is strong, resilient and ensures a smooth ride through town&lt;/li&gt;
+	&lt;li&gt;Wide, upright handlebars with shorty fenders and painted graphics give this ride a retro look&lt;/li&gt;
+	&lt;li&gt;Roll pleat embossed seat with dual springs keeps your backside comfortable&lt;/li&gt;
+	&lt;li&gt;Rear coaster brake delivers rapid braking power no matter what the forecast&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">258,93 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Nirve</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material">Titanium</Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <equipment>
+        <Labels>
+          <Frame_Label name="Frame">Frame</Frame_Label>
+          <Fork_Label name="Fork">Fork</Fork_Label>
+          <Wheel_Label name="Wheel">Wheel</Wheel_Label>
+          <Deck_Label name="Deck">Deck</Deck_Label>
+          <Crankset_Label name="Crankset">Crankset</Crankset_Label>
+          <Breaks_Label name="Breaks">Breaks</Breaks_Label>
+          <Gear_Label name="Gear">Gear</Gear_Label>
+          <Shifter_Label name="Shifter">Shifter</Shifter_Label>
+          <Front_derailleur_Label name="Front_derailleur">Front derailleur</Front_derailleur_Label>
+          <Back_derailleur_Label name="Back_derailleur">Back derailleur</Back_derailleur_Label>
+          <Cassette_Label name="Cassette">Cassette</Cassette_Label>
+          <Lock_Label name="Lock">Lock</Lock_Label>
+          <Light_Label name="Light">Light</Light_Label>
+          <Monitor_Label name="Monitor">Monitor</Monitor_Label>
+          <External_reviews_Label name="External_reviews">External reviews</External_reviews_Label>
+        </Labels>
+        <Values>
+          <Frame_Value name="Frame">Synapse BallisTec Carbon </Frame_Value>
+          <Fork_Value name="Fork">Synapse SAVE PLUS BallisTec Carbon</Fork_Value>
+          <Wheel_Value name="Wheel">Alunav - Bontrager Tubeless</Wheel_Value>
+          <Deck_Value name="Deck">Schwalbe Spicer (700x25c) m</Deck_Value>
+          <Crankset_Value name="Crankset">Suntour XCM - 48/36/26</Crankset_Value>
+          <Breaks_Value name="Breaks">Shimano M445 hydrualiskbreaks</Breaks_Value>
+          <Gear_Value name="Gear">24</Gear_Value>
+          <Shifter_Value name="Shifter">Shimano 105, 11 speed</Shifter_Value>
+          <Front_derailleur_Value name="Front_derailleur">Shimano Altus</Front_derailleur_Value>
+          <Back_derailleur_Value name="Back_derailleur">Shimano Altus</Back_derailleur_Value>
+          <Cassette_Value name="Cassette">Shimano Tiagra 11-25</Cassette_Value>
+          <Lock_Value name="Lock">True</Lock_Value>
+          <Light_Value name="Light"></Light_Value>
+          <Monitor_Value name="Monitor"></Monitor_Value>
+          <External_reviews_Value name="External_reviews"></External_reviews_Value>
+        </Values>
+      </equipment>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD151</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Nirve Lahaina Single Speed Ladies</Name_Value>
+        <Number_Value name="Number">10140</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Nothing exemplifies the cruiser lifestyle better than a sunset ride along the waterfront with a balmy breeze blowing through your hair. The Nirve Lahaina features surf inspired graphics that are as much at home along the beaches as they are anywhere in the world. No matter where you live, you can claim your piece of paradise with this beautiful, casual cruiser.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Durable, steel frame is strong, resilient and ensures a smooth ride&lt;/li&gt;
+	&lt;li&gt;Wide, upright handlebars with full fenders and painted island graphics give this ride a retro look&lt;/li&gt;
+	&lt;li&gt;Island flower embossed saddle with dual springs keeps your backside comfortable&lt;/li&gt;
+	&lt;li&gt;Rear coaster brake delivers rapid braking power in any weather&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">321,43 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Nirve</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material">Steel</Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <equipment>
+        <Labels>
+          <Frame_Label name="Frame">Frame</Frame_Label>
+          <Fork_Label name="Fork">Fork</Fork_Label>
+          <Wheel_Label name="Wheel">Wheel</Wheel_Label>
+          <Deck_Label name="Deck">Deck</Deck_Label>
+          <Crankset_Label name="Crankset">Crankset</Crankset_Label>
+          <Breaks_Label name="Breaks">Breaks</Breaks_Label>
+          <Gear_Label name="Gear">Gear</Gear_Label>
+          <Shifter_Label name="Shifter">Shifter</Shifter_Label>
+          <Front_derailleur_Label name="Front_derailleur">Front derailleur</Front_derailleur_Label>
+          <Back_derailleur_Label name="Back_derailleur">Back derailleur</Back_derailleur_Label>
+          <Cassette_Label name="Cassette">Cassette</Cassette_Label>
+          <Lock_Label name="Lock">Lock</Lock_Label>
+          <Light_Label name="Light">Light</Light_Label>
+          <Monitor_Label name="Monitor">Monitor</Monitor_Label>
+          <External_reviews_Label name="External_reviews">External reviews</External_reviews_Label>
+        </Labels>
+        <Values>
+          <Frame_Value name="Frame">Synapse BallisTec Carbon </Frame_Value>
+          <Fork_Value name="Fork">Steel</Fork_Value>
+          <Wheel_Value name="Wheel">Alunav - Bontrager Tubeless</Wheel_Value>
+          <Deck_Value name="Deck"></Deck_Value>
+          <Crankset_Value name="Crankset">Suntour XCM - 48/36/26</Crankset_Value>
+          <Breaks_Value name="Breaks">Shimano Ultegra</Breaks_Value>
+          <Gear_Value name="Gear">20</Gear_Value>
+          <Shifter_Value name="Shifter">Shimano Tiagra, 10 speed</Shifter_Value>
+          <Front_derailleur_Value name="Front_derailleur">Shimano 105</Front_derailleur_Value>
+          <Back_derailleur_Value name="Back_derailleur">Shimano 105</Back_derailleur_Value>
+          <Cassette_Value name="Cassette">Shimano Tiagra 11-25</Cassette_Value>
+          <Lock_Value name="Lock"></Lock_Value>
+          <Light_Value name="Light"></Light_Value>
+          <Monitor_Value name="Monitor"></Monitor_Value>
+          <External_reviews_Value name="External_reviews"></External_reviews_Value>
+        </Values>
+      </equipment>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD160</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Schwinn Evolution IC Sleeveless Jersey</Name_Value>
+        <Number_Value name="Number">10149</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;The pinnacle of Schwinn&amp;rsquo;s indoor cycling line, the Evolution IC Sleeveless Jersey is built to withstand countless hours of cardio-intense exercise on your favorite resistance unit!&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Polyester fabric with inherent stretch wicks away moisture and comfortably moves with you when the cadence is high&lt;/li&gt;
+	&lt;li&gt;16&amp;rdquo; zipper puts generous ventilation at your fingertips&lt;/li&gt;
+	&lt;li&gt;Schwinn Quality logo adds competitive style&lt;/li&gt;
+	&lt;li&gt;Rear zippered pocket holds all your indoor training essentials&lt;/li&gt;
+	&lt;li&gt;Elastic hem with silicone for a comfortable fit&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">22,31 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Schwinn</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material">93% Polyester, 7% Spandex</Material_Value>
+          <Form_Value name="Form">Skinny fit – cut closely to the body</Form_Value>
+          <Model_Value name="Model">Slim-cut</Model_Value>
+          <Washing_detail_Value name="Washing_detail">Hand wash</Washing_detail_Value>
+          <Color_Value name="Color">Blue</Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD41</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Shimano Ultegra FC-6500 53T</Name_Value>
+        <Number_Value name="Number">10035</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Smooth and nearly effortless, 9-speed shifting action that&amp;rsquo;s light, rigid and stiff.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Special tooth profiles, pick-up spikes and ramps help make your shifts quiet, easy and trouble-free&lt;/li&gt;
+	&lt;li&gt;Up-shifts are amazingly fast, crisp and won&amp;rsquo;t compromise pedaling efficiency&lt;/li&gt;
+	&lt;li&gt;Lightweight aluminum construction provides better power transfer, acceleration and speed&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">26,78 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Shimano</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields />
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD52</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Prologue Photochromatic Multi-Lens </Name_Value>
+        <Number_Value name="Number">10046</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Break-away from the pack in these stylish sunglasses built for comfort, performance and easy viewing.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Durable Grilamid TR-90 frame provides full coverage and tough protection for any condition&lt;/li&gt;
+	&lt;li&gt;ShiftTech Photochromatic lenses automatically respond to light conditions by adjusting the tint level to match your surroundings&lt;/li&gt;
+	&lt;li&gt;TPE shrouds on stem tips and nose pads ensure a no-slip grip&lt;/li&gt;
+	&lt;li&gt;Microfiber pouch keeps your glasses clean and protected&lt;/li&gt;
+	&lt;li&gt;100% UVA/UVB protection&lt;/li&gt;
+	&lt;li&gt;Black, Silver and White frames each come with two interchangeable lenses in Orange and Grey&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">35,71 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Prologue</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material">Plastic</Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields />
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD64</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Ascent Jet Set Head/Taillight Combo</Name_Value>
+        <Number_Value name="Number">10056</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;See and be seen with highly visible front (white) and rear (red) LED lights!&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Each light houses five super-bright LEDs to provide you with added safety on the road&lt;/li&gt;
+	&lt;li&gt;Front: steady and flashing modes with 30 hour runtime/90 hour flashing, thumbscrew mount for quick installation and removal, uses three AAA batteries&lt;/li&gt;
+	&lt;li&gt;Rear: four light modes (flash, chase, random and steady), up to 80 hour runtime, quick release seatpost mount, uses two AAA batteries&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">190,00 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Ascent</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields />
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD86</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Northwave Women's Moon Road Shoe</Name_Value>
+        <Number_Value name="Number">10078</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Remember those comfy &amp;ldquo;moon boots&amp;rdquo; that Mom made you wear in the wintertime? They made you feel like you were walking on marshmallows! That&amp;rsquo;s why we couldn&amp;rsquo;t resist the Moon shoe from Northwave. Not only do these shoes have the technical features you need to go hard, they feel so luxuriously comfortable, you&amp;rsquo;ll never want to take them off!&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;NRG thermoplastic sole delivers lightweight stiffness while remaining flexible enough for stellar pedal performance&lt;/li&gt;
+	&lt;li&gt;Airflow System with polyurethane improves ventilation and increases stability&lt;/li&gt;
+	&lt;li&gt;Air Sport footbed offers the perfect amount of support and cushioning&lt;/li&gt;
+	&lt;li&gt;Lift Stop heel places your foot in its most natural position for efficient power transfer&lt;/li&gt;
+	&lt;li&gt;Two Velcro straps provide a secure fit&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Northwave</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+  <Product>
+    <SystemFields>
+      <Labels>
+        <Id_Label name="Id">Id</Id_Label>
+        <VariantId_Label name="VariantId">Variant id</VariantId_Label>
+        <LanguageId_Label name="LanguageId">Language id</LanguageId_Label>
+        <Created_Label name="Created">Created</Created_Label>
+      </Labels>
+      <Values>
+        <Id_Value name="Id">PROD90</Id_Value>
+        <VariantId_Value name="VariantId"></VariantId_Value>
+        <LanguageId_Value name="LanguageId">LANG1</LanguageId_Value>
+        <Created_Value name="Created">01-01-0001 00:00:00</Created_Value>
+      </Values>
+    </SystemFields>
+    <ProductFields>
+      <Labels>
+        <Name_Label name="Name">Name</Name_Label>
+        <Number_Label name="Number">Number</Number_Label>
+        <ShortDescription_Label name="ShortDescription">Short description</ShortDescription_Label>
+        <LongDescription_Label name="LongDescription">Long description</LongDescription_Label>
+      </Labels>
+      <Values>
+        <Name_Value name="Name">Forté CT100 Triathlon Shoe</Name_Value>
+        <Number_Value name="Number">10082</Number_Value>
+        <ShortDescription_Value name="ShortDescription">&lt;p&gt;Designed for lightning fast transitions and bike splits.&lt;/p&gt;
+</ShortDescription_Value>
+        <LongDescription_Value name="LongDescription">&lt;ul&gt;
+	&lt;li&gt;Single reverse pull strap (so it doesn&amp;#39;t get hung up in the chain when running through the transition area) and dual finger loops allow you to be on your way faster than ever&lt;/li&gt;
+	&lt;li&gt;Ventilated upper paired with a super-stiff ventilated sole provides plenty of airflow to keep your feet cool and dry&lt;/li&gt;
+	&lt;li&gt;Soft, comfortable neoprene liner&lt;/li&gt;
+&lt;/ul&gt;
+</LongDescription_Value>
+      </Values>
+      <Price>
+        <Labels>
+          <Price_Label name="Price">Price</Price_Label>
+          <PriceFormatted_Label name="PriceFormatted">PriceFormatted</PriceFormatted_Label>
+          <PriceWithoutVat_Label name="PriceWithoutVat">PriceWithoutVat</PriceWithoutVat_Label>
+          <PriceWithVat_Label name="PriceWithVat">PriceWithVat</PriceWithVat_Label>
+          <Vat_Label name="Vat">Vat</Vat_Label>
+          <VATPercent_Label name="VATPercent">VATPercent</VATPercent_Label>
+          <CurrencyCode_Label name="CurrencyCode">CurrencyCode</CurrencyCode_Label>
+        </Labels>
+        <Values>
+          <Price_Value name="Price">0</Price_Value>
+          <PriceFormatted_Value name="PriceFormatted">80,35 €</PriceFormatted_Value>
+          <PriceWithoutVat_Value name="PriceWithoutVat">0</PriceWithoutVat_Value>
+          <PriceWithVat_Value name="PriceWithVat">0</PriceWithVat_Value>
+          <Vat_Value name="Vat">0</Vat_Value>
+          <VATPercent_Value name="VATPercent">0</VATPercent_Value>
+          <CurrencyCode_Value name="CurrencyCode">EUR</CurrencyCode_Value>
+        </Values>
+      </Price>
+    </ProductFields>
+    <CustomFields>
+      <Labels>
+        <brand_Label name="brand">Brand</brand_Label>
+        <Format_Label name="Format">Format</Format_Label>
+        <Material_Label name="Material">Material</Material_Label>
+      </Labels>
+      <Values>
+        <brand_Value name="brand">Forté</brand_Value>
+        <Format_Value name="Format"></Format_Value>
+        <Material_Value name="Material"></Material_Value>
+      </Values>
+    </CustomFields>
+    <ProductCategoryFields>
+      <ClothingDetail>
+        <Labels>
+          <Material_Label name="Material">Material</Material_Label>
+          <Form_Label name="Form">Form</Form_Label>
+          <Model_Label name="Model">Model</Model_Label>
+          <Washing_detail_Label name="Washing_detail">Washing detail</Washing_detail_Label>
+          <Color_Label name="Color">Color</Color_Label>
+          <composition_Label name="composition">Composition</composition_Label>
+          <Washing_instructions_Label name="Washing_instructions">Washing instructions</Washing_instructions_Label>
+        </Labels>
+        <Values>
+          <Material_Value name="Material"></Material_Value>
+          <Form_Value name="Form"></Form_Value>
+          <Model_Value name="Model"></Model_Value>
+          <Washing_detail_Value name="Washing_detail"></Washing_detail_Value>
+          <Color_Value name="Color"></Color_Value>
+          <composition_Value name="composition"></composition_Value>
+          <Washing_instructions_Value name="Washing_instructions"></Washing_instructions_Value>
+        </Values>
+      </ClothingDetail>
+    </ProductCategoryFields>
+  </Product>
+</Root>

@@ -1,0 +1,33 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+
+@if (Model.ProductFields != null) {
+    if (Model.ProductFields.Count > 0) {
+        <table class="table text-left">
+            @foreach (var field in Model.ProductFields) {
+                string fieldValue = field.Value.Value.ToString();
+                fieldValue = fieldValue == "False" ? Translate("No") : fieldValue;
+                fieldValue = fieldValue == "True" ? Translate("Yes") : fieldValue;
+
+                if (field.Value.Value.GetType() == typeof(System.Collections.Generic.List<FieldOptionValueViewModel>)) {
+                    fieldValue = "";
+
+                    foreach (FieldOptionValueViewModel option in field.Value.Value as System.Collections.Generic.List<FieldOptionValueViewModel>) {
+                        fieldValue = option.Value;
+                    }
+                }
+
+                if (!string.IsNullOrEmpty(fieldValue)) {
+                    <tr>
+                        <td style="max-width: 100px">@field.Value.Name</td>
+                        <td>@fieldValue</td>
+                    </tr>
+                }   
+            }  
+        </table>
+    }
+}
+

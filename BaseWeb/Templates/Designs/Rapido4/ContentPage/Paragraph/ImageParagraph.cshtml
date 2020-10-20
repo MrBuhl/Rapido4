@@ -1,0 +1,20 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using Dynamicweb.Frontend
+@using System.IO
+
+@{ 
+    string link = !string.IsNullOrEmpty(Model.Item.GetString("Link")) ? Model.Item.GetString("Link") : "";
+    string linkTarget = link.Contains("http") ? "_blank" : "_self";
+}
+
+<div class="image-paragraph">
+    @if (!string.IsNullOrEmpty(link)) {
+        <a href="@link" target="@linkTarget">
+            @RenderPartial("Components/General/Image.cshtml", Model)  
+        </a>
+    } else {
+        @RenderPartial("Components/General/Image.cshtml", Model)  
+    }
+</div>
+
+

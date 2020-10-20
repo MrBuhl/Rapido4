@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Query ID="08152c0a-80a6-49cc-a0e3-d3b6e5d675c2" Name="WF7 - Ready for Enrichment">
+  <Meta />
+  <Settings />
+  <Source Repository="Products" Item="Products.index" Type="Dynamicweb.Indexing.Queries.IndexQueryProvider, Dynamicweb.Indexing" />
+  <Expressions>
+    <GroupExpression Operator="And">
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="WorkflowState" />
+        </Left>
+        <Right>
+          <TermExpression Value="12" DisplayValue="Ready for Enrichment (Multiple)" Type="System.Int32[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="In" Disabled="false">
+        <Left>
+          <FieldExpression Field="LanguageID" />
+        </Left>
+        <Right>
+          <TermExpression Value="LANG1" DisplayValue="English" Type="System.String[]" />
+        </Right>
+      </BinaryExpression>
+      <BinaryExpression Operator="Contains" Disabled="false">
+        <Left>
+          <FieldExpression Field="IsVariant" />
+        </Left>
+        <Right>
+          <ConstantExpression Value="False" Type="System.Boolean[]" />
+        </Right>
+      </BinaryExpression>
+    </GroupExpression>
+  </Expressions>
+  <ViewFields>
+    <Field Name="Product number" SystemName="" Source="ProductNumber" Sort="0" />
+    <Field Name="Product name" SystemName="" Source="ProductName" Sort="1" />
+    <Field Name="Brand" SystemName="" Source="CustomField_brand" Sort="2" />
+    <Field Name="Format" SystemName="" Source="CustomField_Format" Sort="3" />
+    <Field Name="Season" SystemName="" Source="CustomField_season" Sort="4" />
+    <Field Name="Short description" SystemName="" Source="ProductShortDescription" Sort="5" />
+    <Field Name="Long description" SystemName="" Source="ProductLongDescription" Sort="6" />
+  </ViewFields>
+  <ViewLanguages>
+    <Language ID="LANG1" Name="English" SortOrder="0" />
+    <Language ID="LANG2" Name="Danish" SortOrder="1" />
+    <Language ID="LANG11" Name="Deutsch" SortOrder="2" />
+    <Language ID="LANG8" Name="French" SortOrder="3" />
+  </ViewLanguages>
+  <CompletionRules />
+  <CompletionLanguages />
+</Query>

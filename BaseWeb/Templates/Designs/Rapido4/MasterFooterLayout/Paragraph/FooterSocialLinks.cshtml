@@ -1,0 +1,67 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+@{ 
+    string position = Model.Item.GetString("Position") != null ? Model.Item.GetList("Position").SelectedValue : "block";
+    int iconsCount = 0;
+    int totalIcons = Model.Item.GetItems("SocialLinks").Count;
+}
+
+@if (position == "inline") {
+    <div class="d-flex flex-row align-items-center">
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+            <h4 class="h6 m-0 mr-3">@Model.Item.GetString("Title")</h4>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {   
+            <div class="mr-3">@Model.Item.GetString("Text")</div> 
+        }
+
+        @foreach (var socialitem in Model.Item.GetItems("SocialLinks"))
+        {
+            var socialIcon = socialitem.GetValue("Icon") as Dynamicweb.Frontend.ListViewModel;
+            string socialIconClass = socialIcon.SelectedValue;
+            string socialIconTitle = socialIcon.SelectedName;
+            string socialLink = socialitem.GetString("Link");
+
+            iconsCount++;
+
+            //No margin on last icon
+            if (iconsCount != totalIcons) {
+                <a href="@socialLink" target="_blank" title="@socialIconTitle" class="text-reset mr-3" rel="noopener"><i class="@socialIconClass fa-2x"></i></a>
+            } else {
+                <a href="@socialLink" target="_blank" title="@socialIconTitle" class="text-reset" rel="noopener"><i class="@socialIconClass fa-2x"></i></a>
+            }     
+        }
+    </div>
+} else {
+    <div>
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+            <h4>@Model.Item.GetString("Title")</h4>
+        }
+
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {   
+            <div class="mb-3">@Model.Item.GetString("Text")</div> 
+        }
+
+        <div>
+            @foreach (var socialitem in Model.Item.GetItems("SocialLinks"))
+            {
+                var socialIcon = socialitem.GetValue("Icon") as Dynamicweb.Frontend.ListViewModel;
+                string socialIconClass = socialIcon.SelectedValue;
+                string socialIconTitle = socialIcon.SelectedName;
+                string socialLink = socialitem.GetString("Link");
+
+                iconsCount++;
+
+                //No margin on last icon
+                if (iconsCount != totalIcons) {
+                    <a href="@socialLink" target="_blank" title="@socialIconTitle" class="text-reset d-inline-block mr-1" rel="noopener"><i class="@socialIconClass fa-2x"></i></a>
+                } else {
+                    <a href="@socialLink" target="_blank" title="@socialIconTitle" class="text-reset d-inline-block" rel="noopener"><i class="@socialIconClass fa-2x"></i></a>
+                }     
+            }
+        </div>
+    </div>
+}
+

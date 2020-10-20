@@ -1,0 +1,28 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System
+@using System.Web
+@using Dynamicweb.Frontend.Navigation
+
+@{ 
+    string spaceBetween = !string.IsNullOrEmpty(Model.Item.GetString("SpaceBetween")) ? Model.Item.GetList("SpaceBetween").SelectedValue : "";
+
+    var navigationSettings = new NavigationSettings();
+    navigationSettings.StartLevel = 1;
+    navigationSettings.StopLevel = 2;
+    navigationSettings.ExpandMode = ExpandMode.None;
+    navigationSettings.Parameters.Add("SpaceBetween", spaceBetween);
+
+    if (!string.IsNullOrEmpty(Model.Item.GetString("NavigationRoot"))) {
+        string root = Model.Item.GetString("NavigationRoot");
+
+        if (root.Contains("=")) {
+            int rootPageId = Convert.ToInt32(root.Substring(root.LastIndexOf('=') + 1));
+            navigationSettings.RootPageId = rootPageId;
+        }
+    } else {
+        navigationSettings.StartLevel = 1;
+    }
+
+    @Navigation.RenderNavigation("Navigation/Toolbar.cshtml", navigationSettings)  
+}
+    

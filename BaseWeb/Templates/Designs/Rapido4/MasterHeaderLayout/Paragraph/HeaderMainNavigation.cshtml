@@ -1,0 +1,143 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System
+@using System.Web
+@using Dynamicweb.Frontend.Navigation
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+
+
+
+@{ 
+    var colorService = new ColorSwatchService();
+
+    string spaceBetween = !string.IsNullOrEmpty(Model.Item.GetString("SpaceBetween")) ? Model.Item.GetList("SpaceBetween").SelectedValue : "";
+
+    var navigationSettings = new NavigationSettings();
+    navigationSettings.StartLevel = 2;
+    navigationSettings.StopLevel = 10;
+    navigationSettings.ExpandMode = ExpandMode.All;
+    navigationSettings.Parameters.Add("SpaceBetween", spaceBetween);
+
+    if (!string.IsNullOrEmpty(Model.Item.GetString("NavigationRoot"))) {
+        string root = Model.Item.GetString("NavigationRoot");
+
+        if (root.Contains("=")) {
+            int rootPageId = Convert.ToInt32(root.Substring(root.LastIndexOf('=') + 1));
+            navigationSettings.RootPageId = rootPageId;
+        }
+    } else {
+        navigationSettings.StartLevel = 1;
+    }
+
+
+    //Local styling
+    string height = !string.IsNullOrEmpty(Model.Item.GetString("Height")) ? Model.Item.GetString("Height") : "40";
+    string navTheme;
+
+    System.Drawing.Color col = System.Drawing.ColorTranslator.FromHtml("#FFFFFF");
+    if (col.R * 0.2126 + col.G * 0.7152 + col.B * 0.0722 > 255 / 2)
+    {
+        navTheme = "navbar-light";
+    } else {
+        navTheme = "navbar-dark";
+    }
+
+    string textColor = Model.Item.GetString("TextColor") != null && Model.Item.GetString("TextColor") != "transparent" ? Model.Item.GetString("TextColor").ToString() : "";
+    if (textColor != "") {
+        textColor = !textColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, textColor) : textColor;
+    }
+
+    string activeFontColor = Model.Item.GetString("ActiveFontColor") != null && Model.Item.GetString("ActiveFontColor") != "transparent" ? Model.Item.GetString("ActiveFontColor").ToString() : "";
+    if (activeFontColor != "") {
+        activeFontColor = !activeFontColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, activeFontColor) : activeFontColor;
+    }
+
+    string activeBackgroundColor = Model.Item.GetString("ActiveBackgroundColor") != null && Model.Item.GetString("ActiveBackgroundColor") != "transparent" ? Model.Item.GetString("ActiveBackgroundColor").ToString() : "";
+    if (activeBackgroundColor != "") {
+        activeBackgroundColor = !activeBackgroundColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, activeBackgroundColor) : activeBackgroundColor;
+    }
+
+    string activeBorderColor = Model.Item.GetString("ActiveBorderColor") != null && Model.Item.GetString("ActiveBorderColor") != "transparent" ? Model.Item.GetString("ActiveBorderColor").ToString() : "";
+    if (activeBorderColor != "") {
+        activeBorderColor = !activeBorderColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, activeBorderColor) : activeBorderColor;
+    }
+
+    string borderPosition = Model.Item.GetString("ActiveBorderPosition") != null ? Model.Item.GetList("ActiveBorderPosition").SelectedValue : "none";
+    int activeBorderWidth = Model.Item.GetInt32("ActiveBorderWidth");
+    int activeBorderRadius = Model.Item.GetInt32("ActiveBorderRadius");
+}
+
+<style>
+    #nav-@Model.ID .nav-item {
+        @if (!string.IsNullOrEmpty(Model.Item.GetString("Casing"))) { 
+            <text>
+                text-transform: @Model.Item.GetList("Casing").SelectedValue !important;
+            </text>
+        }
+        @if (Model.Item.GetInt32("FontSize") != 0) { 
+            <text>
+                font-size: @Model.Item.GetDecimal("FontSize")rem !important;
+            </text>
+        }
+        @if (!string.IsNullOrEmpty(textColor)) { 
+            <text>
+                color: @textColor !important;
+            </text>
+        }
+    }
+
+    #nav-@Model.ID .nav-item .nav-link, #nav-@Model.ID .nav-item .nav-link {
+        @if (activeBorderWidth != 0 && borderPosition == "around") {
+            <text>
+                border-width: @(activeBorderWidth)px;
+                border-color: transparent;
+                border-radius: @(activeBorderRadius)px;
+                border-style: solid;
+            </text>
+        }
+        @if (activeBorderWidth != 0 && borderPosition == "bottom") {
+            <text>
+                border-bottom-width: @(activeBorderWidth)px;
+                border-bottom-color: transparent;
+                border-bottom-style: solid;
+            </text>
+        }
+    }
+
+    #nav-@Model.ID .nav-item.active .nav-link, #nav-@Model.ID .nav-item:hover .nav-link {
+        transition: all 0.2s ease-in;
+        @if (!string.IsNullOrEmpty(activeFontColor)) { 
+            <text>
+                color: @activeFontColor !important;
+            </text>
+        }
+        @if (!string.IsNullOrEmpty(activeBackgroundColor)) { 
+            <text>
+                background-color: @activeBackgroundColor !important;
+            </text>
+        }
+        @if (activeBorderWidth != 0 && borderPosition == "around") {
+            <text>
+                border-width: @(activeBorderWidth)px;
+                border-color: @activeBorderColor;
+                border-radius: @(activeBorderRadius)px;
+                border-style: solid;
+            </text>
+        }
+        @if (activeBorderWidth != 0 && borderPosition == "bottom") {
+            <text>
+                border-bottom-width: @(activeBorderWidth)px;
+                border-bottom-color: @activeBorderColor;
+                border-bottom-style: solid;
+            </text>
+        }
+    }
+
+    #nav-@Model.ID .nav-link {
+        min-height: @(height)px;
+    }
+</style>
+
+<nav id="nav-@Model.ID" class="@navTheme">  
+    @Navigation.RenderNavigation("Navigation/MainNavigation.cshtml", navigationSettings)
+</nav>

@@ -1,0 +1,75 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Web;
+
+@{ 
+    string pageId = GetGlobalValue("Global:Page.ID");
+    int signInProfilePageId = Pageview.Page.ID;
+    string specialRedirectPage = !string.IsNullOrEmpty(HttpContext.Current.Request.QueryString.Get("RedirectPageId")) ? "/Default.aspx?ID=" + HttpContext.Current.Request.QueryString.Get("RedirectPageId") : "";
+    string redirectPage = !string.IsNullOrEmpty(GetString("UserManagement:User.Login.SuccessRedirectToPage")) ? GetString("UserManagement:User.Login.SuccessRedirectToPage") : specialRedirectPage;
+    string currentUserId = GetGlobalValue("Global:Extranet.UserID");
+    bool hideCreateAccountLink = false;
+    var loginProviders = GetLoop("DWExtranetExternalLoginProviders");
+}
+
+
+@if (!string.IsNullOrEmpty(redirectPage) && !string.IsNullOrEmpty(currentUserId) && currentUserId != "0")
+{
+    <script>
+        location.href = "@redirectPage";
+    </script>
+}
+
+<div>
+    @if (!string.IsNullOrEmpty(GetString("DW_extranet_error_uk")))
+    {
+        <div class="alert alert-danger" role="alert">
+            @GetString("DW_extranet_error_uk")
+        </div>
+    }
+
+    <form method="post">
+        <input type="hidden" name="ID" value="@pageId" />
+        <input type="hidden" name="DWExtranetUsernameRemember" value="True" />
+        <input type="hidden" name="DWExtranetPasswordRemember" value="True" />
+        <input type="hidden" name="LoginAction" value="Login" />
+
+        <div class="mb-3">
+            <label for="login-username" class="form-label">@Translate("Email")</label>
+            <input type="text" class="form-control" id="login-username" name="username" placeholder="@Translate("Email")" required>
+        </div>
+        <div class="mb-3">
+            <label for="login-password" class="form-label">@Translate("Password")</label>
+            <input type="password" class="form-control" id="login-password" name="password" placeholder="@Translate("Password")" required>
+        </div> 
+        <div class="form-check mb-3">
+          <input class="form-check-input" type="checkbox" value="True" name="Autologin" id="rememberMe">
+          <label class="form-check-label" for="flexCheckDefault">@Translate("Remember me")</label>
+        </div>
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary w-100">@Translate("Sign in")</button>
+        </div>
+    </form>
+
+    <div class="mb-1">
+        <a class="btn btn-link w-100" href="/Default.aspx?id=@(signInProfilePageId)&LoginAction=Recovery">@Translate("Forgot password?")</a>
+    </div>
+
+    @if (!hideCreateAccountLink) {
+        <div class="mb-1">
+            <a class="btn btn-link w-100" href="/Default.aspx?id=@(GetPageIdByNavigationTag("CreateAccount"))" title="@Translate("Create account")">@Translate("Create account")</a>
+        </div>
+    }
+</div>
+
+@if (loginProviders.Count > 0) {
+    <div class="mt-5">
+        <h2>@Translate("...or sign in with")</h2>
+
+        @foreach (LoopItem LoginProvider in loginProviders)
+        {
+            var ProviderName = LoginProvider.GetString("ProviderName").ToLower();
+
+            <a href="/Admin/Public/Social/ExternalLogin.aspx?action=login&providerID=@(LoginProvider.GetValue("ProviderID"))" class="btn btn-secondary w-100">@ProviderName</a>
+        }
+    </div>
+}

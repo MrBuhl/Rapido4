@@ -1,0 +1,10 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.ParagraphViewModel>
+@using System.Web;
+
+@if (!string.IsNullOrEmpty(Model.Item.GetString("Title")) && !Model.Item.GetBoolean("HideTitle")) {
+    @RenderPartial("Components/General/ParagraphTitle.cshtml", Model)
+}
+
+@if (!string.IsNullOrEmpty(Model.Item.GetString("Text"))) {
+    <p>@Model.Item.GetString("Text")</p> 
+}

@@ -1,0 +1,142 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.GridRowViewModel>
+@using Dynamicweb.Frontend
+@using Dynamicweb.Content
+@using Dynamicweb.Content.Items
+@using Dynamicweb
+@using System.Linq
+
+@helper RenderColumn(GridColumnViewModel column, int columnSize) { 
+    Paragraph paragraph = column.ParagraphId > 0 ? Services.Paragraphs.GetParagraph(column.ParagraphId) : null;
+    var colorService = new ColorSwatchService();
+
+    //All paragraph settings may come from e.g. column.Item.GetITem("Common").GetItem("BackgroundColor") instead
+
+    if (paragraph != null) {
+        if (paragraph.Item != null) {
+            string backgroundColor = paragraph.Item["BackgroundColor"] != null && paragraph.Item["BackgroundColor"].ToString() != "transparent" ? paragraph.Item["BackgroundColor"].ToString() : "";
+            if (backgroundColor != "") {
+                backgroundColor = !backgroundColor.Contains("#") ? "background-color: " + colorService.GetHexColor(Pageview.AreaID, backgroundColor) + "; " : "background-color: " + backgroundColor +  "; ";
+            }
+            string textColor = paragraph.Item["TextColor"] != null && paragraph.Item["TextColor"].ToString() != "transparent" ? paragraph.Item["TextColor"].ToString() : "";
+            if (textColor != "") {
+                textColor = !textColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, textColor) : textColor;
+            }
+            string headingColor = paragraph.Item["HeadingColor"] != null && paragraph.Item["HeadingColor"].ToString() != "transparent" ? paragraph.Item["HeadingColor"].ToString() : "";
+            if (headingColor != "") {
+                headingColor = !headingColor.Contains("#") ? colorService.GetHexColor(Pageview.AreaID, headingColor) : headingColor;
+            }
+            string styles = "style=\"" + backgroundColor + textColor + "\"";
+
+            string horizontalAlign = paragraph.Item["HorizontalAlignment"] != null ? "align-items-" + paragraph.Item["HorizontalAlignment"].ToString().ToLower() + " text-" + paragraph.Item["HorizontalAlignment"].ToString().ToLower() : "";
+
+            horizontalAlign = horizontalAlign.Replace("right", "end");
+            string verticalAlign = paragraph.Item["VerticalAlignment"] != null ? "justify-content-" + paragraph.Item["VerticalAlignment"].ToString().ToLower() : "";
+            string horizontalAlignContent = paragraph.Item["HorizontalAlignmentContent"] != null ? "align-items-" + paragraph.Item["HorizontalAlignmentContent"].ToString().ToLower() : "";
+
+            string alignmentCssClasses = horizontalAlign + " " + horizontalAlignContent + " " + verticalAlign;
+            string itemBodyCssClass = paragraph.Item["MoveBodyInside"] != null ? "w-100" : "";
+            string padding = paragraph.Item["Padding"] != null ? " p" + paragraph.Item["PaddingPosition"].ToString().ToLower().Replace("around", "") + "-" + paragraph.Item["Padding"].ToString().ToLower() : "";
+            string margin = paragraph.Item["Margin"] != null ? " m" + paragraph.Item["MarginPosition"].ToString().ToLower().Replace("around", "") + "-" + paragraph.Item["Margin"].ToString().ToLower() : "";
+
+            string cardDesign = "";
+            string cardDesignBorderFix = "";
+            if (paragraph.Item["CardDesign"] != null) {
+                cardDesign = Convert.ToBoolean(paragraph.Item["CardDesign"]) ? "card" : "";
+            }
+
+            //Test if the next column has a card
+            if (cardDesign == "card") {
+                var paragraphs = Services.Paragraphs.GetParagraphsByPageId(Pageview.Page.ID);
+                Paragraph lastParagraph = null;
+                bool currentParagraphFound = false;
+
+                foreach (var testParagraph in paragraphs) {
+                    if (testParagraph.ID == paragraph.ID) {
+                        if (lastParagraph != null) {
+                            if (Convert.ToBoolean(lastParagraph.Item["CardDesign"]) && Model.Item.GetList("ColumnGap").SelectedValue == "0") {
+                                cardDesignBorderFix += " card-border-left-0 border-left";
+                            }
+                        }
+
+                        currentParagraphFound = true;
+                    } else if (currentParagraphFound == true) {
+                        if (Convert.ToBoolean(paragraph.Item["CardDesign"]) && Model.Item.GetList("ColumnGap").SelectedValue == "0") {
+                            cardDesignBorderFix += " card-border-right-0";
+                        }
+                        
+                        currentParagraphFound = false;
+                    }
+
+                    lastParagraph = testParagraph;
+                }
+            }
+
+            <div class="col-12 col-md-@columnSize gy-4 gy-lg-0 item-type:@paragraph.ItemType" id="Column-@(column.ParagraphId)">
+                <style>
+                    @if (!string.IsNullOrEmpty(textColor)) {
+                        <text>
+                            #Column-@column.ParagraphId, 
+                            #Column-@column.ParagraphId .text, 
+                            #Column-@column.ParagraphId p, 
+                            #Column-@column.ParagraphId td,
+                            #Column-@column.ParagraphId .breadcrumb,
+                            #Column-@column.ParagraphId .breadcrumb-item+.breadcrumb-item::before {
+                                color: @textColor;
+                            }
+
+                             #Column-@column.ParagraphId svg {
+                                fill: @textColor;
+                             }
+                        </text>
+                    } 
+                    @if (!string.IsNullOrEmpty(headingColor)) {
+                        <text>
+                            #Column-@column.ParagraphId h1, 
+                            #Column-@column.ParagraphId h2, 
+                            #Column-@column.ParagraphId h3, 
+                            #Column-@column.ParagraphId h4, 
+                            #Column-@column.ParagraphId h5, 
+                            #Column-@column.ParagraphId h6 {
+                                color: @headingColor;
+                            }
+                        </text>
+                    } else if(!string.IsNullOrEmpty(textColor)) {
+                        <text>
+                            #Column-@column.ParagraphId h1, 
+                            #Column-@column.ParagraphId h2, 
+                            #Column-@column.ParagraphId h3, 
+                            #Column-@column.ParagraphId h4, 
+                            #Column-@column.ParagraphId h5, 
+                            #Column-@column.ParagraphId h6 {
+                                color: @textColor;
+                            }
+                        </text>
+                    }
+                </style>
+                
+
+                @if (paragraph.Item["MoveBodyInside"] == null) {
+                    <div class="@itemBodyCssClass h-100 d-flex flex-column @padding @margin @alignmentCssClasses @cardDesign @cardDesignBorderFix" @styles>
+                        @column.Output() 
+                    </div>
+                } else {
+                    <div class="h-100 d-flex flex-column @alignmentCssClasses position-relative">
+                        @column.Output() 
+                    </div>
+                }
+            </div> 
+        }
+    } else { 
+       @RenderPlaceholderForTheBuilder(column, columnSize)
+    }
+}
+
+@helper RenderPlaceholderForTheBuilder(GridColumnViewModel column, int columnSize) { 
+     //For the Visual Editor - Empty columns
+
+    <div class="col-@columnSize">
+        <div class="h-100">
+            @column.Output() 
+        </div>
+    </div> 
+}

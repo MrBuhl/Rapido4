@@ -1,0 +1,46 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb
+
+@RenderNodes()
+
+
+@helper RenderNodes()
+{
+    int megaMenuSetting_MaxColumns = 6;
+    bool megaMenuSetting_ShowParagraph = false;
+    bool megaMenuSetting_RepeatMasterWhenNoChildren = true;
+    int megaMenuColumns = 1;
+
+    <div class="row">
+        @foreach (var subnode in Model.Nodes)
+        {
+            if (megaMenuColumns > megaMenuSetting_MaxColumns) { break; } //Never show more than 5 columns
+            <div class="col">
+
+                <a href="@subnode.Link" class="text-decoration-none">
+                    <h5 class="text-uppercase font-size-sm border-bottom pb-2">@subnode.Name</h5>
+                </a>
+                @if (subnode.Nodes.Any())
+                {
+                    foreach (var subsubnode in subnode.Nodes)
+                    {
+                        <a class="d-block w-100 text-nowrap py-2 font-size-sm text-decoration-none text-reset" href="@subsubnode.Link">@subsubnode.Name</a>
+                    }
+                }
+                else if (megaMenuSetting_RepeatMasterWhenNoChildren)
+                {
+                    <a class="d-block w-100 text-nowrap py-2 font-size-sm text-decoration-none text-reset" href="@subnode.Link">@subnode.Name</a>
+                }
+            </div>
+            megaMenuColumns++;
+        }
+        @if (megaMenuSetting_ShowParagraph)
+        {
+            <div class="col">
+                <h5>Paragraph</h5>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. </p>
+                <img src="/Admin/Public/GetImage.ashx?Image=%2fFiles%2fImages%2fBikes%2fmtb1.jpg&Format=webp&Width=250" alt="..." style="width: 100%;">
+            </div>
+        }
+    </div>
+}

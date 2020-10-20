@@ -1,0 +1,63 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using System.Linq;
+
+@{
+    int createProfilePageId = GetPageIdByNavigationTag("CreateAccount");
+    var errorsByFieldName = GetLoop("FormValidationErrors").GroupBy(x => x.GetString("UserManagement:User.FormValidationError.FieldName"), x => x.GetString("UserManagement:User.FormValidationError.Message"));
+
+}
+
+@helper  DisplayErrors(IEnumerable<IGrouping<string, string>> errorsByFieldName, string fieldName)
+{
+    string forgotPasswordPageId = GetPageIdByNavigationTag("SignInPage").ToString() + "&LoginAction=Recovery";
+    var errors = errorsByFieldName.FirstOrDefault(x => x.Key == fieldName);
+
+    if (errors != null)
+    {
+        foreach (string error in errors)
+        {
+            if (error != "User with specified email exists.") {
+                <div class="field-error dw-mod">@error</div>
+            } else {
+                <div class="field-error dw-mod">@Translate("You already exist in our system click below to reset your password")</div>
+                <a href="/default.aspx?ID=@forgotPasswordPageId" class="btn btn--secondary dw-mod">@Translate("Reset password")</a>
+            }
+        }
+    }
+}
+
+@if (!String.IsNullOrEmpty(GetString("error"))) {
+    @GetString("error")
+}
+
+
+@GetString("UserManagement:User.FormStart")
+    <input type="hidden" name="UserManagementForm" value="1">
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Name" class="form-label">@Translate("Name")</label>
+        <input type="text" class="form-control" name="UserManagement_Form_Name" id="UserManagement_Form_Name" value="@GetString("UserManagement:User.Name")" required />
+        @DisplayErrors(errorsByFieldName, "UserManagement_Form_Name")                   
+    </div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_Email" class="form-label">@Translate("Email")</label>
+        <input type="email" class="form-control" name="UserManagement_Form_Email" id="UserManagement_Form_Email" value="@GetString("UserManagement:User.Email")" required />
+        @DisplayErrors(errorsByFieldName, "UserManagement_Form_Email")
+    </div>
+
+    <div class="mb-3">
+        <label for="UserManagement_Form_NewPassword" class="form-label">@Translate("Password")</label>
+        @GetString("UserManagement:User.NewPassword.Input").Replace("input ", "input class=\"form-control\"") 
+        @DisplayErrors(errorsByFieldName, "UserManagement_Form_NewPassword")
+    </div>
+                
+    <div class="mb-3">
+        <label for="UserManagement_Form_NewPasswordConfirm" class="form-label">@Translate("Confirm password")</label>
+        @GetString("UserManagement:User.NewPasswordConfirm.Input").Replace("input ", "input class=\"form-control\"")
+        @DisplayErrors(errorsByFieldName, "UserManagement_Form_NewPasswordConfirm")
+    </div>
+
+    <button type="submit" class="btn btn-primary w-100" id="submitter" onclick="Buttons.LockButton(event)">@Translate("Create your new account")</button>
+@GetString("UserManagement:User.FormEnd")
+

@@ -1,0 +1,72 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.PageViewModel>
+@using Dynamicweb.Content.Items
+@using Dynamicweb.Ecommerce.ProductCatalog
+
+@MasterPageFile("ContentMaster.cshtml")
+
+@{
+    ProductListViewModel dummyProductList = new ProductListViewModel();
+
+    //Set default product data
+    ProductViewModel dummyProduct = new ProductViewModel();
+    dummyProduct.Id = "Rapido product 12347";
+    dummyProduct.Name = "Dressless";
+    dummyProduct.DefaultImage = new MediaViewModel() { Value = "/images/missing_image.jpg" };
+    dummyProduct.Number = "12347";
+    dummyProduct.ShortDescription = "<p>The Kimono Dress by Antoni and Alison embarks a cascade of color and collage. Flowing, 3/4 inch sleeves. Wide boat neckline. SideВ&nbsp;angled pockets at front. Lining.В&nbsp;Color Coral. 100% Silk. Made in the U.K.В&nbsp;<em>Ashley is wearing a Size 8.</em></p>";
+    dummyProduct.LongDescription = "<ul><li>Aluminum hard hale frame is lightweight and delivers solid performance on the trail</li><li>100mm of plush front suspension adds control and comfort in variable terrain</li><li>Shimano 24-speed drivetrain with 11/32T cassette gives you plenty of gearing options to choose from</li><li>EZ Fire trigger shifters for quick and effortless shifts</li><li>Aluminum handlebar, stem and adjustable seatpost supply core-level strength, style and performance</li><li>Kenda Komodo tires use a non-directional tread design to shed mud without compromising speed</li><li>ProMax mechanical disc brakes provide low maintenance, all-weather stopping power</li></ul>";
+    dummyProduct.Price = new Dynamicweb.Ecommerce.ProductCatalog.PriceViewModel {
+        PriceFormatted = "$ 33.95"
+    };
+
+    dummyProductList.PageCount = 1;
+    dummyProductList.PageSize = 1;
+    dummyProductList.TotalProductsCount = 6;
+    dummyProductList.CurrentPage = 1;
+    dummyProductList.Products = new List<ProductViewModel>();
+    dummyProductList.Products.Add(dummyProduct);
+    dummyProductList.Products.Add(dummyProduct);
+    dummyProductList.Products.Add(dummyProduct);
+    dummyProductList.Products.Add(dummyProduct);
+    dummyProductList.Products.Add(dummyProduct);
+    dummyProductList.Products.Add(dummyProduct);
+
+    if (!System.Web.HttpContext.Current.Items.Contains("ProductList"))
+    {
+        System.Web.HttpContext.Current.Items.Add("ProductList", dummyProductList);
+    }
+}
+
+@{ 
+    var pageColorService = new ColorSwatchService();
+
+    string pageBackgroundColor = "";
+    string pageBackgroundImage = "";
+
+    if (Model.Item != null) {
+        pageBackgroundColor = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundColor")) && Model.Item.GetString("BackgroundColor") != "transparent" ? Model.Item.GetString("BackgroundColor") : "";
+
+        if (Model.Item.GetString("BackgroundColor") != "transparent") {
+            pageBackgroundColor = !pageBackgroundColor.Contains("#") ? "style=\"background-color: " + pageColorService.GetHexColor(Pageview.AreaID, pageBackgroundColor) + "\"" : "style=\"background-color: " + pageBackgroundColor + "\"";
+        }
+
+        pageBackgroundImage = !string.IsNullOrWhiteSpace(Model.Item.GetString("BackgroundImage")) ? Model.Item.GetFile("BackgroundImage").Path : "";
+    }    
+}
+
+@* Render the grid *@
+<div class="item-type:@Model.ItemType position-relative" id="Page-@(Model.ID)" @pageBackgroundColor>
+    @if (pageBackgroundImage != "") {
+        int cropMode = 0;
+        string image = "/Admin/Public/GetImage.ashx?width=" + 1920 + "&height=" + 845 + "&crop=" + cropMode + "&image=" + pageBackgroundImage;
+
+        <div class="background-image">
+            <div class="background-image__wrapper">
+                <img class="b-lazy background-image__cover" src="/Files/Images/placeholder.gif" data-src="@pageBackgroundImage" />
+            </div> 
+        </div>  
+    }
+
+    @Model.Grid("Grid", "Grid", "default:true;sort:1", "Standard")
+</div>
+

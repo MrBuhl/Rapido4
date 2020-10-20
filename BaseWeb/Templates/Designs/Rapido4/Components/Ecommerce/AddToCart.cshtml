@@ -1,0 +1,55 @@
+﻿@inherits ViewModelTemplate<ProductViewModel>
+@using Dynamicweb.Rendering
+@using Dynamicweb.Ecommerce.ProductCatalog
+@using System.Linq;
+
+
+@* ADD TO CART *@
+@{   
+    var customerId = Dynamicweb.Security.UserManagement.User.GetCurrentExtranetUserId();
+    var shopId = Pageview.Area.EcomShopId;
+    var orderType = Dynamicweb.Ecommerce.Orders.OrderType.Order;
+    var cartsList = (List<Dynamicweb.Ecommerce.Orders.Order>)Dynamicweb.Ecommerce.Services.Orders.GetCustomerOrdersByType(customerId, shopId, orderType, 0, false, "", DateTime.MinValue, false, true);
+
+    //bool disabledBuyButton = (GetLoop("VariantGroups").Count > 0 && string.IsNullOrEmpty(variantId) && !mainInfoIsFamilyMember) || (pointShopOnly && !canBePurchasedWithPoints);
+
+    string layout = GetViewParameterString("layout") != null ? GetViewParameterString("layout") : "";
+    bool hideUnits = GetViewParameterBoolean("hideUnits");
+    bool hideQuantity = GetViewParameterBoolean("hideQuantity");
+}
+
+ <form method="post" action="/Default.aspx?ID=@(GetPageIdByNavigationTag("CartService"))">
+     <input type="hidden" name="redirect" value="false" />
+     <input type="hidden" name="ProductId" value="@Model.Id" />
+     <input type="hidden" name="cartcmd" value="add" />
+
+    <div class="input-group">
+        @if (layout == "compact") {
+            if (!hideQuantity) {
+                <input id="Quantity_@Model.Id" name="Quantity" min="1" value="1" type="number" class="form-control w-50px">
+            } else {
+                <input id="Quantity_@Model.Id" name="Quantity" value="1" type="hidden">
+            }
+            
+            <button type="button" onclick="Cart.UpdateCart(event)" class="btn btn-primary btn-cart" title="@Translate("Add to cart")"><i class="fal fa-shopping-bag"></i></button>
+        } else if (layout == "stretch") {
+            if (!hideQuantity) {
+                <input id="Quantity_@Model.Id" name="Quantity" min="1" value="1" type="number" class="form-control w-60px">
+            } else {
+                <input id="Quantity_@Model.Id" name="Quantity" value="1" type="hidden">
+            }
+            <button type="button" onclick="Cart.UpdateCart(event)" class="btn btn-primary btn-cart flex-fill" title="@Translate("Add to cart")">
+                <div>@Translate("Add to cart")<i class="fal fa-shopping-bag ml-2"></i></div>
+            </button>
+        } else {
+            if (!hideQuantity) {
+                <input id="Quantity_@Model.Id" name="Quantity" min="1" value="1" type="number" class="form-control w-80px">
+            } else {
+                <input id="Quantity_@Model.Id" name="Quantity" value="1" type="hidden">
+            }
+            <button type="button" onclick="Cart.UpdateCart(event)" class="btn btn-primary btn-cart" title="@Translate("Add to cart")">
+                <div>@Translate("Add to cart")<i class="fal fa-shopping-bag ml-2"></i></div>
+            </button>
+        }
+    </div>
+</form>

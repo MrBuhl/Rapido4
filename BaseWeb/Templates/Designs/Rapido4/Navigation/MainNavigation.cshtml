@@ -1,0 +1,89 @@
+﻿@inherits Dynamicweb.Rendering.ViewModelTemplate<Dynamicweb.Frontend.Navigation.NavigationTreeViewModel>
+@using Dynamicweb
+@using Dynamicweb.Frontend.Navigation
+
+
+@RenderFirstLevelNodes(Model.Nodes)
+
+
+@helper RenderFirstLevelNodes(IEnumerable<Dynamicweb.Frontend.Navigation.NavigationTreeNodeViewModel> nodes)
+{
+    string spaceBetween = Model.Parameters["SpaceBetween"] != null ? "space-between--" + Model.Parameters["SpaceBetween"].ToString() : "";
+
+    <div class="navbar-nav flex-row main @spaceBetween">
+        @foreach (var node in nodes)
+        {
+            var hasChildren = node.Nodes.Count() > 0;
+            bool hasManyChildren = false;
+            foreach (var subnode in node.Nodes)
+            {
+                if (subnode.Nodes.Any()) {
+                    hasManyChildren = true;
+                }
+            }
+            string icon = "";
+            bool hideTitle = false;
+            string submenuType = "auto";
+            string dropdownWrapperCss = "";
+            string promotionImage = "";
+            string promotionLink = "";
+
+            if (Services.Pages.GetPage(node.PageId) != null) {
+                icon = Services.Pages.GetPage(node.PageId).PropertyItem["Icon"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["Icon"].ToString() : "";
+                hideTitle = Services.Pages.GetPage(node.PageId).PropertyItem["HideTitle"] != null ? Convert.ToBoolean(Services.Pages.GetPage(node.PageId).PropertyItem["HideTitle"]) : false;
+                submenuType = Services.Pages.GetPage(node.PageId).PropertyItem["SubItems"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["SubItems"].ToString() : "auto";
+
+                promotionImage = Services.Pages.GetPage(node.PageId).PropertyItem["MegamenuPromotionImage"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["MegamenuPromotionImage"].ToString() : "";
+                promotionLink = Services.Pages.GetPage(node.PageId).PropertyItem["MegamenuPromotionLink"] != null ? Services.Pages.GetPage(node.PageId).PropertyItem["MegamenuPromotionLink"].ToString() : "";
+            }
+
+            if (submenuType == "auto") {
+                submenuType = hasManyChildren ? "megamenu" : "dropdown";
+            }
+
+            dropdownWrapperCss = hasChildren && submenuType == "dropdown" ? "dropdown position-relative" : "";
+            dropdownWrapperCss = hasChildren && submenuType == "megamenu" ? "dropdown megamenu-item" : dropdownWrapperCss;
+            string dropdownAttributes = hasChildren ? "id=\"NavGroup" + node.PageId + "\" role=\"button\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\"" : "";
+
+            <div class="nav-item @(node.IsActive ? "active" : "") @dropdownWrapperCss dw-navbar-button">
+                @if (node.IsClickable)
+                {
+                    <a class="nav-link @(node.IsActive ? "active" : "") @(hasChildren ? "dropdown-toggle" : "") d-flex align-items-center" href="@(hasChildren ? "#" : node.Link)" title="@node.Name" @dropdownAttributes>
+                        @if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-1"></i>}
+                        @if (!hideTitle) {
+                            @node.Name
+                        }
+                    </a>
+                } else {
+                    <span class="nav-link d-flex align-items-center" title="@node.Name" @dropdownAttributes>
+                        @if (!string.IsNullOrEmpty(icon)){<i class="@icon mr-1"></i>}
+                        @if (!hideTitle) {
+                            @node.Name
+                        }
+                    </span>
+                }
+
+                @if (hasChildren)
+                {
+                    var navigationSettings = new NavigationSettings();
+                    navigationSettings.StartLevel = 3;
+                    navigationSettings.StopLevel = 4;
+                    navigationSettings.ExpandMode = ExpandMode.All;
+                    navigationSettings.RootPageId = node.PageId;
+                    navigationSettings.Parameters.Add("PromotionImage", promotionImage);
+                    navigationSettings.Parameters.Add("PromotionLink", promotionLink);
+          
+                    if (submenuType == "megamenu") {
+                        <div class="dropdown-menu megamenu rounded-0 border-bottom pb-3 shadow" id="NavGroup@(node.PageId)">
+                            @Navigation.RenderNavigation("Navigation/Megamenu.cshtml", navigationSettings)
+                        </div>
+                    } else {
+                        <ul class="dropdown-menu" aria-labelledby="NavGroup@(node.PageId)">
+                            @Navigation.RenderNavigation("Navigation/Dropdown.cshtml", navigationSettings)
+                        </ul>
+                    }  
+                }
+            </div>
+        }
+    </div>
+}

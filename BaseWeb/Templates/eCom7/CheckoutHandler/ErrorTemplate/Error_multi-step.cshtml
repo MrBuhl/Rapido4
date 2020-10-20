@@ -1,0 +1,14 @@
+@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@Include("../../../Components/GridBuilder.cshtml")
+@Include("../../../Components/GeneralComponents.cshtml")
+
+@* Shared Payment blocks *@
+@Include("../Blocks/MultiStepBlockStructure.cshtml")
+@Include("../Blocks/PaymentDetailsTitle.cshtml")
+@Include("../Blocks/MultiStepBar.cshtml")
+@Include("../../CartV2/Step/Blocks/StaticSummary.cshtml")
+@Include("../Blocks/Custom__Blocks.cshtml")
+@Include("../Blocks/PaymentError.cshtml")
+@Include("../Blocks/PayButton.cshtml")
+
+@RenderBlockList(multiStepCheckoutPage.BlocksRoot.BlocksList)

@@ -1,0 +1,79 @@
+﻿@inherits Dynamicweb.Rendering.RazorTemplateBase<Dynamicweb.Rendering.RazorTemplateModel<Dynamicweb.Rendering.Template>>
+@using Dynamicweb.Rapido.Blocks
+@using Dynamicweb.Rapido.Blocks.Components.General
+
+@functions {
+    BlocksPage panelWarningPage = BlocksPage.GetBlockPage("PanelWarning");
+}
+
+@{
+    Block cookiePanel = new Block
+    {
+        Id = "CookiePanel",
+        SortId = 10,
+        Template = RenderCookiePanel(),
+        SkipRenderBlocksList = true
+    };
+
+    panelWarningPage.Add(cookiePanel);
+
+    Block cookieForm = new Block
+    {
+        Id = "CookieForm",
+        SortId = 10,
+        Template = RenderCookieFormInline()
+    };
+
+    cookiePanel.Add(cookieForm);
+
+    Block cookieScript = new Block
+    {
+        Id = "CookieScript",
+        SortId = 20,
+        Template = RenderCookieScript()
+    };
+
+    panelWarningPage.Add(cookieScript);
+}
+
+@helper RenderCookiePanel()
+{
+    <!-- Trigger for the cookie panel -->
+    <input type="checkbox" class="panel-trigger js-remember-state" id="CookiePanelTrigger" checked />
+
+    <!-- Cookie panel -->
+    <aside class="panel panel--bottom dw-mod" id="CookiePanel">
+        <label for="CookiePanelTrigger" class="panel-trigger-btn dw-mod"></label>
+
+        <div class="panel__content dw-mod">
+            <div class="panel__content__body dw-mod">
+                @Render(new Heading { Title = Translate("This website use cookies"), Level = 6, CssClass = "panel__header u-margin-bottom" })
+
+                <div>@Translate("This website uses cookies to track your behavior and to improve your experience on the site")</div>
+                <div class="u-margin-bottom--lg">@Translate("You can always delete saved cookies by visiting the advanced settings of your browser")</div>
+            </div>
+
+            <div class="panel__content__footer panel__content__footer--320px dw-mod">
+                @{
+                    List<Block> subBlocks = this.panelWarningPage.GetBlockListById("CookiePanel").OrderBy(item => item.SortId).ToList();
+
+                    // Render Content
+                    @RenderBlockList(subBlocks)
+                }
+            </div>
+        </div>
+    </aside>
+}
+
+@* Include the required Grid builder (Contains the methods @RenderBlockList and @RenderBlock) *@
+@Include("../Designs/Rapido/Components/GridBuilder.cshtml")
+
+@* Include the components *@
+@Include("../Designs/Rapido/Components/GeneralComponents.cshtml")
+
+@Include("Blocks/CookieForm.cshtml")
+@Include("Blocks/CookieScript.cshtml")
+@Include("Blocks/Custom__Blocks.cshtml")
+
+@* The @RenderBlockList base helper is included in Components/GridBuilder.cshtml *@
+@RenderBlockList(panelWarningPage.BlocksRoot.BlocksList)
